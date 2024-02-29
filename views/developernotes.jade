@@ -1,0 +1,57 @@
+span(style="font-family: verdana, geneva, sans-serif;")
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      title Client Dashboard
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/devprojects.css")
+      //- Font Awesome Cdn Link -->
+      link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    body
+      .container
+        nav
+          ul
+            li
+              a(href="#", class="logo")
+                span.nav-item DashBoard
+            
+            li
+              a(href="")
+                i.fas.fa-tasks
+                span.nav-item Projects
+            li
+              a(href="")
+                i.fas.fa-tasks
+                span.nav-item Notes
+            li
+              a(href="#")
+                i.fas.fa-home
+                span.nav-item Account Details 
+                
+            li
+              a(href="", class="logout")
+                i.fas.fa-sign-out-alt
+                span.nav-item Log out
+        section.main 
+             .main-notes
+                .col.column-1
+                    .card
+                    .card-body
+                        h5.card-title task bar 
+                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                .col.column-2
+                    .card
+                    .card-body
+                        h5.card-title footer 
+                        p.card-text This is a short card.
+                .col.column-3
+                    .card
+                    .card-body
+                        h5.card-title database 
+                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content.
+                .col.column-4
+                    .card
+                    .card-body
+                        h5.card-title database connection
+                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                

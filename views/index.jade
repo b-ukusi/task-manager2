@@ -1,0 +1,29 @@
+doctype html
+html(lang="en" dir="ltr")
+  head
+    meta(charset="utf-8")
+    title Login and Registration Form in HTML 
+    link(rel="stylesheet", type='text/css', href="/stylesheets/index.css")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+   
+
+
+  body
+    .wrapper
+      .title-text
+        .title.login Login Form
+        
+      .form-container
+        .form-inner
+          form.login(action="/auth", method="get")
+            .field
+              input(type="text", placeholder="Email Address", name= "username",  id="username"  required)
+            .field
+              input(type="password", placeholder="Password",id ="password", name="password" required)
+            .pass-link
+              a(href="#") Forgot password?
+            .field.btn
+              .btn-layer
+              input(type="submit", value="Login")
+            
+          

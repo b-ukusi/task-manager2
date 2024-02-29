@@ -1,0 +1,48 @@
+span(style="font-family: verdana, geneva, sans-serif;")
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      title Client Dashboard
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/admin.css")
+      //- Font Awesome Cdn Link -->
+      link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    body
+     .container
+        nav
+          ul
+            li
+              a(href="#", class="logo")
+                span.nav-item DashBoard
+            
+            li
+              a(href="", class="logout")
+                i.fas.fa-sign-out-alt
+                span.nav-item Log out
+        section.main 
+             .main-parts
+                .col.column-1
+                    .card
+                    .card-body
+                        h5.card-title Projects 
+                        p.card-text
+                        each project in projects
+                          li
+                            p= project.ProjectName
+                            
+                .col.column-2
+                    .card
+                    .card-body
+                        h5.card-title Developer Accounts  
+                        p.card-text 
+                        each developer in developers 
+                          li
+                            p= developer.FirstName
+                .col.column-3
+                    .card
+                    .card-body
+                        h5.card-title Client Accounts 
+                        p.card-text
+                        each client in clients 
+                          li 
+                            p= client.FirstName

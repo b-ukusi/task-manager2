@@ -1,0 +1,81 @@
+span(style="font-family: verdana, geneva, sans-serif;")
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      title Client Dashboard
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/client.css")
+      //- Font Awesome Cdn Link -->
+      link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    body
+      .container
+        nav
+          ul
+            li(onclick="redirectToPage('/your-page-url')")
+              a(href="#", class="logo")
+                span.nav-item = uname
+            
+            li
+              a(href="")
+                i.fas.fa-tasks
+                span.nav-item Notes
+            li
+              a(href="#")
+                i.fas.fa-home
+                span.nav-item Account Details 
+                
+            li(onclick="redirectToPage('/your-page-url')")
+              a(href="", class="logout")
+                i.fas.fa-sign-out-alt
+                span.nav-item Log out
+        
+        section.main
+          .main-top
+            h1 Tasks 
+            .main-skills
+              .card
+                .form-check
+                    input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                    label.form-check-label(for="flexCheckDefault") Default checkbox Checked checkbox
+                .form-check
+                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
+                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
+                .form-check
+                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
+                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
+                .form-check
+                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
+                    label.form-check-label(for="flexCheckChecked") Checked checkbox  Checked checkbox    
+                .form-check
+                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
+                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
+                
+            .main-skills
+              .card
+                h3 Progress
+                    .row
+                      .col-md-9.col-sm-6
+                        .progress.blue
+                          span.progress-left
+                            span.progress-bar
+                          span.progress-right
+                            span.progress-bar
+                          .progress-value 100%
+
+          
+          
+          
+          section.main-course
+              h1 Recent upadetes 
+              .course-box
+                h3 task bar update
+                .course
+                  .box
+                    h3 HTML
+                    p 80% - progress Lorem Ipsum is simply dummy text of
+                     the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+                    including versions of Lorem Ipsum.
+                  
