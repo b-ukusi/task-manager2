@@ -4,7 +4,7 @@ const db = require('../db')
 
 /*controllers*/
 
-const admin_constroller = require("../controllers/adminController");
+
 
 
 /* admin, project manager  */

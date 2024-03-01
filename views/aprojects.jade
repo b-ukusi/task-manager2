@@ -3,60 +3,60 @@ span(style="font-family: verdana, geneva, sans-serif;")
   html(lang="en")
     head
       meta(charset="UTF-8")
-      title Client Dashboard
+      title Admin add clients
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aprojects.css")
+      script(defer, src='/javascripts/aclientpage.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
-      .container
+    .container
         nav
           ul
             li
               a(href="#", class="logo")
                 span.nav-item DashBoard
-            
-       
             li
               a(href="", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         section.main
-                .main-top
-                    h1 Projectcs 
+               .main-top
+                    h1 Projects 
                 .main-body
-                    button.search-button(type='button')
-                        i.material-icons New Project
-                .modal       
-                    .modal-header
-                      .title New Project
-                        button(data-close-button class="close-button") ×
+                    input.search-input(type="text", placeholder="Search Project")
+                    button.newproject-button(data-modal-target="#")
+                        i.material-icons New Project   
+                .modal(id="")       
+                  .modal-header
+                    .title New Project
+                     button(data-close-button class="close-button") ×
 
-                    .modal-body
-                        form(action="#")
-                            .main-user-info
-                                .user-input-box
-                                    label(for="Project Name ") Project Name 
-                                    input(type="text", id="Prject Name", name=" ProjectName", placeholder=" Name")
-                                .user-input-box
-                                    label(for="Clients Name ") Client name 
-                                    input(type="text", id="clietname", name="clientname", placeholder=" client name")
-                                .user-input-box
-                                    label(for="Developers Name ") Developer name
-                                    input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
-                                .user-input-box
-                                    label(for="Start date ") Start date 
-                                    input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
-                                .user-input-box2
-                                    label(for="Description") Product description
-                                    input(type="text", id="description", name="description", placeholder="Enter description")
-                               
-                            .form-submit-btn
-                                input(type="submit", value="Creat Project")
+                  .modal-body
+                    form(action="")
+                      .main-user-info
+                      .user-input-box
+                          label(for="Project Name ") Project Name 
+                          input(type="text", id="Prject Name", name=" ProjectName", placeholder=" Name")
+                      .user-input-box
+                          label(for="Clients Name ") Client name 
+                          input(type="text", id="clietname", name="clientname", placeholder=" client name")
+                      .user-input-box
+                          label(for="Developers Name ") Developer name
+                          input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
+                      .user-input-box
+                          label(for="Start date ") Start date 
+                          input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
+                      .user-input-box2
+                          label(for="Description") Product description
+                          input(type="text", id="description", name="description", placeholder="Enter description")
+                                
+                      .form-submit-btn
+                          input(type="submit", value="Creat Project")
 
-                  #overlay        
+              #overlay        
                 
                     
-                .main-body2  
+           .main-body2  
                          
                   
                         
