@@ -5,6 +5,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/adevelopers.css")
+      script(defer, src='/javascripts/aclientpage.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -24,8 +25,33 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 .main-top
                     h1 Developers 
                 .main-body
-                    button.search-button(type='button')
-                        i.material-icons New Developer 
+                    .main-body
+                    input.search-input(type="text", placeholder=" Search Developer")  
+                    button.newdeveloper-button(data-modal-target="#modal") New Developer
+                .modal#modal
+                  .modal-header
+                    .title New Developer 
+                    button(data-close-button, class="close-button") &times;
+                  .modal-body
+                     form(action="#modal")
+                              .main-user-info
+                                  .user-input-box
+                                      label(for="First Name ") First name 
+                                      input(type="text", id="clietname", name="clientname", placeholder=" client name")
+                                  .user-input-box
+                                      label(for="Last Name ") Last name
+                                      input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
+                                  .user-input-box
+                                      label(for="Start date ") Start date 
+                                      input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
+                                  .user-input-box2
+                                      label(for="Description") Product description
+                                      input(type="text", id="description", name="description", placeholder="Enter description")
+                                
+                              .form-submit-btn
+                                  input(type="submit", value="Creat Developer")
+                #overlay
+
                 .main-body2 
                          
                   
