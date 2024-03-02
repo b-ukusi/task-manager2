@@ -50,6 +50,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                 
                               .form-submit-btn
                                   input(type="submit", value="Creat Developer")
+                .main-body2  
+                    .card 
+                    .card-body 
+                        h5.card-title developers                         
+                        each developer in developers 
+                          li 
+                            p= developer.FirstName  
                 #overlay
 
                 .main-body2 
