@@ -22,38 +22,37 @@ span(style="font-family: verdana, geneva, sans-serif;")
         section.main
                .main-top
                     h1 Projects 
-                .main-body
-                    input.search-input(type="text", placeholder="Search Project")
-                    button.newproject-button(data-modal-target="#")
-                        i.material-icons New Project   
-                .modal(id="")       
+               .main-body
+                    input.search-input(type="text", placeholder="Search Project")  
+                    button.newproject-button(data-modal-target="#modal") New Project
+                .modal#modal
                   .modal-header
-                    .title New Project
-                     button(data-close-button class="close-button") ×
-
+                    .title New Project 
+                    button(data-close-button, class="close-button") &times;
                   .modal-body
-                    form(action="")
-                      .main-user-info
-                      .user-input-box
-                          label(for="Project Name ") Project Name 
-                          input(type="text", id="Prject Name", name=" ProjectName", placeholder=" Name")
-                      .user-input-box
-                          label(for="Clients Name ") Client name 
-                          input(type="text", id="clietname", name="clientname", placeholder=" client name")
-                      .user-input-box
-                          label(for="Developers Name ") Developer name
-                          input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
-                      .user-input-box
-                          label(for="Start date ") Start date 
-                          input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
-                      .user-input-box2
-                          label(for="Description") Product description
-                          input(type="text", id="description", name="description", placeholder="Enter description")
+                     form(action="#modal")
+                              .main-user-info
+                                  .user-input-box
+                                      label(for="Project Name ") Project Name 
+                                      input(type="text", id="Prject Name", name=" ProjectName", placeholder=" Name")
+                                  .user-input-box
+                                      label(for="Clients Name ") Client name 
+                                      input(type="text", id="clietname", name="clientname", placeholder=" client name")
+                                  .user-input-box
+                                      label(for="Developers Name ") Developer name
+                                      input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
+                                  .user-input-box
+                                      label(for="Start date ") Start date 
+                                      input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
+                                  .user-input-box2
+                                      label(for="Description") Product description
+                                      input(type="text", id="description", name="description", placeholder="Enter description")
                                 
-                      .form-submit-btn
-                          input(type="submit", value="Creat Project")
+                              .form-submit-btn
+                                  input(type="submit", value="Creat Project")
+                #overlay
 
-              #overlay        
+ 
                 
                     
            .main-body2  
