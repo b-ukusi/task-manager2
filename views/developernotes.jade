@@ -4,7 +4,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
     head
       meta(charset="UTF-8")
       title Client Dashboard
-      link(rel="stylesheet",  type='text/css', href="/stylesheets/devprojects.css")
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/devnotes.css")
+      script(defer, src='/javascripts/aclientpage.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -33,25 +34,34 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         section.main 
-             .main-notes
-                .col.column-1
-                    .card
-                    .card-body
-                        h5.card-title task bar 
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                .col.column-2
-                    .card
-                    .card-body
-                        h5.card-title footer 
-                        p.card-text This is a short card.
-                .col.column-3
-                    .card
-                    .card-body
-                        h5.card-title database 
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content.
-                .col.column-4
-                    .card
-                    .card-body
-                        h5.card-title database connection
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                
+            .main-top
+                    h1 Notes
+               .main-body
+                    input.search-input(type="text", placeholder="Search Note")  
+                    button.newproject-button(data-modal-target="#modal") New Note
+                .modal#modal
+                  .modal-header
+                    .title New Note
+                    button(data-close-button, class="close-button") &times;
+                  .modal-body
+                     form(action="#modal")
+                              .main-user-info
+                                  .user-input-box
+                                      label(for="Project Name ") Note Name 
+                                      input(type="text", id="Note Name", name=" NoteName", placeholder=" Tittle ")
+                                  .user-input-box2
+                                      label(for="Clients Name ") Note Content
+                                      input(type="text", id="Note Content", name="notecontent", placeholder=" Content")
+                                  
+                                
+                              .form-submit-btn
+                                  input(type="submit", value="Create Note")
+                .main-body2  
+                    .card 
+                      .card-body 
+                          h5.card-title Notes
+                          p.card-text 
+                          
+                            
+                                        
+                #overlay  
