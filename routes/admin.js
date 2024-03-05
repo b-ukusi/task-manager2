@@ -66,7 +66,8 @@ router.get('/', async (req, res, next) => {
 
     });
     
-/* admin, project manager  */
+
+    /* admin, project manager  */
   router.get('/projects', async (req, res, next) => {
     
     console.log("Loaded projects page");
@@ -84,7 +85,9 @@ router.get('/', async (req, res, next) => {
      
    });
   }); 
-   /*develo[er routs and db query */
+  
+  
+  /*develo[er routs and db query */
   router.get('/developers', (req, res, next) => {
     db.query("call get_usertypes('developer')",  (err, rows)=> {
     
@@ -117,5 +120,6 @@ router.get('/', async (req, res, next) => {
      
    });
   });
-
+/*nav bar routes to see of theyle work  */
+router.get
 module.exports = router;
