@@ -11,7 +11,7 @@ body
       .container
         nav
           ul
-            li(onclick="redirectToPage('/your-page-url')")
+            li
               a(href="#", class="logo")
                 span.nav-item DashBoard
             
@@ -30,8 +30,8 @@ body
                 i.fas.fa-home
                 span.nav-item Account Details 
                 
-            li(onclick="redirectToPage('/your-page-url')")
-              a(href="", class="logout")
+            li
+              a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         
