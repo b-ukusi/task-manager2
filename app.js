@@ -30,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/client', clientRouter);
 app.use('/dev',devRouter);
 app.use('/admin', adminRouter);
+// app.use('/admin/createproject',adminRouter);
 app.use('/auth', authrouter)
 // app.use('/users', usersRouter);
 

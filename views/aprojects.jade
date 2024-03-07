@@ -23,10 +23,14 @@ span(style="font-family: verdana, geneva, sans-serif;")
               a(href="/admin/developers")
                 i.fas.fa-tasks
                 span.nav-item developers 
-             li
+            li
               a(href="/admin/projects")
                 i.fas.fa-tasks
                 span.nav-item projects   
+            li
+              a(href="/admin/tasks")
+                i.fas.fa-tasks
+                span.nav-item projects    
             li
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
@@ -42,25 +46,43 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Project 
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="#modal")
+                     form(action="/admin/createproject", method="get")
                               .main-user-info
                                   .user-input-box
-                                      label(for="Project Name ") Project Name 
-                                      input(type="text", id="Prject Name", name=" ProjectName", placeholder=" Name")
+                                      label(for="Project Name ") Project Name
+                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name")
                                   .user-input-box
                                       label(for="Clients Name ") Client name 
-                                      input(type="text", id="clietname", name="clientname", placeholder=" client name")
+                                      select#propertyType.select.form-control.input-lg(  name='client'
+                                      )
+                                    
+                                        each client in clients 
+                                          li 
+                                            option(value=client.UserID) #{client.FirstName}
+                                     
                                   .user-input-box
+                                    
                                       label(for="Developers Name ") Developer name
-                                      input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
+                                      select#propertyType.select.form-control.input-lg(  name='developer'
+                                      )
+                                    
+                                        each developer in developers 
+                                          li 
+                                            option(value=developer.UserID) #{developer.FirstName}
+
+  
                                   .user-input-box
                                       label(for="Start date ") Start date 
-                                      input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
+                                      input(type="text", id="startdate ", name="startdate", placeholder="Enter start date")
+                                   .user-input-box
+                                      label(for="End date ") End date 
+                                      input(type="text", id="enddate ", name="enddate", placeholder="Enter End date")    
                                   .user-input-box2
                                       label(for="Description") Product description
                                       input(type="text", id="description", name="description", placeholder="Enter description")
                                 
                               .form-submit-btn
+                              
                                   input(type="submit", value="Creat Project")
                 .main-body2  
                     .card 
@@ -70,7 +92,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           each project in projects 
                             li 
                               p= project.ProjectName 
-                              
+                               
                                         
                 #overlay 
                 

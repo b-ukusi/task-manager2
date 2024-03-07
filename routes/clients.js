@@ -22,4 +22,8 @@ router.get('/', (req, res, next) => {
     
    });
 
+   router.get('/createclient', (req, res, next) => {
+      console.log("Ad createclient",req.query);
+    });
+
 module.exports = router;

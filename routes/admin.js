@@ -69,8 +69,13 @@ router.get('/', async (req, res, next) => {
 
     /* admin, project manager  */
   router.get('/projects', async (req, res, next) => {
-    
+    var developers=[];
+    var projects=[];
+    var clients=[];
+
     console.log("Loaded projects page");
+
+
     await db.query("call get_projects()",  (err, rows)=> {
     
       if (rows[0].length==0) {
@@ -80,13 +85,41 @@ router.get('/', async (req, res, next) => {
           console.log("got projects",rows[0]);
           projects=rows[0];
         }
-  
-    res.render('aprojects.jade',{projects:projects});
+   db.query("call get_usertypes('developer')",  (err, rows)=> {
+    
+          if (rows[0].length==0) {
+              console.log("no developers found");
+            }
+          else {
+              console.log("got developers projects ",rows[0]);
+              developers=rows[0];
+            }
+
+  db.query("call get_usertypes('client')",  (err, rows)=> {
+
+          if (rows[0].length==0) {
+              console.log("no client found");
+            }
+          else {
+              console.log("got client projects ",rows[0]);
+              clients=rows[0];
+            }
+
+            console.log("render client projects ",clients );
+
+            res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
+          });
+            
+            
+
+          });
+
      
    });
+   
   }); 
   
-  
+ 
   /*develo[er routs and db query */
   router.get('/developers', (req, res, next) => {
     db.query("call get_usertypes('developer')",  (err, rows)=> {
@@ -120,6 +153,32 @@ router.get('/', async (req, res, next) => {
      
    });
   });
+
+   /* admin tasks page */
+router.get('/tasks', (req,res,next)=>{
+  res.render('atasks.jade')
+});
+
+  /* create projects */
+  router.get('/createproject', (req, res, next) => {
+    console.log("Ad project",req.query);
+
+  const {client,developer,ProjectName,description,startdate,enddate}=req.query;
+db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
+  console.log(err);
+  console.log(rows);
+  });
+    /*
+      ProjectName: '',
+  clientname: '',
+  developer: '24092',
+  'start_date ': '',
+  description: '' */
+
+
+
+  });
+
 /*nav bar routes to see of theyle work  */
 router.get
 module.exports = router;
