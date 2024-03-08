@@ -154,12 +154,27 @@ router.get('/', async (req, res, next) => {
    });
   });
 
-   /* admin tasks page */
+
+
+/* admin tasks page */
 router.get('/tasks', (req,res,next)=>{
-  res.render('atasks.jade')
+  var tasks=[];
+
+  db.query("call get_tasks()",  (err, rows)=> {
+    
+    if (rows[0].length==0) {
+        console.log("no tasks found");
+      }
+    else {
+        console.log("got tasks",rows[0]);
+        projects=rows[0];
+      }
 });
 
-  /* create projects */
+  res.render('atasks.jade',{tasks:tasks});
+});
+
+  /* create projects projects page  */
   router.get('/createproject', (req, res, next) => {
     console.log("Ad project",req.query);
 
@@ -168,6 +183,12 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
   console.log(err);
   console.log(rows);
   });
+
+
+
+
+
+
     /*
       ProjectName: '',
   clientname: '',

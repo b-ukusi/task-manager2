@@ -1,0 +1,72 @@
+span(style="font-family: verdana, geneva, sans-serif;")
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="UTF-8")
+      title Admin add clients
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/atasks.css")
+      script(defer, src='/javascripts/aclientpage.js')
+      //- Font Awesome Cdn Link -->
+      link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    body
+    .container
+        nav
+          ul
+            li
+              a(href="/admin/", class="logo")
+                span.nav-item DashBoard
+            li
+              a(href="/admin/clients")
+                i.fas.fa-tasks
+                span.nav-item clients 
+            li
+              a(href="/admin/developers")
+                i.fas.fa-tasks
+                span.nav-item developers 
+            li
+              a(href="/admin/projects")
+                i.fas.fa-tasks
+                span.nav-item projects   
+            li
+              a(href="/admin/tasks")
+                i.fas.fa-tasks
+                span.nav-item Tasks  
+            li
+              a(href="/", class="logout")
+                i.fas.fa-sign-out-alt
+                span.nav-item Log out
+        section.main
+               .main-top
+                    h1 Task 
+               .main-body
+                    input.search-input(type="text", placeholder="Search Task")  
+                    button.newproject-button(data-modal-target="#modal") New task
+                .modal#modal
+                  .modal-header
+                    .title New Task 
+                    button(data-close-button, class="close-button") &times;
+                  .modal-body
+                     form(action="/admin/createproject", method="get")
+                              .main-user-info
+                                  .user-input-box
+                                      label(for="Project Name ") Project Name
+                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name")    
+                                  .user-input-box                            
+                                      label(for="Description") Task description
+                                      input(type="text", id="description", name="description", placeholder="Enter description")
+                                
+                              .form-submit-btn
+                              
+                                  input(type="submit", value="Creat Task")
+                .main-body2  
+                    .card 
+                      .card-body 
+                          h5.card-title projetcs 
+                          p.card-text 
+                            each task in tasks 
+                             li 
+                                 b p= task.TaskName 
+                                        
+                #overlay 
+                
+                              

@@ -36,7 +36,7 @@ a{
   padding: 7px;
 }
 nav .fas{
-  position: sticky;
+  position: relative;
   width: 70px;
   height: 40px;
   top: 14px;
@@ -81,9 +81,9 @@ h1{
   justify-content: flex-end; /* Align items from the start */
   padding-right: 5%;
 }
-.newdeveloper-button {
+.newproject-button {
     font-size: 0.85em;
-    border: none;
+    border: 2px solid black;
     cursor: pointer;
     align-items: center;
     gap: 0.5em;
@@ -95,9 +95,17 @@ h1{
     padding-right: 5%;
  
 }
-.newdeveloper-button:hover {
+.newproject-button:hover {
     background: #ccc;
 }
+.search-input{
+ border-radius: 25px;
+ border:solid black;
+ margin: 4px;
+ padding: 10px;
+ 
+}
+
 
 .main-body2{
     /*background: #ccc;
@@ -106,17 +114,10 @@ h1{
     width: 95%;*/
     height: 80%;
     border-radius: 2%;    
+    
 }
 
-.search-input{
-  border-radius: 25px;
-  border:solid black;
-  margin: 4px;
-  padding: 10px;
-  
- }
- 
- /* pop out box styling */
+/* pop out box styling */
 
 .modal {
   position: fixed;
@@ -243,4 +244,9 @@ h1{
   cursor: pointer;
   padding: 10px;
   border-radius: 25px;
+}
+
+/*list syling */
+.card{
+  
 }
