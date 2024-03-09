@@ -14,6 +14,7 @@ router.get('/', async (req, res, next) => {
   var projects=[];
   var clients=[];
   var developers=[];
+  
 
  await db.query("call get_projects()",  (err, rows)=> {
     
@@ -158,8 +159,7 @@ router.get('/', async (req, res, next) => {
 
 /* admin tasks page */
 router.get('/tasks', (req,res,next)=>{
-  var tasks=[];
-
+ var tasks=[];
   db.query("call get_tasks()",  (err, rows)=> {
     
     if (rows[0].length==0) {
@@ -169,10 +169,12 @@ router.get('/tasks', (req,res,next)=>{
         console.log("got tasks",rows[0]);
         projects=rows[0];
       }
+       console.log("render tasks",tasks); 
+
+    res.render('atasks.jade',{tasks:tasks});  
+});
 });
 
-  res.render('atasks.jade',{tasks:tasks});
-});
 
   /* create projects projects page  */
   router.get('/createproject', (req, res, next) => {
