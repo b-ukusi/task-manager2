@@ -187,11 +187,36 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
   });
 
 
+});
 
 
+  /*create client client page  */
+  router.get('/createclient', (req, res, next) => {
+    console.log("Ad client",req.query);
+
+  const {FirstName,LastName,EmailUser,Pass}=req.query;
+db.query("call save_client(?,?,?,?)",[FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
+  console.log(err);
+  console.log(rows);
+  });
 
 
-    /*
+  });
+  /* create developer developer pages */
+  router.get('/createdev', (req, res, next) => {
+    console.log("Ad client",req.query);
+
+  const {FirstName,LastName,EmailUser,Pass}=req.query;
+db.query("call save_dev(?,?,?,?)",[FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
+  console.log(err);
+  console.log(rows);
+  });
+
+
+  });
+
+
+  /*
       ProjectName: '',
   clientname: '',
   developer: '24092',
@@ -200,7 +225,7 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
 
 
 
-  });
+
 
 /*nav bar routes to see of theyle work  */
 router.get

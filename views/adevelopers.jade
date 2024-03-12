@@ -47,20 +47,20 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Developer 
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="#modal")
+                     form(action="/admin/createdev", method="get")
                               .main-user-info
                                   .user-input-box
                                       label(for="First Name ") First name 
-                                      input(type="text", id="clietname", name="clientname", placeholder=" client name")
+                                      input(type="text", id="firstname", name="FirstName", placeholder=" first name")
                                   .user-input-box
                                       label(for="Last Name ") Last name
-                                      input(type="text", id="develoeprname", name="developername", placeholder="developer name ")
+                                      input(type="text", id="lastName", name="LastName", placeholder="last name ")
                                   .user-input-box
-                                      label(for="Start date ") Start date 
-                                      input(type="text", id="start date ", name="start date ", placeholder="Enter start date")
+                                      label(for="Email ") Email 
+                                      input(type="text", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address ")
                                   .user-input-box2
-                                      label(for="Description") Product description
-                                      input(type="text", id="description", name="description", placeholder="Enter description")
+                                      label(for="Password") Password
+                                      input(type="text", id="password", name="Pass", placeholder="Enter Password")
                                 
                               .form-submit-btn
                                   input(type="submit", value="Creat Developer")
