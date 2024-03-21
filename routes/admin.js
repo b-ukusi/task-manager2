@@ -182,7 +182,7 @@ router.get('/tasks', (req,res,next)=>{
     console.log("Ad project",req.query);
 
   const {client,developer,ProjectName,description,startdate,enddate}=req.query;
-db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
+db.query("call save_projects(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
   console.log(err);
   console.log(rows);
   });
