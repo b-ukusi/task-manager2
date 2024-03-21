@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     // res.send('hello world')
 
 
-  db.query("call get_user(?,?)",[username,password],  (err, rows)=> {
+  db.query("call get_users(?,?)",[username,password],  (err, rows)=> {
     
     if (rows[0].length==0) {
         console.log("unknowj user");
