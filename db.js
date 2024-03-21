@@ -6,7 +6,7 @@ const pool = mysql.createPool(
     connectionLimit: 10,
     host: 'localhost',
     user: 'root',
-    port : 3308,
+    port : 3306,
     password: 'wattpad2024',
     database: 'task_managerdb'
   }
@@ -14,7 +14,7 @@ const pool = mysql.createPool(
 
 
 pool.getConnection(async function (err, connection) {
-  //console.log(connection);
+  console.log(connection);
     console.log("succes connection");
     connection.release();
 });
