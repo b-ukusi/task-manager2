@@ -35,6 +35,7 @@ router.get('/', async (req, res, next) => {
           }
         else {
             console.log("got developers ",rows[0]);
+          
             developers=rows[0];
           }
     

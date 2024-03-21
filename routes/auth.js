@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
 
       }
         var user =rows[0];
-        const userType = user[0].UserType;
+        const userType = user[0].userType;
         console.log("user",user);
         console.log("userType",userType);
 
