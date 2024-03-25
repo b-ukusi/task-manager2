@@ -58,7 +58,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                     
                                         each client in clients 
                                           li 
-                                            option(value=client.UserID) #{client.FirstName}
+                                            option(value=client.Userid) #{client.FirstName}
                                      
                                   .user-input-box
                                     
@@ -68,7 +68,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                     
                                         each developer in developers 
                                           li 
-                                            option(value=developer.UserID) #{developer.FirstName}
+                                            option(value=developer.Userid) #{developer.FirstName}
 
   
                                   .user-input-box
@@ -91,7 +91,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           p.card-text 
                           each project in projects 
                             li 
-                              p= project.ProjectName 
+                              p= project.projectname 
                                
                                         
                 #overlay 

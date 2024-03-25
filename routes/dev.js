@@ -29,7 +29,7 @@ router.get('/projects', (req, res, next) => {
  
 /*dev account page  */
    router.get('/account', async (req, res, next) => {
-    db.query("call get_userdetails()",  (err, rows)=> {
+    db.query("call get_userdetails(developer)",  (err, rows)=> {
     
       if (rows[0].length==0) {
           console.log("no users found");

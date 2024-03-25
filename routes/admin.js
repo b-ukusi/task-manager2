@@ -182,7 +182,7 @@ router.get('/tasks', (req,res,next)=>{
     console.log("Ad project",req.query);
 
   const {client,developer,ProjectName,description,startdate,enddate}=req.query;
-db.query("call save_projects(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
+db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
   console.log(err);
   console.log(rows);
   });
@@ -196,7 +196,7 @@ db.query("call save_projects(?,?,?,?,?,?)",[client,developer,ProjectName,descrip
     console.log("Ad client",req.query);
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
-db.query("call save_client(?,?,?,?)",[FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
+db.query("call save_user(?,?,?,?,?)",['client',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
   console.log(err);
   console.log(rows);
   });
@@ -208,7 +208,7 @@ db.query("call save_client(?,?,?,?)",[FirstName,LastName,EmailUser,Pass],  (err,
     console.log("Ad client",req.query);
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
-db.query("call save_dev(?,?,?,?)",[FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
+db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
   console.log(err);
   console.log(rows);
   });
