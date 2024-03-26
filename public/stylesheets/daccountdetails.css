@@ -57,9 +57,10 @@ a:hover{
 
 .main{
   position: relative;
-  padding: 20px;
+  margin: 20px;
   width: 100%;
-        
+  background-color: #eee;
+  border-radius: 2%;     
   }
   .main-section{
   display: flex;

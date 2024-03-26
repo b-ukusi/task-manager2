@@ -28,7 +28,7 @@ router.get('/projects', (req, res, next) => {
    });
  
 /*dev account page  */
-   router.get('/account', async (req, res, next) => {
+  router.get('/account', async (req, res, next) => {
     db.query("call get_userdetails(developer)",  (err, rows)=> {
     
       if (rows[0].length==0) {
@@ -39,8 +39,8 @@ router.get('/projects', (req, res, next) => {
           projects=rows[0];
         }
     res.render('daccountdetails.jade');
-})
-   })
+});
+   });
   
 
 

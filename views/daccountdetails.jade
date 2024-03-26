@@ -3,8 +3,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
   html(lang="en")
     head
       meta(charset="UTF-8")
-      title Client Dashboard
-      link(rel="stylesheet",  type='text/css', href="/stylesheets/Caccountdetails.css")
+      title Dev Account 
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/daccountdetails.css")
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -35,10 +35,15 @@ span(style="font-family: verdana, geneva, sans-serif;")
         section.main 
             .card 
             .card-body 
-                h5.card-title tasks
+                h5.card-title User Details
                 p.card-text 
-                each developer in  
-                    li 
-                      p= task.dedscription
+                each developer in developers  
+                  li 
+                     p= User ID: #{user.Userid}
+                     p= User Type: #{user.userType}
+                     p= First Name: #{user.FirstName}
+                     p= Last Name: #{user.LastName}
+                     p= Email: #{user.Email}
+                              
                              
                               
