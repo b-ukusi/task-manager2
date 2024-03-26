@@ -29,16 +29,21 @@ router.get('/projects', (req, res, next) => {
  
 /*dev account page  */
   router.get('/account', async (req, res, next) => {
-    db.query("call get_userdetails(developer)",  (err, rows)=> {
+
+
+    console.log("REquest user id account:",req.query.user);
+  var developers=[];
+    db.query("call get_userdetails(?)",[req.query.user],  (err, rows)=> {
     
       if (rows[0].length==0) {
           console.log("no users found");
         }
       else {
-          console.log("got users ",rows[0]);
-          projects=rows[0];
+          developers=rows[0];
         }
-    res.render('daccountdetails.jade');
+        console.log("render user ",developers);
+
+    res.render('daccountdetails.jade',{developers:developers});
 });
    });
   

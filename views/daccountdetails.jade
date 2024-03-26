@@ -37,13 +37,19 @@ span(style="font-family: verdana, geneva, sans-serif;")
             .card-body 
                 h5.card-title User Details
                 p.card-text 
-                each developer in developers  
-                  li 
-                     p= User ID: #{user.Userid}
-                     p= User Type: #{user.userType}
-                     p= First Name: #{user.FirstName}
-                     p= Last Name: #{user.LastName}
-                     p= Email: #{user.Email}
-                              
+                   each developer in developers 
+                          li
+                            p= `User # : ${developer.Userid}`
+                            p= `User type : ${developer.userType}`
+                            p= `First Name : ${developer.FirstName}`
+                            p= `Last Name : ${developer.LastName}`
+                            p= `Email : ${developer.Email}`
+            
+                  //- p= #{user}
+                  //- p= User Type: #{user.userType}
+                  //- p= First Name: #{user.FirstName}
+                  //- p= Last Name: #{user.LastName}
+                  //- p= Email: #{user.Email}
+                          
                              
                               
