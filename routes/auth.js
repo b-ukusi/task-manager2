@@ -3,6 +3,37 @@ const router = express.Router();
 const db = require('../db')
 // var  popup=require('popups')
 
+
+router.get('/login', (req, res, next) => {
+
+  const {username,password} =  req.query;
+  console.log(` found username ${username} and pass ${password}`);
+  // check if user is in db ans password is correct 
+  // if user is in db render the dashboard 
+  //if user is not found render an error page 
+  // res.send('hello world')
+
+
+db.query("call get_users(?,?)",[username,password],  (err, rows)=> {
+  
+  if (rows[0].length==0) {
+      console.log("unknowj user");
+      return res.json( { message: "Unknown user" });
+
+    }
+  else {
+      console.log("yaay");
+
+    }
+      var user =rows[0];
+
+      res.json(user)
+  });
+
+
+});
+
+
 router.get('/', (req, res, next) => {
 
      //console.log(" login form content",req)
@@ -34,7 +65,8 @@ router.get('/', (req, res, next) => {
         switch (userType.trim()) {
             case "developer":
               console.log("developer auth. user=",user);
-                return res.render('developer.jade', { user: rows[0][0],uname: rows[0][0].FirstName });
+
+                return res.render('developer.jade', { projects:[], user: rows[0][0],uname: rows[0][0].FirstName });
             case "admin":
               console.log("Redirect to admin");
               return res.redirect('admin');

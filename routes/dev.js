@@ -7,6 +7,8 @@ const db = require('../db')
 var developers=[];
 var user=[];
 var userid;
+// var projects =[];
+
 
 
 /*dashboad page  */
@@ -21,7 +23,7 @@ router.get('/', (req, res, next) => {
       userid=req.query.user;
      }
      var developers=[];
-       db.query("call get_userdetails(?)",[req.query.user],  (err, rows)=> {
+     db.query("call get_userdetails(?)",[req.query.user],  (err, rows)=> {
        
          if (rows[0].length==0) {
              console.log("no users found");
@@ -31,9 +33,75 @@ router.get('/', (req, res, next) => {
              user=developers;
              userid=user[0].Userid;
            }
-           console.log("render user ",developers);
+           console.log("get dev tasks user ",userid);
+           var tasks=[];
+
+
+/* dispalying dev tasks and progress */
+           db.query("call getdev_tasks (?)",[userid],  (err, rows)=> {
+            let projects=[];     
+             if (rows[0].length==0) {
+                 console.log("no tasks found");
+               }
+             else {
+                console.log("got tasks",rows[0]);
+                 tasks=rows[0];
+
+                 //loop through all taks and group per project . \
+                 console.log("db  length within projects",tasks.length); 
+
+                            
+                  for(const p of tasks) {
+                      if (!projects[p.projectid]) {
+                        console.log(" New project. add its empty tasks")
+                        console.log(projects[p.projectid])
+                        projects[p.projectid]={
+                          project_name : p.projectname,
+                          project_description:p.description,
+                          project_id:p.projectid,
+                          tasks : [{
+                            task_id : p.taskid,
+                            task_name : p.task_name,
+                            start_date : p.startdate,
+                            end_date:p.enddate,
+                            is_done : p.isdone
+  
+                          }]
+                        };
+
+                        // projects[p.projectid].tasks.push({
+                        //   // task_id : p.taskid,
+                        //   task_name : p.description,
+                        //   start_date : p.startdate,
+                        //   end_date:p.enddate,
+                        //   is_done : p.isdone
+
+                        // });
+
+                      }else{
+                        console.log("Found existing project. so inlude teh task therein");
+                        projects[p.projectid].tasks.push({
+                          task_id : p.taskid,
+                          task_name : p.task_name,
+                          start_date : p.startdate,
+                          end_date:p.enddate,
+                          is_done : p.isdone
+
+                        });
+                      }
+                  };
+
+
+               }
+            
+projects = projects.filter(element => element);
+console.log("show  tasks within projects",projects); 
+
+
+        res.render('developer.jade',{ projects:projects, tasks:tasks, user:developers, developers:developers}); 
+         });      
    
-       res.render('developer.jade',{user:developers, developers:developers});
+       
    });
    
      
@@ -76,6 +144,9 @@ router.get('/projects', (req, res, next) => {
           user=developers[0];
         }
         console.log("render user ",developers);
+ 
+
+
 
     res.render('daccountdetails.jade',{user:user,developers:developers});
 });

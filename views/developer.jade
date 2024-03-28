@@ -36,101 +36,34 @@ body
                 span.nav-item Log out
         
         section.main1
-          .main-top
-            h1 Tasks 
-            .main-skills
-             .card
-               .form-check
-                 input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                 label.form-check-label(for="flexCheckDefault") Default checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox  Checked checkbox    
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                
-            .main-skills
-              .card
-                h3 Progress
-                    .row
-                      .col-md-9.col-sm-6
-                        .progress.blue
-                          span.progress-left
-                            span.progress-bar
-                          span.progress-right
-                            span.progress-bar
-                          .progress-value 100%
-          .main-top
-            h1 Tasks 
-            .main-skills
-             .card
-               .form-check
-                 input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                 label.form-check-label(for="flexCheckDefault") Default checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox  Checked checkbox    
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                
-            .main-skills
-              .card
-                h3 Progress
-                    .row
-                      .col-md-9.col-sm-6
-                        .progress.blue
-                          span.progress-left
-                            span.progress-bar
-                          span.progress-right
-                            span.progress-bar
-                          .progress-value 100%
-          .main-top
-            h1 Tasks 
-            .main-skills
-             .card
-               .form-check
-                 input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                 label.form-check-label(for="flexCheckDefault") Default checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox  Checked checkbox    
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                
-            .main-skills
-              .card
-                h3 Progress
-                    .row
-                      .col-md-9.col-sm-6
-                        .progress.blue
-                          span.progress-left
-                            span.progress-bar
-                          span.progress-right
-                            span.progress-bar
-                          .progress-value 100%
+          each project in projects
+                          li
+                            .ctn-project
+                                .ctn-project-desc
+                                    h1 Project: #{project.project_name} 
 
-          
-          
-          
-         
+                                    h2 Tasks (#{project.tasks.length})
+                                    
+                                        each task in project.tasks
+                                              .card
+                                        
+                                                        .form-check
+                                                          input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                          label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                      
+                                .ctn-project-progress
+                                  .card
+                                    h3 Progress
+                                        .row
+                                          .col-md-9.col-sm-6
+                                            
+                                            .progress.blue
+                                              span.progress-left
+                                                span.progress-bar
+                                              span.progress-right
+                                                span.progress-bar
+                                              .progress-value #{((project.tasks.filter(tsk => tsk.is_done == 1).length / project.tasks.length) * 100)}%
+    
+            
+  
+  

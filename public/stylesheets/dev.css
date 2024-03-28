@@ -55,7 +55,18 @@ a:hover{
 }
 
 /* section one */
+.ctn-project {
+  display: flex;
+  width: 100%;
+    margin-right: 20%;
+    background-color: white;
+    justify-content: space-between;
+    padding: 16px;
+}
+.ctn-project-desc {
 
+}
+.ctn-project-progress {}
 .main1{
     position: relative;
     padding: 20px;
