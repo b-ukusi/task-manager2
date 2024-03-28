@@ -12,7 +12,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           ul
             li
-              a(href="/dev/", class="logo")
+              a(href=`/dev?user=${user.Userid}`, class="logo")
                 span.nav-item DashBoard
             
             li
@@ -24,7 +24,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-tasks
                 span.nav-item Notes    
             li
-              a(href="/dev/account")
+              a(href=`/dev/account?user=${user.Userid}`)
                 i.fas.fa-home
                 span.nav-item Account Details 
                 

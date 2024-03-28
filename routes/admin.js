@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db')
 
+
+var projects=[];
+var clients=[];
+var developers=[];
+var user;
 /*controllers*/
 
 /* admin, project manager  */
@@ -11,9 +16,7 @@ router.get('/', async (req, res, next) => {
 
   // --fetch proj
 // gt projects 
-  var projects=[];
-  var clients=[];
-  var developers=[];
+ 
   
 
  await db.query("call get_projects()",  (err, rows)=> {
@@ -168,11 +171,11 @@ router.get('/tasks', (req,res,next)=>{
       }
     else {
         console.log("got tasks",rows[0]);
-        projects=rows[0];
+        tasks=rows[0];
       }
        console.log("render tasks",tasks); 
 
-    res.render('atasks.jade',{tasks:tasks});  
+    res.render('atasks.jade',{tasks:tasks,projects:projects});  
 });
 });
 
@@ -216,18 +219,20 @@ db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,P
 
   });
 
+  /* create tasks page  
+  router.get('/creattask', (req, res, next) => {
+    console.log("Ad project",req.query);
 
-  /*
-      ProjectName: '',
-  clientname: '',
-  developer: '24092',
-  'start_date ': '',
-  description: '' */
+  const {client,developer,ProjectName,description,startdate,enddate}=req.query;
+db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
+  console.log(err);
+  console.log(rows);
+  });*/
 
 
 
+ 
 
 
-/*nav bar routes to see of theyle work  */
 router.get
 module.exports = router;

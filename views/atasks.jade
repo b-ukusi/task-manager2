@@ -50,7 +50,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Project Name
-                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name")    
+                                      select#propertyType.select.form-control.input-lg(  name='developer'
+                                      )
+                                    
+                                        each project in projects 
+                                          li 
+                                            option(value=project.Userid) #{project.projectid}
+   
                                   .user-input-box                            
                                       label(for="Description") Task description
                                       input(type="text", id="description", name="description", placeholder="Enter description")
@@ -65,7 +71,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           p.card-text 
                           each task in tasks 
                             li 
-                              p= task.dedscription
+                              p= task.description
                              
                    
                 #overlay 

@@ -12,7 +12,7 @@ body
         nav
           ul
             li
-              a(href="/dev/", class="logo")
+              a(href=`/dev?user=${user.Userid}`, class="logo")
                 span.nav-item DashBoard
             
             li
@@ -28,7 +28,7 @@ body
             li
               a(href=`/dev/account?user=${user.Userid}`)
                 i.fas.fa-home
-                span.nav-item Account Details 
+                span.nav-item Account Details
                 
             li
               a(href="/", class="logout")

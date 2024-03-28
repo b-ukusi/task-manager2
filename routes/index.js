@@ -4,6 +4,7 @@ const clientRouter = require('./clients');
 const adminRouter = require ('./admin');
 const devRouter = require('./dev');
 
+var user=[];
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -34,9 +35,9 @@ router.get('/', (req, res, next) => {
         //     content: "Yaaay"
         //   });
 console.log("yaay");
-
+         user=rows[0];
         if (rows[0][0]["UserType"]=="developer") {
-            res.render('developer.jade',{"uname": rows[0][0]["FirstName"]});
+            res.render('developer.jade',{user:user,"uname": rows[0][0]["FirstName"]});
         }else{
             res.render('client.jade',{"uname": rows[0][0]["FirstName"]});
         }

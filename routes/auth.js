@@ -33,13 +33,12 @@ router.get('/', (req, res, next) => {
         // Render different pages based on user's type
         switch (userType.trim()) {
             case "developer":
+              console.log("developer auth. user=",user);
                 return res.render('developer.jade', { user: rows[0][0],uname: rows[0][0].FirstName });
             case "admin":
               console.log("Redirect to admin");
               return res.redirect('admin');
-
         
-              //  return res.render('admin.jade', { uname: rows[0][0].FirstName });
             case "client":
                 console.log("laod client ")
                 return res.render('client.jade', { uname: rows[0][0].FirstName });
