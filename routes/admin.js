@@ -74,10 +74,10 @@ router.get('/', async (req, res, next) => {
 
     /* admin, project manager  */
   router.get('/projects', async (req, res, next) => {
-    var developers=[];
-    var projects=[];
-    var clients=[];
 
+    res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
+
+/*
     console.log("Loaded projects page");
 
 
@@ -112,22 +112,25 @@ router.get('/', async (req, res, next) => {
 
             console.log("render client projects ",clients );
 
-            res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
           });
             
-            
+          res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
+
 
           });
 
      
    });
-   
+   */
   }); 
   
  
   /*develo[er routs and db query */
   router.get('/developers', (req, res, next) => {
-    db.query("call get_usertypes('developer')",  (err, rows)=> {
+    res.render('adevelopers.jade', {developers:developers});
+    
+    
+    /*db.query("call get_usertypes('developer')",  (err, rows)=> {
     
       if (rows[0].length==0) {
           console.log("no developers found");
@@ -138,12 +141,16 @@ router.get('/', async (req, res, next) => {
         } 
     res.render('adevelopers.jade', {developers:developers});
      
-   });
+   }); */
   });
 
 
    /* clients routes and db queries */
   router.get('/clients', (req, res, next) => {
+    
+    res.render('aclient.jade',{ clients:clients} );
+
+    /*
     db.query("call get_usertypes('client')",  (err, rows)=> {
     
       if (rows[0].length==0) {
@@ -156,7 +163,7 @@ router.get('/', async (req, res, next) => {
   
     res.render('aclient.jade',{ clients:clients} );
      
-   });
+   }); */
   });
 
 
