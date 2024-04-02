@@ -4,7 +4,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
     head
       meta(charset="UTF-8")
       title Client Account Details 
-      link(rel="stylesheet",  type='text/css', href="/stylesheets/client.css")
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/caccountdetails.css")
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -12,7 +12,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           ul
             li
-              a(href="/client/", class="logo")
+              a(href=`/client?user=${user.Userid}`, class="logo")
                 span.nav-item DashBoard
             
             li
@@ -20,7 +20,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-tasks
                 span.nav-item Notes
             li
-              a(href="/client/account")
+              a(href=`/client/account?user=${user.Userid}`)
                 i.fas.fa-home
                 span.nav-item Account Details 
                 
@@ -28,4 +28,15 @@ span(style="font-family: verdana, geneva, sans-serif;")
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
-        
+        section.main 
+            .card 
+            .card-body 
+                h5.card-title User Details
+                p.card-text 
+                   each client in clients 
+                          li
+                            p= `User # : ${client.Userid}`
+                            p= `User type : ${client.userType}`
+                            p= `First Name : ${client.FirstName}`
+                            p= `Last Name : ${client.LastName}`
+                            p= `Email : ${client.Email}`

@@ -72,8 +72,8 @@ router.get('/', (req, res, next) => {
               return res.redirect('admin');
         
             case "client":
-                console.log("laod client ")
-                return res.render('client.jade', { uname: rows[0][0].FirstName });
+                console.log("laod client ",user)
+                return res.render('client.jade', { user:rows[0][0], uid: user.Userid, uname: rows[0][0].FirstName });
             default:
               console.log("error page on  type ",userType)
                 return res.render('error.jade', { uname: rows[0][0].FirstName });

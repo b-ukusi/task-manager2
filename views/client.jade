@@ -12,15 +12,14 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           ul
             li
-              a(href="/client/", class="logo")
-                span.nav-item = Dashboard
-            
+              a(href=`/client?user=${user.Userid}`, class="logo")
+                span.nav-item Dashboard 
             li
               a(href="/client/notes")
                 i.fas.fa-tasks
                 span.nav-item Notes
             li
-              a(href="/client/account")
+              a(href=`/client/account?user=${user.Userid}`)
                 i.fas.fa-home
                 span.nav-item Account Details 
                 
