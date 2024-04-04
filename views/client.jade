@@ -27,28 +27,28 @@ span(style="font-family: verdana, geneva, sans-serif;")
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
+         section.main1
+          each project in projects
+                          li
+                            .ctn-project
+                                .ctn-project-desc
+                                    h1 Project: #{project.project_name} 
+
+                                    h2 Tasks (#{project.tasks.length})
+                                    
+                                        each task in project.tasks
+                                              .card
+                                        
+                                                        .form-check
+                                                          input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                          label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                      
+                                .ctn-project-progress
+                                  .card
+                                    h3 Progress
+                                        .row
+                                   
         
-        section.main
-          .main-top
-            h1 Tasks 
-            .main-skills
-              .card
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                    label.form-check-label(for="flexCheckDefault") Default checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox  Checked checkbox    
-                .form-check
-                    input.form-check-input(type="checkbox", value="", id="flexCheckChecked", checked)
-                    label.form-check-label(for="flexCheckChecked") Checked checkbox Checked checkbox
-                
             .main-skills
               .card
                 h3 Progress

@@ -6,14 +6,81 @@ const client_controller = require("../controllers/clientcontroller")
 var clients=[];
 var user=[];
 var userid;
+
 /// client ROUTES ///
 
 /* client */
 router.get('/', (req, res, next) => {
 console.log('init Client:', req.query.user);
     userid=req.query.user;
-    res.render('client.jade',{user:user});
+    /* dispalying dev tasks and progress */
+    db.query("call getclient_projects (?)",[userid],  (err, rows)=> {
+      let projects=[];     
+       if (rows[0].length==0) {
+           console.log("no tasks found");
+         }
+       else {
+          console.log("got tasks",rows[0]);
+           tasks=rows[0];
+
+           //loop through all taks and group per project . \
+           console.log("db  length within projects",tasks.length); 
+
+                      
+            for(const p of tasks) {
+                if (!projects[p.projectid]) {
+                  console.log(" New project. add its empty tasks")
+                  console.log(projects[p.projectid])
+                  projects[p.projectid]={
+                    project_name : p.projectname,
+                    project_description:p.description,
+                    project_id:p.projectid,
+                    tasks : [{
+                      task_id : p.taskid,
+                      task_name : p.task_name,
+                      start_date : p.startdate,
+                      end_date:p.enddate,
+                      is_done : p.isdone
+
+                    }]
+                  };
+
+                  // projects[p.projectid].tasks.push({
+                  //   // task_id : p.taskid,
+                  //   task_name : p.description,
+                  //   start_date : p.startdate,
+                  //   end_date:p.enddate,
+                  //   is_done : p.isdone
+
+                  // });
+
+                }else{
+                  console.log("Found existing project. so inlude teh task therein");
+                  projects[p.projectid].tasks.push({
+                    task_id : p.taskid,
+                    task_name : p.task_name,
+                    start_date : p.startdate,
+                    end_date:p.enddate,
+                    is_done : p.isdone
+
+                  });
+                }
+            };
+
+
+         }
+      
+projects = projects.filter(element => element);
+console.log("show  tasks within projects",projects); 
+
+
+  res.render('client.jade',{ projects:projects, tasks:tasks, user:user, clients:clients}); 
+   });      
+
+ 
 });
+
+
 
    /* client notes page just to see the syles   */
  router.get('/notes', (req, res, next) => {
