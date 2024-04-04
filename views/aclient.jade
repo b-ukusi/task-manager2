@@ -5,7 +5,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aclient.css")
-      script(defer, src='/javascripts/aclientpage.js')
+      script(defer, src='/javascripts/popup.js')
+      script(defer, src='/javascripts/clientdetailspopup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -47,31 +48,35 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Client
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="/admin/createclient", method="get")
+                     form(action="/admin/createclient", method="get",)
                               .main-user-info
                                   .user-input-box
                                       label(for="First Name ") First name 
-                                      input(type="text", id="first name", name="FirstName", placeholder=" client name")
+                                      input(type="text", id="first name", name="FirstName", placeholder=" client name" )
                                   .user-input-box
                                       label(for="Last Name ") Last name
-                                      input(type="text", id="last name", name="LastName", placeholder="developer name ")
+                                      input(type="text", id="last name", name="LastName", placeholder="developer name " )
                                   .user-input-box2
                                       label(for="Emai Userl") Email
-                                      input(type="text", id="email user", name="EmailUser", placeholder="Enter Email")
+                                      input(type="text", id="email user", name="EmailUser", placeholder="Enter Email" )
                                   .user-input-box2
                                       label(for="password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter password")
+                                      input(type="text", id="password", name="Pass", placeholder="Enter password" )
                               .form-submit-btn
-                              
-                                  input(type="submit", value="Creat Client")
+                                  input(type="submit", value="Create Client", id="create-client-button")
+
                 .main-body2  
                     .card 
                       .card-body 
                           h5.card-title clients 
                           p.card-text 
                           each client  in clients
-                            li 
-                              p= client.FirstName            
+                            li(onclick="displayPopup()") 
+                            p= `User # : ${client.Userid}`
+                            p= `User type : ${client.userType}`
+                            p= `First Name : ${client.FirstName}`
+                            p= `Last Name : ${client.LastName}`
+                            p= `Email : ${client.Email}`          
                 #overlay
 
 

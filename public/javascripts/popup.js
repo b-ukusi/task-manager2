@@ -1,6 +1,7 @@
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
+const createClientButton = document.getElementById('create-client-button')
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -22,6 +23,12 @@ closeModalButtons.forEach(button => {
     closeModal(modal)
   })
 })
+
+
+createClientButton.addEventListener('click', () => {
+  const modal = document.getElementById('modal');
+  closeModal(modal);
+});
 
 function openModal(modal) {
   if (modal == null) return
