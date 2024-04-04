@@ -24,8 +24,9 @@ html(lang="en" dir="ltr")
             .field.btn
               .btn-layer
               input(type="submit", value="Login")
-      if(error)
-        p #{message}
-    script(src="./routes/auth.js")      
+      .error-container 
+          if(error)
+            p  #{message} 
+        script(src="./routes/auth.js")      
             
           

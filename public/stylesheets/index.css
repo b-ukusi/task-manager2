@@ -199,3 +199,15 @@ form .btn input[type="submit"]{
   right: 10px;
   cursor: pointer;
 }
+
+
+/* error message dispay */
+.error-container{
+  background: -webkit-linear-gradient(left, black, rgb(54, 129, 85));
+  margin-top: 2rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+
+}
