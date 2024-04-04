@@ -49,7 +49,7 @@ router.get('/', (req, res, next) => {
     
     if (rows[0].length==0) {
         console.log("unknowj user");
-        return res.render('error.jade', { message: "Unknown user" });
+        return res.render('index.jade', { error:true, message: "\n  Unknown Credentials" });
 
       }
     else {

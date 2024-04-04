@@ -11,7 +11,7 @@ html(lang="en" dir="ltr")
   body
     .wrapper
       .title-text
-        .title.login Login Form
+        .title.login Login 
         
       .form-container
         .form-inner
@@ -20,10 +20,12 @@ html(lang="en" dir="ltr")
               input(type="text", placeholder="Email Address", name= "username",  id="username"  required)
             .field
               input(type="password", placeholder="Password",id ="password", name="password" required)
-            .pass-link
-              a(href="#") Forgot password?
+            
             .field.btn
               .btn-layer
               input(type="submit", value="Login")
+      if(error)
+        p #{message}
+    script(src="./routes/auth.js")      
             
           
