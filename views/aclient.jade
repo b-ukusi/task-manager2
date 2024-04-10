@@ -6,7 +6,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aclient.css")
       script(defer, src='/javascripts/popup.js')
-      script(defer, src='/javascripts/clientdetailspopup.js')
+      script(defer, src='/javascripts/clientvalidation.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -52,16 +52,16 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="First Name ") First name 
-                                      input(type="text", id="first name", name="FirstName", placeholder=" client name" )
+                                      input(type="text", id="first name", name="FirstName", placeholder=" client name" required)
                                   .user-input-box
                                       label(for="Last Name ") Last name
-                                      input(type="text", id="last name", name="LastName", placeholder="developer name " )
+                                      input(type="text", id="last name", name="LastName", placeholder="developer name " required)
                                   .user-input-box2
                                       label(for="Emai Userl") Email
-                                      input(type="text", id="email user", name="EmailUser", placeholder="Enter Email" )
+                                      input(type="text", id="email user", name="EmailUser", placeholder="Enter Email" required)
                                   .user-input-box2
                                       label(for="password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter password" )
+                                      input(type="text", id="password", name="Pass", placeholder="Enter password" required=)
                               .form-submit-btn
                                   input(type="submit", value="Create Client", id="create-client-button")
 

@@ -1,14 +1,15 @@
-function validateForm() {
-    var firstName = document.getElementById("first-name").value;
-    var lastName = document.getElementById("last-name").value;
-    var email = document.getElementById("email-user").value;
-    var password = document.getElementById("password").value;
-  
-    if (firstName.trim() == "" || lastName.trim() == "" || email.trim() == "" || password.trim() == "") {
-      alert("Please fill out all fields.");
-      return false; // Prevent form submission
-    }
-  
-    return true; // Allow form submission
+const first_name = document.getElementById('first name')
+const last_name = document.getElementById('last name')
+const passowrd = document.getElementById('passowrd')
+const email_user = document.getElementById('email user')
+
+form.addEventListener('submit', (e) => {
+  let messages = []
+  if (first_name.value === '' || first_name.value == null) {
+    messages.push('Name is required')
   }
   
+  if (last_name.value === '' || last_name.value == null) {
+    messages.push('Name is required')
+  }
+})
