@@ -6,6 +6,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Admin add clients
       link(rel="stylesheet",  type='text/css', href="/stylesheets/atasks.css")
       script(defer, src='/javascripts/aclientpage.js')
+      script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -59,7 +60,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
    
                                   .user-input-box                            
                                       label(for="Description") Task description
-                                      input(type="text", id="description", name="description", placeholder="Enter description")
+                                      input(type="text", id="description", name="description", placeholder="Enter description" required)
                                 
                               .form-submit-btn
                               
@@ -70,10 +71,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           h5.card-title tasks
                           p.card-text 
                           each task in tasks 
-                            li 
-                              p= task.description
-                             
-                   
+                            li(onclick="displayPopup()") 
+                            p= `User # : ${task.taskid}`
+                            p= `Desription: ${task.Description}`
+                           
                 #overlay 
                 
                               

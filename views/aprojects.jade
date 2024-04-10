@@ -5,6 +5,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Admin add clients
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aprojects.css")
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
@@ -50,7 +51,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Project Name
-                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name")
+                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name" required)
                                   .user-input-box
                                       label(for="Clients Name ") Client name 
                                       select#propertyType.select.form-control.input-lg(  name='client'
@@ -73,13 +74,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
   
                                   .user-input-box
                                       label(for="Start date ") Start date 
-                                      input(type="text", id="startdate ", name="startdate", placeholder="Enter start date")
+                                      input(type="text", id="startdate ", name="startdate", placeholder="Enter start date" required)
                                    .user-input-box
                                       label(for="End date ") End date 
-                                      input(type="text", id="enddate ", name="enddate", placeholder="Enter End date")    
+                                      input(type="text", id="enddate ", name="enddate", placeholder="Enter End date" required)    
                                   .user-input-box2
                                       label(for="Description") Product description
-                                      input(type="text", id="description", name="description", placeholder="Enter description")
+                                      input(type="text", id="description", name="description", placeholder="Enter description" required)
                                 
                               .form-submit-btn
                               
@@ -90,8 +91,11 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           h5.card-title projetcs 
                           p.card-text 
                           each project in projects 
-                            li 
-                              p= project.projectname 
+                            li(onclick="displayPopup()") 
+                            p= `Project # : ${project.projectid}`
+                            p= `Project Name : ${project.projectname}`
+                            
+                              
                                
                                         
                 #overlay 

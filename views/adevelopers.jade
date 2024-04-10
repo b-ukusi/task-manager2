@@ -51,16 +51,16 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="First Name ") First name 
-                                      input(type="text", id="firstname", name="FirstName", placeholder=" first name")
+                                      input(type="text", id="firstname", name="FirstName", placeholder=" first name" required)
                                   .user-input-box
                                       label(for="Last Name ") Last name
-                                      input(type="text", id="lastName", name="LastName", placeholder="last name ")
+                                      input(type="text", id="lastName", name="LastName", placeholder="last name " required)
                                   .user-input-box
                                       label(for="Email ") Email 
-                                      input(type="text", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address ")
+                                      input(type="text", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address " required)
                                   .user-input-box2
                                       label(for="Password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter Password")
+                                      input(type="text", id="password", name="Pass", placeholder="Enter Password" required)
                                 
                               .form-submit-btn
                                   input(type="submit", value="Creat Developer")
@@ -69,8 +69,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .card-body 
                         h5.card-title developers                         
                         each developer in developers 
-                          li 
-                            p= developer.FirstName  
+                          li(onclick="displayPopup()") 
+                          p= `User # : ${developer.Userid}`
+                          p= `User type : ${developer.userType}`
+                          p= `First Name : ${developer.FirstName}`
+                          p= `Last Name : ${developer.LastName}`
+                          p= `Email : ${developer.Email}`  
+                          p= `Pass :${developer.Pass}`    
                 #overlay
 
                 .main-body2 
