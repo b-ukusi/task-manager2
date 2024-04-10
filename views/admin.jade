@@ -5,6 +5,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/admin.css")
+      script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -62,3 +63,25 @@ span(style="font-family: verdana, geneva, sans-serif;")
                         each client in clients 
                           li 
                             p= client.FirstName
+                .report 
+                    .reportcard 
+                    .reportcard-body 
+                      h5.card-title Generate project reports
+                      button.generate-btn(data-modal-target="#modal") Get report 
+                    .modal#modal
+                      .modal-header
+                        .title Get Report
+                        button(data-close-button, class="close-button") &times;
+                      .modal-body 
+                            .user-input-box
+                                      label(for="project Name ") Project Name 
+                                      select#propertyType.select.form-control.input-lg(  name='projects'
+                                      )
+                                    
+                                        each project  in projects 
+                                          li 
+                                            option(value=project.projectname) #{project.projectname}
+                                     
+                            .form-submit-btn
+                                  input(type="submit", value="Get Report", id="get-report-button")
+                #overlay      
