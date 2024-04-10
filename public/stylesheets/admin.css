@@ -81,7 +81,16 @@ a:hover{
       box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
       
     }
-/* report generation sylying 
+
+ /*list syling */
+ .card-body .li.p{
+    list-style-type: none;
+ }
+ .card-text{
+
+ }   
+/* repor
+t generation sylying 
 .report
 {
   background-color: yellow;
