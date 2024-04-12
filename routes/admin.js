@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db')
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const app = express();
 
 
 var projects=[];
@@ -237,7 +240,93 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
   });*/
 
 
+/** report gen route  */
+router.get('/report', (req, res, next) => {
+  // return res.render('')
+  console.log("Generate Project REport for project name ", req.query.projects);
+ //CALL ('billing system')
 
+  db.query("call get_project_report(?)",[req.query.projects],  (err, rows)=> {
+  
+   db.query("call get_project_tasks(?)",[req.query.projects],  (err, ptasks)=> {
+   // console.log(err);
+    console.log(rows[0].length);
+    generatePDF( req.query.projects.toUpperCase(),  rows[0],ptasks[0]);
+    });
+
+
+    });
+
+ });
+
+
+ function generatePDF(pname,data,ptasks) {
+  // Create a new PDF document
+  const doc = new PDFDocument();
+   
+
+
+  // Add content to the PDF
+  doc.fontSize(20).text( pname, { align: 'center' }); // our first element is the project name
+  doc.moveDown();
+
+  doc.fontSize(12).text("\n");
+  doc.moveDown();
+
+
+  // Loop through the data and add it to the PDF
+  data.forEach(row => {
+    console.log("Add new row",row);
+    doc.fontSize(15).text(row.item_name);
+    doc.fontSize(12).text(row.item_value);
+    doc.fontSize(12).text("\n");
+   // doc.fontSize(12).text(`${row.item_name}`, { continued: true }).text(`Field 2: ${row.item_value}`).moveDown();
+  });
+ doc.moveDown();
+ doc.fontSize(18).text( "Tasks", { align: 'center' }); // our first element is the project name
+ doc.moveDown();
+ var percdone=0;
+ ptasks.forEach(tsk => {
+  percdone+=tsk.isdone=="Yes" ? 1 : 0;
+
+  doc.fontSize(15).text(tsk.description + " Completed? " + tsk.isdone);
+  doc.fontSize(12).text("\n");
+ // doc.fontSize(12).text(`${row.item_name}`, { continued: true }).text(`Field 2: ${row.item_value}`).moveDown();
+});
+
+doc.moveDown();
+doc.fontSize(18).text(`% Completed : ${(percdone/ptasks.length)*100} %`);
+
+
+  doc.fontSize(8).text("Prepared By : me");
+    doc.moveDown();
+
+  // Finalize the PDF
+  console.log("Save to disk");
+  const fileName = 'xreport.pdf';
+  const filePath = __dirname + '/' + fileName;
+  const stream = fs.createWriteStream(filePath);
+  doc.pipe(stream);
+  doc.end();
+
+  console.log('PDF report generated successfully.');
+
+
+  // Serve the PDF for download
+  app.get('/download', (req, res) => {
+    res.download(filePath, fileName, err => {
+      if (err) {
+        console.error('Error sending PDF file:', err);
+        return;
+      }
+      // Delete the PDF file after it's sent
+      fs.unlinkSync(filePath);
+      console.log('PDF file sent successfully.');
+    });
+  });
+
+
+}
  
 
 

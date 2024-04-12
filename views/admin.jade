@@ -73,6 +73,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                         .title Get Report
                         button(data-close-button, class="close-button") &times;
                       .modal-body 
+                        form(action="/admin/report", method="get")
                             .user-input-box
                                       label(for="project Name ") Project Name 
                                       select#propertyType.select.form-control.input-lg(  name='projects'
@@ -80,8 +81,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                     
                                         each project  in projects 
                                           li 
-                                            option(value=project.projectname) #{project.projectname}
+                                            option(value=project.project_id) #{project.projectname}
                                      
-                            .form-submit-btn
+                            .form-submit-btn 
                                   input(type="submit", value="Get Report", id="get-report-button")
                 #overlay      

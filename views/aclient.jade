@@ -48,36 +48,35 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Client
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="/admin/createclient", method="get",)
+                     form(id ='create-client-form' action="#", method="get",)
                               .main-user-info
                                   .user-input-box
-                                      label(for="First Name ") First name 
-                                      input(type="text", id="first name", name="FirstName", placeholder=" client name" required)
+                                      label(for="fname =") First name 
+                                      input(type="text", id="fname", name="FirstName", placeholder=" client name" required )
                                   .user-input-box
-                                      label(for="Last Name ") Last name
-                                      input(type="text", id="last name", name="LastName", placeholder="developer name " required)
+                                      label(for="lname ") Last name
+                                      input(type="text", id="lname", name="LastName", placeholder="developer name " required)
                                   .user-input-box2
-                                      label(for="Emai Userl") Email
-                                      input(type="text", id="email user", name="EmailUser", placeholder="Enter Email" required)
+                                      label(for="email") Email
+                                      input(type="email", id="email", name="EmailUser", placeholder="Enter Email" required)
                                   .user-input-box2
                                       label(for="password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter password" required=)
+                                      input(type="text", id="password", name="Pass", placeholder="Enter password" required)
+                                      p#err-pass.err-text 
                               .form-submit-btn
                                   input(type="submit", value="Create Client", id="create-client-button")
 
-                .main-body2  
+                .main-body2       
+                  each client  in clients
                     .card 
                       .card-body 
-                          h5.card-title clients 
-                          p.card-text 
-                          each client  in clients
-                            li(onclick="displayPopup()") 
-                            p= `User # : ${client.Userid}`
-                            p= `User type : ${client.userType}`
-                            p= `First Name : ${client.FirstName}`
-                            p= `Last Name : ${client.LastName}`
-                            p= `Email : ${client.Email}`    
-                            p= `Pass :${client.Pass}`      
+                        p= `User # : ${client.Userid}`
+                        p= `User type : ${client.userType}`
+                        p= `First Name : ${client.FirstName}`
+                        p= `Last Name : ${client.LastName}`
+                        p= `Email : ${client.Email}`    
+                        p= `Pass :${client.Pass}` 
+
                 #overlay
 
 

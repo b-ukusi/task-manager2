@@ -7,6 +7,7 @@ const db = require('../db')
 var developers=[];
 var user=[];
 var userid;
+var notes=[];
 // var projects =[];
 
 
@@ -111,16 +112,90 @@ console.log("show  tasks within projects",projects);
 /* dev project page   */
 
 router.get('/projects', (req, res, next) => {
+  /*console.log('init Client:', req.query.user);
+    userid=req.query.user;
+    /* dispalying dev tasks and progress */
+   /* db.query("call getdev_projects (?)",[userid],  (err, rows)=> {
+      let projects=[];     
+       if (rows[0].length==0) {
+           console.log("no tasks found");
+         }
+       else {
+          console.log("got tasks",rows[0]);
+           tasks=rows[0];
 
-    res.render('developerprojects.jade',{user:user,developers:developers});
+           //loop through all taks and group per project . \
+           console.log("db  length within projects",tasks.length); 
+
+                      
+            for(const p of tasks) {
+                if (!projects[p.projectid]) {
+                  console.log(" New project. add its empty tasks")
+                  console.log(projects[p.projectid])
+                  projects[p.projectid]={
+                    project_name : p.projectname,
+                    project_description:p.description,
+                    project_id:p.projectid,
+                    tasks : [{
+                      task_id : p.taskid,
+                      task_name : p.task_name,
+                      start_date : p.startdate,
+                      end_date:p.enddate,
+                      is_done : p.isdone
+
+                    }]
+                  };
+
+                  // projects[p.projectid].tasks.push({
+                  //   // task_id : p.taskid,
+                  //   task_name : p.description,
+                  //   start_date : p.startdate,
+                  //   end_date:p.enddate,
+                  //   is_done : p.isdone
+
+                  // });
+
+                /*}else{
+                  console.log("Found existing project. so inlude teh task therein");
+                  projects[p.projectid].tasks.push({
+                    task_id : p.taskid,
+                    task_name : p.task_name,
+                    start_date : p.startdate,
+                    end_date:p.enddate,
+                    is_done : p.isdone
+
+                  });
+                }
+            };
+
+
+         }
+      
+projects = projects.filter(element => element);
+console.log("show  tasks within projects",projects); 
+*/
+    res.render('developerprojects.jade',{ user:user,developers:developers});
      
-   });
+  
+});
 
 /* dev notes page  */
   router.get('/notes', (req, res, next) => {
-    res.render('developernotes.jade',{user:user,developers:developers});
+    var notes=[];
+    db.query("call get_notes()",  (err, rows)=> {
+    
+      if (rows[0].length==0) {
+          console.log("no notes found");
+        }
+      else {
+          console.log("got notes",rows[0]);
+          tasks=rows[0];
+        }
+         console.log("render notes",notes); 
+    res.render('developernotes.jade',{notes:notes, user:user,developers:developers});
      
    });
+  }); 
  
 /*dev account page  */
   router.get('/account', async (req, res, next) => {

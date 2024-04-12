@@ -64,8 +64,10 @@ a:hover{
         
   }
   .main-parts{
+    background-color: red;
   display: flex;
-  width: 70%;
+  flex-wrap: wrap;
+  width: 100%;
   margin-right: 20%;
   }
   

@@ -6,6 +6,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/devnotes.css")
       script(defer, src='/javascripts/aclientpage.js')
+      script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -48,10 +49,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Note Name 
-                                      input(type="text", id="Note Name", name=" NoteName", placeholder=" Tittle ")
+                                      input(type="text", id="Note Name", name=" NoteName", placeholder=" Tittle " required)
                                   .user-input-box2
                                       label(for="Clients Name ") Note Content
-                                      input(type="text", id="Note Content", name="notecontent", placeholder=" Content")
+                                      input(type="text", id="Note Content", name="notecontent", placeholder=" Content" required)
                                   
                                 
                               .form-submit-btn
@@ -61,7 +62,12 @@ span(style="font-family: verdana, geneva, sans-serif;")
                       .card-body 
                           h5.card-title Notes
                           p.card-text 
-                          
+                          p= JSON.stringify(notes)
+                          each note in notes
+                            li(onclick="displayPopup()") 
+                            p= `User # : ${note.noteid}`
+                            p= `User # : ${note.taskid}`
+                            p= `Description : ${note.description}`
                             
                                         
                 #overlay  
