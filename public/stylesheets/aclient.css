@@ -67,6 +67,9 @@ a:hover{
   display: flex;
   width: 70%;
   margin-right: 20%;
+  padding: 10px;
+  padding-left: 14px;
+  padding-top: 10px;
   }
 
 /*.main-top{
@@ -266,6 +269,7 @@ h1{
        background-color: whitesmoke;
        padding: 16px;
        border-radius: 8px;
+       height: 40vh;
 }
 
 .card p:first-child {

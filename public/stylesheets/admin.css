@@ -64,7 +64,7 @@ a:hover{
         
   }
   .main-parts{
-    background-color: red;
+  
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -74,14 +74,14 @@ a:hover{
   .main-parts .card-body{
       width: 300px;
       height: 200px;
-      overflow: hidden;
+      overflow: auto;
       margin: 10px;
       background: #fff;
       text-align:left;
       border-radius: 20px;
       padding: 10px;
       box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-      
+      scroll-behavior: smooth;
     }
 
  /*list syling */

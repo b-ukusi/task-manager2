@@ -66,12 +66,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               
                                   input(type="submit", value="Creat Task")
                 .main-body2  
+                  each task in tasks 
                     .card 
                       .card-body 
-                          h5.card-title tasks
-                          p.card-text 
                           each task in tasks 
-                            li(onclick="displayPopup()") 
                             p= `User # : ${task.taskid}`
                             p= `Desription: ${task.description}`
                            

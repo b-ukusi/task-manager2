@@ -86,15 +86,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               
                                   input(type="submit", value="Creat Project")
                 .main-body2  
+                   each project in projects 
                     .card 
-                      .card-body 
-                          h5.card-title projetcs 
-                          p.card-text 
-                          each project in projects 
-                            li(onclick="displayPopup()") 
+                      .card-body                                         
                             p= `Project # : ${project.projectid}`
                             p= `Project Name : ${project.projectname}`
-                            
+                      .info-btn
+                      input(type="button" class="" value="Info" )       
                               
                                
                                         
