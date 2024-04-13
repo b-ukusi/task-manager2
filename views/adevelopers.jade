@@ -57,7 +57,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                       input(type="text", id="lastName", name="LastName", placeholder="last name " required)
                                   .user-input-box
                                       label(for="Email ") Email 
-                                      input(type="text", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address " required)
+                                      input(type="email", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address " required)
                                   .user-input-box2
                                       label(for="Password") Password
                                       input(type="text", id="password", name="Pass", placeholder="Enter Password" required)
@@ -65,11 +65,9 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .form-submit-btn
                                   input(type="submit", value="Creat Developer")
                 .main-body2  
+                   each developer in developers 
                     .card 
-                    .card-body 
-                        h5.card-title developers                         
-                        each developer in developers 
-                          li(onclick="displayPopup()") 
+                      .card-body 
                           p= `User # : ${developer.Userid}`
                           p= `User type : ${developer.userType}`
                           p= `First Name : ${developer.FirstName}`
@@ -78,7 +76,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           p= `Pass :${developer.Pass}`    
                 #overlay
 
-                .main-body2 
+              
                          
                   
                         
