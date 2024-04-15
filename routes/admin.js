@@ -210,8 +210,16 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
 db.query("call save_user(?,?,?,?,?)",['client',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
-  console.log(err);
-  console.log(rows);
+  
+  if (err){
+    console.log(err);
+    res.render('dbupSmessage.jade', { message: 'Failed to create client.' });
+  }
+  else{
+    console.log(rows);
+    res.render('dbupFmessage.jade', { message: 'Client created successfully!' });
+  }
+  
   });
 
 

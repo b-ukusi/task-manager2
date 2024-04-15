@@ -48,7 +48,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Client
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(id ='create-client-form' action="#", method="get",)
+                     form(id ='create-client-form'  action="/admin/createclient", method="get",)
                               .main-user-info
                                   .user-input-box
                                       label(for="fname =") First name 
@@ -62,7 +62,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                   .user-input-box2
                                       label(for="password") Password
                                       input(type="text", id="password", name="Pass", placeholder="Enter password" required)
-                                      p#err-pass.err-text 
+                                    
+                                 //- if message
+                                      .alert.alert-success
+                                          p= message
                               .form-submit-btn
                                   input(type="submit", value="Create Client", id="create-client-button")
 

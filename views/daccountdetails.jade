@@ -32,20 +32,21 @@ span(style="font-family: verdana, geneva, sans-serif;")
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
-        section.main 
-            .card 
-            .card-body 
-                h5.card-title User Details
-                p.card-text 
-                   each developer in developers 
-                          li
-                            p= `User # : ${developer.Userid}`
-                            p= `User type : ${developer.userType}`
-                            p= `First Name : ${developer.FirstName}`
-                            p= `Last Name : ${developer.LastName}`
-                            p= `Email : ${developer.Email}`
-                            p= `Pass :${developer.Pass}`
-            
+        section.main
+          .main-top
+              h1 Account Details
+          .main-body    
+            each developer in developers 
+              .card 
+                .card-body 
+                        li
+                        p= `User # : ${developer.Userid}`
+                        p= `User type : ${developer.userType}`
+                        p= `First Name : ${developer.FirstName}`
+                        p= `Last Name : ${developer.LastName}`
+                        p= `Email : ${developer.Email}`
+                        p= `Pass :${developer.Pass}`
+
                   //- p= #{user}
                   //- p= User Type: #{user.userType}
                   //- p= First Name: #{user.FirstName}

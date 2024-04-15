@@ -227,6 +227,19 @@ console.log("show  tasks within projects",projects);
 });
    });
   
+/* get devs projects and dipaly  /
+// Example: Assume userId holds the logged-in user's identifier
+db.query("CALL get_dev_projectsdev(?)", [userid], (err, rows) => {
 
+  if (rows[0].length == 0) {
+      console.log("No projects found");
+  } else {
+      console.log("Got projects", rows[0]);
+      const projects = rows[0];
+      // Continue with further processing as needed
+  }
+  res.render('developerprojects.jade',{developers:developers, projects:projects});
+});  
 
+*/
 module.exports = router;
