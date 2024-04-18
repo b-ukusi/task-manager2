@@ -190,14 +190,21 @@ router.get('/tasks', (req,res,next)=>{
 });
 
 
-  /* create projects projects page  */
+  /* create items projects projects page  */
+
   router.get('/createproject', (req, res, next) => {
     console.log("Ad project",req.query);
 
   const {client,developer,ProjectName,description,startdate,enddate}=req.query;
 db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
-  console.log(err);
-  console.log(rows);
+  if (err){
+    console.log(err);
+    res.render('successpro.jade', { message: 'Failed to create client.' });
+  }
+  else{
+    console.log(rows);
+    res.render('dbupFmessage.jade', { message: 'Client created successfully!' });
+  }
   });
 
 
@@ -230,22 +237,37 @@ db.query("call save_user(?,?,?,?,?)",['client',FirstName,LastName,EmailUser,Pass
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
 db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
-  console.log(err);
-  console.log(rows);
+ 
+  if (err){
+    console.log(err);
+    res.render('successdev.jade', { message: 'Failed to create client.' });
+  }
+  else{
+    console.log(rows);
+    res.render('succes.jade', { message: 'Client created successfully!' });
+  }
   });
 
 
   });
 
-  /* create tasks page  
+   /*create tasks page*/  
   router.get('/creattask', (req, res, next) => {
-    console.log("Ad project",req.query);
+    console.log("Add task",req.query);
 
-  const {client,developer,ProjectName,description,startdate,enddate}=req.query;
-db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
-  console.log(err);
-  console.log(rows);
-  });*/
+  const {taskid,projectid,description,startdate,enddate}=req.query;
+db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,enddate],  (err, rows)=> {
+  
+  if (err){
+    console.log(err);
+    res.render('successtask.jade', { message: 'Failed to create client.' });
+  }
+  else{
+    console.log(rows);
+    res.render('successtask.jade', { message: 'Client created successfully!' });
+  }
+  });
+});
 
 
 /** report gen route  */

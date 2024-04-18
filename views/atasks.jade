@@ -47,7 +47,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                     .title New Task 
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="/admin/createproject", method="get")
+                     form(action="/admin/creattask", method="get")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Project Name
@@ -68,10 +68,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 .main-body2  
                   each task in tasks 
                     .card 
-                      .card-body 
-                          each task in tasks 
+                      .card-body                
                             p= `User # : ${task.taskid}`
                             p= `Desription: ${task.description}`
+                            p= `Projectid : ${task.projectid}`
                            
                 #overlay 
                 

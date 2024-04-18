@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
+  background-image: url(/images/backgroudpic.jpg);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +11,8 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, black, rgb(54, 129, 85));
+  /* background: -webkit-linear-gradient(left, black, rgb(54, 129, 85)); */
+  
 }
 ::selection{
   background: rgb(54, 129, 85);

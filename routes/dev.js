@@ -23,8 +23,9 @@ router.get('/', (req, res, next) => {
      if (req.query.user !='undefined'){
       userid=req.query.user;
      }
+
      var developers=[];
-     db.query("call get_userdetails(?)",[req.query.user],  (err, rows)=> {
+     db.query("call get_userdetails(?)",[userid],  (err, rows)=> {
        
          if (rows[0].length==0) {
              console.log("no users found");
@@ -35,6 +36,7 @@ router.get('/', (req, res, next) => {
              userid=user[0].Userid;
            }
            console.log("get dev tasks user ",userid);
+           
            var tasks=[];
 
 
@@ -69,16 +71,6 @@ router.get('/', (req, res, next) => {
   
                           }]
                         };
-
-                        // projects[p.projectid].tasks.push({
-                        //   // task_id : p.taskid,
-                        //   task_name : p.description,
-                        //   start_date : p.startdate,
-                        //   end_date:p.enddate,
-                        //   is_done : p.isdone
-
-                        // });
-
                       }else{
                         console.log("Found existing project. so inlude teh task therein");
                         projects[p.projectid].tasks.push({
@@ -112,7 +104,7 @@ console.log("show  tasks within projects",projects);
 /* dev project page   */
 
 router.get('/projects', (req, res, next) => {
-  /*console.log('init Client:', req.query.user);
+  /*console.log('init Client:', userid);
     userid=req.query.user;
     /* dispalying dev tasks and progress */
    /* db.query("call getdev_projects (?)",[userid],  (err, rows)=> {

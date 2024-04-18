@@ -14,5 +14,10 @@ html,body{
   background: -webkit-linear-gradient(left, black, rgb(54, 129, 85));
 }
 .main{
-    background-color: red ;
+    background-color:#eee ;
+}
+
+.card{
+    margin: 10px;
+    padding: 10px;
 }
