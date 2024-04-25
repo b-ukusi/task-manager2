@@ -6,7 +6,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aclient.css")
       script(defer, src='/javascripts/popup.js')
-      script(defer, src='/javascripts/clientvalidation.js')
+      script(defer, src='/javascripts/login.js')
+  
+       script(defer,src="././routes/admin.js")
+
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -52,16 +55,16 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="fname =") First name 
-                                      input(type="text", id="fname", name="FirstName", placeholder=" client name" required )
+                                      input(type="text", id="fname", name="FirstName", placeholder=" client name" required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
                                   .user-input-box
                                       label(for="lname ") Last name
-                                      input(type="text", id="lname", name="LastName", placeholder="developer name " required)
+                                      input(type="text", id="lname", name="LastName", placeholder="developer name " required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
                                   .user-input-box2
                                       label(for="email") Email
-                                      input(type="email", id="email", name="EmailUser", placeholder="Enter Email" required)
+                                      input(type="email", id="email", name="EmailUser", placeholder="Enter Email" required, title='Please enter a valid email address')
                                   .user-input-box2
                                       label(for="password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter password" required)
+                                      input(type="password", id="password", name="Pass", placeholder="Enter password" required pattern='(?=.*)(?=.*[a-zA-Z]).{8,}', title='Password must be at least 8 characters long and contain both letters and numbers')
                                     
                                  //- if message
                                       .alert.alert-success
@@ -80,10 +83,14 @@ span(style="font-family: verdana, geneva, sans-serif;")
                         p= `Email : ${client.Email}`    
                         p= `Pass :${client.Pass}` 
                       .info-btn
-                      input(type="button" class="" value="Delet Client" )     
-                      input(type="button" class="" value="Update Client" )       
-                                
-                #overlay
+                      input(type="button" value="Delete Client" onclick="window.location.href='clients?action=delete&Userid=#{client.Userid}'")
+                      input(type="button" value="Update Client" onclick="window.location.href='clients?action=update&Userid=readfrom the page atakaa its what was pased as user id $FirstName=ilefiledikonafirtsname'")
+                      // so make this one for update pop up a window then on its on click, make it do like the delete so can update with the req.query params then reload teh clients page.
+
+                      //- input(type="button" value="Update Client" onclick="updateClient('#{client.Userid}')")
+
+    script(src=".//routes/admin.js")
+              #overlay
 
 
              

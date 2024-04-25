@@ -25,7 +25,7 @@ nav{
   background: #fff;
   width: 280px;
   overflow: hidden;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); */
 }
 a{
   position: relative;
@@ -182,4 +182,18 @@ t generation sylying
     #overlay.active {
       opacity: 1;
       pointer-events: all;
+    }
+
+
+
+    /* page animations  */
+    @keyframes fade-down{
+      0%{
+        opacity: 0;
+        transform:translateY(30px) scale (0.9);
+      }
+      100%{
+        opacity: 1;
+        transform:translateY(0px) scale (1);
+      }
     }

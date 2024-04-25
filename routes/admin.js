@@ -5,6 +5,11 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const app = express();
 
+// const open = require('open');
+
+// const { exec } = require('child_process');
+// const path = require('path');
+
 
 var projects=[];
 var clients=[];
@@ -149,27 +154,7 @@ router.get('/', async (req, res, next) => {
 
 
    /* clients routes and db queries */
-  router.get('/clients', (req, res, next) => {
-    
-    res.render('aclient.jade',{ clients:clients} );
-
-    /*
-    db.query("call get_usertypes('client')",  (err, rows)=> {
-    
-      if (rows[0].length==0) {
-          console.log("no clients found");
-        }
-      else {
-          console.log("got clients",rows[0]);
-          clients=rows[0];
-        }
-  
-    res.render('aclient.jade',{ clients:clients} );
-     
-   }); */
-  });
-
-
+ 
 
 /* admin tasks page */
 router.get('/tasks', (req,res,next)=>{
@@ -213,24 +198,31 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
 
   /*create client client page  */
   router.get('/createclient', (req, res, next) => {
-    console.log("Ad client",req.query);
+    console.log("Ad new client",req.query);
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
 db.query("call save_user(?,?,?,?,?)",['client',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
   
   if (err){
     console.log(err);
-    res.render('dbupSmessage.jade', { message: 'Failed to create client.' });
+    res.render('fail.jade', { message: 'Failed to create client.' });
   }
   else{
     console.log(rows);
-    res.render('dbupFmessage.jade', { message: 'Client created successfully!' });
+    res.render('dbupSmessage.jade', { message: 'Client created successfully!' });
+    // each time we rrenser the message page, we want the custome message to show
+    // and on ckick back, it will reload the url you specify as back commd
+    // so you can use theis ov
   }
   
   });
+ 
+  
+});
 
-
-  });
+router.get('/createclients', (req, res, next) => {
+  res.render('dbupFmessage.jade');
+});
   /* create developer developer pages */
   router.get('/createdev', (req, res, next) => {
     console.log("Ad client",req.query);
@@ -249,21 +241,21 @@ db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,P
   });
 
 
-  });
+ });
 
    /*create tasks page*/  
   router.get('/creattask', (req, res, next) => {
     console.log("Add task",req.query);
 
-  const {taskid,projectid,description,startdate,enddate}=req.query;
+   const {taskid,projectid,description,startdate,enddate}=req.query;
 db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,enddate],  (err, rows)=> {
   
   if (err){
-    console.log(err);
-    res.render('successtask.jade', { message: 'Failed to create client.' });
-  }
+   // console.log(err);
+   res.render('successtask.jade', { message: 'Failed to create client.' });
+   }
   else{
-    console.log(rows);
+   console.log(rows);
     res.render('successtask.jade', { message: 'Client created successfully!' });
   }
   });
@@ -271,6 +263,7 @@ db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,end
 
 
 /** report gen route  */
+
 router.get('/report', (req, res, next) => {
   // return res.render('')
   console.log("Generate Project REport for project name ", req.query.projects);
@@ -281,7 +274,7 @@ router.get('/report', (req, res, next) => {
    db.query("call get_project_tasks(?)",[req.query.projects],  (err, ptasks)=> {
    // console.log(err);
     console.log(rows[0].length);
-    generatePDF( req.query.projects.toUpperCase(),  rows[0],ptasks[0]);
+    generatePDF(res, req.query.projects.toUpperCase(),  rows[0],ptasks[0]);
     });
 
 
@@ -290,7 +283,22 @@ router.get('/report', (req, res, next) => {
  });
 
 
- function generatePDF(pname,data,ptasks) {
+
+ // create pdf from db info  
+
+ function generatePDF(res,pname,data,ptasks) {
+  
+// exec(` start ${path.resolve(filePath)}`, (error, stdout, stderr) => {
+//     if (error) {
+//         console.error(`Error opening PDF file: ${error.message}`);
+//         return;
+//     }
+//     if (stderr) {
+//         console.error(`Error opening PDF file: ${stderr}`);
+//         return;
+//     }
+//     console.log('PDF file opened successfully');
+// });
   // Create a new PDF document
   const doc = new PDFDocument();
    
@@ -342,6 +350,24 @@ doc.fontSize(18).text(`% Completed : ${(percdone/ptasks.length)*100} %`);
   console.log('PDF report generated successfully.');
 
 
+  res.download(filePath, `${pname}.pdf`, (err) => {
+    if (err) {
+      // Handle error
+      console.error('Error downloading file:', err);
+      // res.status(500).send('Internal Server Error');
+    } else {
+      // Delete the file after download if needed
+      // fs.unlinkSync(pdfPath);
+      console.log("Delete server file>");
+    }
+  });
+  // res.setHeader('Content-disposition', 'attachment; filename=xreport.pdf');
+  // res.setHeader('Content-type', 'application/pdf');
+  
+  // // Write the PDF content to the response
+  // res.send(filePath);
+
+
   // Serve the PDF for download
   app.get('/download', (req, res) => {
     res.download(filePath, fileName, err => {
@@ -357,8 +383,248 @@ doc.fontSize(18).text(`% Completed : ${(percdone/ptasks.length)*100} %`);
 
 
 }
+
+/*delet items  */
+
+/*delet cliets  */
+router.get('/clients', async (req, res, next) => {
+
+  console.log("load Clients",req.query);
  
+ if (req.query.action){
+
+   if (req.query.action=="delete" || req.query.action=="update"){
+     console.log("Change Client ID ", req.query.Userid);
+     console.log("old Client len", clients.length);
+
+     var queryexec="delete from users where userid=?";
+     var params=[req.query.Userid];
+     if (req.query.action=="update"){
+       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
+       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+     }
 
 
-router.get
+      db.query(queryexec,params , (err, rows)=> {
+       // its ok we dont have to wait for our condition comes after exec.
+           console.log("deleted");
+           db.query("call get_usertypes('client')", (err, rows) => {
+
+          if (rows[0].length == 0) {
+            console.log("no client found");
+          }
+          else {
+
+            clients = rows[0];
+          }
+
+          console.log("New Clients len", clients.length);
+
+          console.log("renderclients page afresh ");
+          res.render('aclient.jade', { clients: clients });
+
+        });
+
+     console.log("Reload from db and update clients global var");
+   
+ });
+
+}
+}
+else{
+  console.log("Clients list",clients);
+// laod mormal if no action specified
+// it seem s the clints variable
+
+
+db.query("call get_usertypes('client')", (err, rows) => {
+
+  if (rows[0].length == 0) {
+    console.log("no client found");
+  }
+  else {
+
+    clients = rows[0];
+  }
+
+  console.log("New Clients len", clients.length);
+
+  console.log("renderclients page afresh ");
+  res.render('aclient.jade', { clients: clients });
+
+});
+  
+
+
+
+
+ }
+
+});
+
+
+
+
+
+/*delet clinet */
+router.get('/Developers', async (req, res, next) => {
+
+  console.log("load Developers",req.query);
+ 
+ if (req.query.action){
+
+   if (req.query.action=="delete" || req.query.action=="update"){
+     console.log("Change Developers ID ", req.query.Userid);
+     console.log("old Developers len", developers.length);
+
+     var queryexec="delete from users where userid=?";
+     var params=[req.query.Userid];
+     if (req.query.action=="update"){
+       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
+       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+     }
+
+
+      db.query(queryexec,params , (err, rows)=> {
+       // its ok we dont have to wait for our condition comes after exec.
+           console.log("deleted");
+           db.query("call get_usertypes('developer')", (err, rows) => {
+
+          if (rows[0].length == 0) {
+            console.log("no develoepr found");
+          }
+          else {
+
+            developers = rows[0];
+          }
+
+          console.log("New Developers len",developers.length);
+
+          console.log("renderdeveloperss page afresh ");
+          res.render('adeveloeprs.jade', { developers: developers });
+
+        });
+
+     console.log("Reload from db and update developers global var");
+   
+ });
+
+}
+}
+else{
+// laod mormal if no action specified
+   res.render('adeveloper.jade',{ developers:developers} );
+ }
+
+});
+
+
+/*delet task */
+
+
+router.get('/clients', async (req, res, next) => {
+
+  console.log("load Clients",req.query);
+ 
+ if (req.query.action){
+
+   if (req.query.action=="delete" || req.query.action=="update"){
+     console.log("Change Client ID ", req.query.Userid);
+     console.log("old Client len", clients.length);
+
+     var queryexec="delete from users where userid=?";
+     var params=[req.query.Userid];
+     if (req.query.action=="update"){
+       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
+       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+     }
+
+
+      db.query(queryexec,params , (err, rows)=> {
+       // its ok we dont have to wait for our condition comes after exec.
+           console.log("deleted");
+           db.query("call get_usertypes('client')", (err, rows) => {
+
+          if (rows[0].length == 0) {
+            console.log("no client found");
+          }
+          else {
+
+            clients = rows[0];
+          }
+
+          console.log("New Clients len", clients.length);
+
+          console.log("renderclients page afresh ");
+          res.render('aclient.jade', { clients: clients });
+
+        });
+
+     console.log("Reload from db and update clients global var");
+   
+ });
+
+}
+}
+else{
+// laod mormal if no action specified
+   res.render('aclient.jade',{ clients:clients} );
+ }
+
+});
+
+
+/*delet projects */
+
+router.get('/clients', async (req, res, next) => {
+
+  console.log("load Clients",req.query);
+ 
+ if (req.query.action){
+
+   if (req.query.action=="delete" || req.query.action=="update"){
+     console.log("Change Client ID ", req.query.Userid);
+     console.log("old Client len", clients.length);
+
+     var queryexec="delete from users where userid=?";
+     var params=[req.query.Userid];
+     if (req.query.action=="update"){
+       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
+       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+     }
+
+
+      db.query(queryexec,params , (err, rows)=> {
+       // its ok we dont have to wait for our condition comes after exec.
+           console.log("deleted");
+           db.query("call get_usertypes('client')", (err, rows) => {
+
+          if (rows[0].length == 0) {
+            console.log("no client found");
+          }
+          else {
+
+            clients = rows[0];
+          }
+
+          console.log("New Clients len", clients.length);
+
+          console.log("renderclients page afresh ");
+          res.render('aclient.jade', { clients: clients });
+
+        });
+
+     console.log("Reload from db and update clients global var");
+   
+ });
+
+}
+}
+else{
+// laod mormal if no action specified
+   res.render('aclient.jade',{ clients:clients} );
+ }
+
+});
+
 module.exports = router;

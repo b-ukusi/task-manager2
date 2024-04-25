@@ -51,16 +51,16 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="First Name ") First name 
-                                      input(type="text", id="firstname", name="FirstName", placeholder=" first name" required)
+                                      input(type="text", id="firstname", name="FirstName", placeholder=" first name" required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
                                   .user-input-box
                                       label(for="Last Name ") Last name
-                                      input(type="text", id="lastName", name="LastName", placeholder="last name " required)
+                                      input(type="text", id="lastName", name="LastName", placeholder="last name " required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
                                   .user-input-box
                                       label(for="Email ") Email 
-                                      input(type="email", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address " required)
+                                      input(type="email", id="EmailUser  ", name="EmailUser", placeholder="Enter Email address " required, title='Please enter a valid email address')
                                   .user-input-box2
                                       label(for="Password") Password
-                                      input(type="text", id="password", name="Pass", placeholder="Enter Password" required)
+                                      input(type="password", id="password", name="Pass", placeholder="Enter Password" required, pattern='(?=.*)(?=.*[a-zA-Z]).{8,}', title='Password must be at least 8 characters long and contain both letters and numbers')
                                 
                               .form-submit-btn
                                   input(type="submit", value="Creat Developer")
@@ -73,7 +73,15 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           p= `First Name : ${developer.FirstName}`
                           p= `Last Name : ${developer.LastName}`
                           p= `Email : ${developer.Email}`  
-                          p= `Pass :${developer.Pass}`    
+                          p= `Pass :${developer.Pass}`   
+                      .info-btn
+                      input(type="button" value="Delete Client" onclick="window.location.href='developers?action=delete&Userid=#{developer.Userid}'")
+                      input(type="button" value="Update Client" onclick="window.location.href='developers?action=update&Userid=readfrom the page atakaa its what was pased as user id $FirstName=ilefiledikonafirtsname'")
+                      // so make this one for update pop up a window then on its on click, make it do like the delete so can update with the req.query params then reload teh clients page.
+
+                      //- input(type="button" value="Update Client" onclick="updateClient('#{client.Userid}')")
+
+    script(src=".//routes/admin.js")     
                 #overlay
 
               
