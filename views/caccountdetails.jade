@@ -29,14 +29,11 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         section.main 
+          each client in clients 
             .card 
-            .card-body 
-                h5.card-title User Details
-                p.card-text 
-                   each client in clients 
-                          li
-                            p= `User # : ${client.Userid}`
-                            p= `User type : ${client.userType}`
-                            p= `First Name : ${client.FirstName}`
-                            p= `Last Name : ${client.LastName}`
-                            p= `Email : ${client.Email}`
+             .card-body 
+                  p= `User # : ${client.Userid}`
+                  p= `User type : ${client.userType}`
+                  p= `First Name : ${client.FirstName}`
+                  p= `Last Name : ${client.LastName}`
+                  p= `Email : ${client.Email}`

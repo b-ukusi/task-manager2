@@ -77,3 +77,6 @@ margin-right: 20%;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     
   }
+.card {
+  background-color: yellow;
+}

@@ -33,10 +33,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         section.main 
-             .main-notes
-                .col.column-1
-                    .card
-                    .card-body
-                        h5.card-title task bar 
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                
+             .main-projects
+                  each project in projects 
+                      .card 
+                       .card-body                                         
+                          p= `Project # : ${project.project_id}`
+                          p= `Project Name : ${project.project_name}`
+                       

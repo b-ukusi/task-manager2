@@ -34,10 +34,11 @@ router.get('/', (req, res, next) => {
         // popup.alert({
         //     content: "Yaaay"
         //   });
-console.log("yaay");
+
          user=rows[0];
         if (rows[0][0]["UserType"]=="developer") {
-            res.render('developer.jade',{user:user,"uname": rows[0][0]["FirstName"]});
+          console.log("Developer logged in. riderect developer page ");
+          res.redirect(`/dev/?user=${rows[0][0]["Userid"]}`)
         }else{
             res.render('client.jade',{"uname": rows[0][0]["FirstName"]});
         }

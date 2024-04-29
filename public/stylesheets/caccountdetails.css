@@ -66,9 +66,9 @@ a:hover{
   width: 70%;
   margin-right: 20%;
   }
-  .main-section .card-body{
-      width: 100%;
-      height: 100%;
+  .card-body{
+      width: 45%;
+      height: 70%;
       margin: 10px;
       background: #fff;
       text-align:left;
@@ -77,6 +77,49 @@ a:hover{
       box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
       
     }
-  .card-body{
-    background-color: red;
+ 
+  main-body2{
+    background: #ccc;
+    padding: 16px;
+    margin: 20px;
+    width: 95%;
+    min-height: 100vh;
+    border-radius: 2%;    
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+  
+  
+  
+  }
+  .card{
+    /* width: 300px;
+        height: 200px;
+        overflow: hidden;
+        margin: 10px;
+        background: #fff;
+        text-align:left;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+         */
+         background-color: whitesmoke;
+         padding: 16px;
+         border-radius: 8px;
+         height: 40vh;
+         width: 70%;
+         
+  }
+  
+  .card p:first-child {
+    font-weight: bold;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  .info-btn{
+    background-color: violet;
+    width: 20vws;
   }

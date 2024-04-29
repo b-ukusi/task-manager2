@@ -6,16 +6,22 @@ const client_controller = require("../controllers/clientcontroller")
 var clients=[];
 var user=[];
 var userid;
-
+var projects=[];
+var tasks=[];
 /// client ROUTES ///
 
 /* client */
 router.get('/', (req, res, next) => {
 console.log('init Client:', req.query.user);
-    userid=req.query.user;
+console.log("REquest user id account:",req.query.user);
+console.log("global user id account a :",userid);
+
+if (req.query.user !='undefined'){
+ userid=req.query.user;
+}
     /* dispalying dev tasks and progress */
     db.query("call getclient_projects (?)",[userid],  (err, rows)=> {
-      let projects=[];     
+       
        if (rows[0].length==0) {
            console.log("no tasks found");
          }
@@ -44,15 +50,6 @@ console.log('init Client:', req.query.user);
 
                     }]
                   };
-
-                  // projects[p.projectid].tasks.push({
-                  //   // task_id : p.taskid,
-                  //   task_name : p.description,
-                  //   start_date : p.startdate,
-                  //   end_date:p.enddate,
-                  //   is_done : p.isdone
-
-                  // });
 
                 }else{
                   console.log("Found existing project. so inlude teh task therein");
@@ -93,9 +90,11 @@ console.log("show  tasks within projects",projects);
    
    console.log("REquest user id account:",req.query.user);
    console.log("global user id account b :",userid);
-  if (req.query.user !='undefined'){
+  if (req.query.user>0){
    userid=req.query.user;
+   
   }
+  // its getting in here.
   console.log("global user id account bc :",userid);
 
    var clients=[];

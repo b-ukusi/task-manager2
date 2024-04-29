@@ -38,7 +38,7 @@ router.get('/', (req, res, next) => {
 
      //console.log(" login form content",req)
     const {username,password} =  req.query;
-    console.log(` found username ${username} and pass ${password}`);
+    console.log(` Auth found username ${username} and pass ${password}`);
     // check if user is in db ans password is correct 
     // if user is in db render the dashboard 
     //if user is not found render an error page 
@@ -66,7 +66,11 @@ router.get('/', (req, res, next) => {
             case "developer":
               console.log("developer auth. user=",user);
                  // coz we now have the user/developer, we cna now fetch teh developer projects and add then to the render
-    let tasks=[];           
+       
+                 console.log("Developer logged in. riderect developer page ");
+                 res.redirect(`/dev/?user=${rows[0][0]["Userid"]}`);
+       /*
+                 let tasks=[];           
      await    db.query("call getdev_tasks (?)",[user[0].Userid],  (err, rows)=> {
       let projects=[];     
        if (rows[0].length==0) {
@@ -119,7 +123,7 @@ console.log("show  tasks within projects",projects);
 
   res.render('developer.jade',{ projects:projects, tasks:tasks, user:user[0], developers:user[0]}); 
    }
-  );
+  ); */
 
    console.log("fetching dev projects sync");
    break; // so we exit the switch

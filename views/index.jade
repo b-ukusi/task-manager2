@@ -4,29 +4,46 @@ html(lang="en" dir="ltr")
     meta(charset="utf-8")
     title Login and Registration Form in HTML 
     link(rel="stylesheet", type='text/css', href="/stylesheets/index.css")
+    script(defer, src='/javascripts/login.js')
+
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
    
 
 
   body
-    .wrapper
-      .title-text
-        .title.login Login 
-        
-      .form-container
-        .form-inner
+  .container#container
+      
+      .form-container.sign-up
           form.login(action="/auth", method="get")
-            .field
-              input(type="text", placeholder="Email Address", name= "username",  id="username"  required)
-            .field
-              input(type="password", placeholder="Password",id ="password", name="password" required)
-            
-            .field.btn
-              .btn-layer
-              input(type="submit", value="Login")
+            h1 LOG IN
+            input(type="text", placeholder="Email Address", name= "username",  id="username"  required)
+            input(type="password", placeholder="Password",id ="password", name="password" required)
+            button LOG IN 
       .error-container 
           if(error)
             p  #{message} 
-        script(src="./routes/auth.js")      
-            
-          
+        script(src="./routes/auth.js")    
+
+      .form-container.sing-in
+          form.create-user
+              h1 Registration         
+              input(type="text", id="fname", name="FirstName", placeholder="First Name" required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
+              input(type="text", id="lname", name="LastName", placeholder=" Last Name " required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
+              input(type="text", id="acctype", name="acctrype", placeholder="Developer or Client " required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
+              input(type="email", id="email", name="EmailUser", placeholder="Enter Email" required, title='Please enter a valid email address')
+              label(for="password") 
+              input(type="password", id="password", name="Pass", placeholder="Enter password" required pattern='(?=.*)(?=.*[a-zA-Z]).{8,}', title='Password must be at least 8 characters long and contain both letters and numbers')
+
+              button Resgister 
+      .toggle-container
+        .toggle
+          .toggle-panel.toggle-left
+            h1 Welcome Back!
+            p Enter your personal details to get acces to your projecst 
+            button.hidden#login Sign In
+          .toggle-panel.toggle-right
+            h1 Hello, Friend!
+            p Register with your personal details to get acces and an account 
+            button.hidden#register Sign Up      
+                
+ script(defer, src='/javascripts/login.js')
