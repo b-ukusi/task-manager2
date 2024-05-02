@@ -10,38 +10,48 @@ span(style="font-family: verdana, geneva, sans-serif;")
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
      .container
+      .navigation
         nav
+          div
+           h1 
+             img(src="/images/logo2.jpg", alt="Admin")
+             Admin 
+            ul
+              li
+                a(href="/admin/", class="logo")
+                    h2 DashBoard
+              li
+                a(href="/admin/clients")
+                  i.fas.fa-address-card 
+                  span.nav-item clients 
+              li
+                a(href="/admin/developers")
+                  i.fas.fa-address-book
+                  span.nav-item developers 
+              li
+                a(href="/admin/projects")
+                  i.fas.fa-cogs
+                  span.nav-item projects       
+              
+              li
+                a(href="/admin/tasks")
+                  i.fas.fa-tasks
+                  span.nav-item tasks    
           ul
-            li
-              a(href="/admin/", class="logo")
-                span.nav-item DashBoard
-            li
-              a(href="/admin/clients")
-                i.fas.fa-tasks
-                span.nav-item clients 
-            li
-              a(href="/admin/developers")
-                i.fas.fa-tasks
-                span.nav-item developers 
-            li
-              a(href="/admin/projects")
-                i.fas.fa-tasks
-                span.nav-item projects       
-            li
-              a(href="/admin/tasks")
-                i.fas.fa-tasks
-                span.nav-item tasks    
-            li
-              a(href="/", class="logout")
-                i.fas.fa-sign-out-alt
-                span.nav-item Log out
-
-        section.main 
+           a(href="/", class="logout")
+            i.fas.fa-sign-out-alt
+            span.nav-item2 Log out
+     
+      section.main 
+        h1 welcome users 
+        h2 all isingts and repost generation is available 
              .main-parts
                 .col.column-1
                     .card
-                    .card-body
+                    .card-body1
+                      
                         h5.card-title Projects 
+                        
                         p.card-text
                         each project in projects
                           li
@@ -49,40 +59,59 @@ span(style="font-family: verdana, geneva, sans-serif;")
                             
                 .col.column-2
                     .card
-                    .card-body
+                    .card-body2
+                        i.fas.fa-tasks
                         h5.card-title Developer Accounts  
                         p.card-text 
                         each developer in developers 
                           li
                             p= developer.FirstName
                 .col.column-3
-                    .card
-                    .card-body
+                    .card3
+                    .card-body3
+                        
                         h5.card-title Client Accounts 
                         p.card-text
                         each client in clients 
                           li 
                             p= client.FirstName
-                .report 
-                    .reportcard 
-                    .reportcard-body 
-                      h5.card-title Generate project reports
-                      button.generate-btn(data-modal-target="#modal") Get report 
-                    .modal#modal
-                      .modal-header
-                        .title Get Report
-                        button(data-close-button, class="close-button") &times;
-                      .modal-body 
-                        form(action="/admin/report", method="get")
-                            .user-input-box
-                                      label(for="project Name ") Project Name 
-                                      select#propertyType.select.form-control.input-lg(  name='projects'
-                                      )
-                                    
-                                        each project  in projects 
-                                          li 
-                                            option(value=project.project_id) #{project.projectname}
-                                     
-                            .form-submit-btn 
-                                  input(type="submit", value="Get Report", id="get-report-button")
+                .dispayprojects 
+                    .display-body 
+                      .card 
+                      .card-body4
+                          h5.card-title Projects 
+                            p.card-text
+                            each project in projects
+                              li
+                                p= project.projectname
+                .side
+                  .report 
+                      .reportcard 
+                      .reportcard-body 
+                        h5.card-title Generate project reports
+                        button.generate-btn(data-modal-target="#modal") Get report 
+                      .modal#modal
+                        .modal-header
+                          .title Get Report
+                          button(data-close-button, class="close-button") &times;
+                        .modal-body 
+                          form(action="/admin/report", method="get")
+                              .user-input-box
+                                        label(for="project Name ") Project Name 
+                                        select#propertyType.select.form-control.input-lg(  name='projects'
+                                        )
+                                      
+                                          each project  in projects 
+                                            li 
+                                              option(value=project.project_id) #{project.projectname}
+                                        
+                              .form-submit-btn 
+                                    input(type="submit", value="Get Report", id="get-report-button")
+                  .services 
+                    .card 
+                      h6 services surently being wokrd on
+                      li 
+                          web web dev 
+                      li
+                          or organisation 
                 #overlay      

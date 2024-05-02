@@ -7,8 +7,8 @@
   font-family: 'Montserrat', sans-serif;
 }
 body{
-  background-color:  rgb(54, 129, 85);
-  background: linear-gradient(to right, #e2e2e2, rgb(54, 129, 85));
+  background-color:  #0D153A;
+  background: linear-gradient(to right, #e2e2e2, #0D153A);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,7 +39,7 @@ body{
 }
 
 .container button{
-  background-color: rgba(54, 129, 85, 0.76);
+  background-color:#0D153A;
   color: #fff;
   font-size: 12px;
   padding: 10px 45px;
@@ -144,9 +144,9 @@ container.active .sign-in{
 
 
 .toggle{
-  background-color: rgb(54, 129, 85);
+  background-color:#0D153A;
   height: 100%;
-  background: linear-gradient(to right, #5c6bc0, rgb(54, 129, 85));
+  background: linear-gradient(to right, #D3D0CB, #0D153A);
   color: #fff;
   position: relative;
   left: -100%;
@@ -190,4 +190,11 @@ container.active .sign-in{
 
 .container.active .toggle-right{
   transform: translateX(200%);
+}
+.error-container{
+  background-color: red;
+  /* transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s; */
 }

@@ -466,7 +466,7 @@ db.query("call get_usertypes('client')", (err, rows) => {
 
 
 
-/*delet clinet */
+/*delet developer*/
 router.get('/Developers', async (req, res, next) => {
 
   console.log("load Developers",req.query);
@@ -512,51 +512,78 @@ router.get('/Developers', async (req, res, next) => {
 }
 }
 else{
+  console.log("Developers list",developers);
 // laod mormal if no action specified
-   res.render('adeveloper.jade',{ developers:developers} );
+// it seem s the clints variable
+
+
+
+ db.query("call get_usertypes('developer')", (err, rows) => {
+
+  if (rows[0].length == 0) {
+    console.log("no developer found");
+  }
+  else {
+
+    clients = rows[0];
+  }
+
+  console.log("New Developers len", developers.length);
+
+  console.log("renderdevelopers page afresh ");
+  res.render('adevelopers.jade', { developers: developers });
+
+});
+  
+
+
+
+
  }
 
 });
+
+
 
 
 /*delet task */
 
 
-router.get('/clients', async (req, res, next) => {
+router.get('/tasks', async (req, res, next) => {
 
-  console.log("load Clients",req.query);
+  console.log("load Tasks",req.query);
  
  if (req.query.action){
 
    if (req.query.action=="delete" || req.query.action=="update"){
-     console.log("Change Client ID ", req.query.Userid);
+     console.log("Change Task ID ", req.query.Userid);
      console.log("old Client len", clients.length);
 
      var queryexec="delete from users where userid=?";
-     var params=[req.query.Userid];
+     var params=[req.query.taskid];
      if (req.query.action=="update"){
-       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
-       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+       queryexec="UPDATE `tasks` SET `description` = ?,`startdate` = ?,`enddate` = ?,`projectid` = ? WHERE `Taskid` = ?;";
+       params=[ req.query.description,req.query.startdate,req.query.enddate,req.query.projectid,req.query.Userid];
      }
 
 
       db.query(queryexec,params , (err, rows)=> {
        // its ok we dont have to wait for our condition comes after exec.
            console.log("deleted");
-           db.query("call get_usertypes('client')", (err, rows) => {
+           db.query("call get_tasks", (err, rows) => {
 
           if (rows[0].length == 0) {
-            console.log("no client found");
+            console.log("no task found");
           }
           else {
 
             clients = rows[0];
           }
 
-          console.log("New Clients len", clients.length);
+          console.log("New Tasks len", tasks.length);
 
           console.log("renderclients page afresh ");
-          res.render('aclient.jade', { clients: clients });
+          res.render('atasks.jade', { tasks:tasks });
 
         });
 
@@ -567,50 +594,77 @@ router.get('/clients', async (req, res, next) => {
 }
 }
 else{
-// laod mormal if no action specified
-   res.render('aclient.jade',{ clients:clients} );
- }
+  console.log("Task list",tasks);
+  // laod mormal if no action specified
+  // it seem s the clints variable
+  
+  
+  
+   db.query("call get_tasks", (err, rows) => {
+  
+    if (rows[0].length == 0) {
+      console.log("no tasks found");
+    }
+    else {
+  
+      clients = rows[0];
+    }
+  
+    console.log("New tasks len", tasks.length);
+  
+    console.log("rendertasks page afresh ");
+    res.render('atasks.jade', { tasks: tasks });
+  
+  });
+    
+  
+  
+  
+  
+   }
+  
+  });
+  
 
-});
 
 
 /*delet projects */
 
-router.get('/clients', async (req, res, next) => {
+router.get('/projects', async (req, res, next) => {
 
-  console.log("load Clients",req.query);
+  console.log("load Projecst",req.query);
  
  if (req.query.action){
 
    if (req.query.action=="delete" || req.query.action=="update"){
-     console.log("Change Client ID ", req.query.Userid);
-     console.log("old Client len", clients.length);
+     console.log("Change Project ID ", req.query.Userid);
+     console.log("old Project len", clients.length);
 
      var queryexec="delete from users where userid=?";
      var params=[req.query.Userid];
      if (req.query.action=="update"){
-       queryexec="UPDATE `users` SET `FirstName` = ?,`LastName` = ?,`Pass` = ?,`Email` = ? WHERE `Userid` = ?;";
-       params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
+       queryexec="UPDATE `users` SET `projectname` = ?,`description` = ?,`startdate` = ?,`enddate` = ? WHERE `Userid` = ?;";
+       params=[ req.query.projectname,req.query.description,req.query.startdate,req.query.enddate,req.query.Userid];
      }
 
 
       db.query(queryexec,params , (err, rows)=> {
        // its ok we dont have to wait for our condition comes after exec.
            console.log("deleted");
-           db.query("call get_usertypes('client')", (err, rows) => {
+           db.query("call get_projects", (err, rows) => {
 
           if (rows[0].length == 0) {
-            console.log("no client found");
+            console.log("no project found");
           }
           else {
 
             clients = rows[0];
           }
 
-          console.log("New Clients len", clients.length);
+          console.log("New Project len", clients.length);
 
-          console.log("renderclients page afresh ");
-          res.render('aclient.jade', { clients: clients });
+          console.log("renderproject page afresh ");
+          res.render('aprojects.jade', { projects: projects });
 
         });
 
@@ -621,10 +675,36 @@ router.get('/clients', async (req, res, next) => {
 }
 }
 else{
-// laod mormal if no action specified
-   res.render('aclient.jade',{ clients:clients} );
- }
-
-});
+  console.log("Projects list",projects);
+  // laod mormal if no action specified
+  // it seem s the clints variable
+  
+  
+  
+   db.query("call get_projects", (err, rows) => {
+  
+    if (rows[0].length == 0) {
+      console.log("no project found");
+    }
+    else {
+  
+      clients = rows[0];
+    }
+  
+    console.log("New project len", developers.length);
+  
+    console.log("renderprojecst page afresh ");
+    res.render('aprojecst.jade', { projects: projects });
+  
+  });
+    
+  
+  
+  
+  
+   }
+  
+  });
+  
 
 module.exports = router;

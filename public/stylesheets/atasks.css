@@ -10,22 +10,36 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, black, rgb(54, 129, 85));
+  background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
+  background-repeat: no-repeat;
+}
+ul {
+ 
+  list-style-type: none;
+
+
 }
 .container{
   display: flex;
+  border-radius: 30px;
 }
 /* navigation bar*/
 nav{
-  position: sticky;
-  top: 0;
-  bottom: 0;
-  height: 100vh;
-  left: 0;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+   position: sticky;
   background: #fff;
+  left: -250px;
   width: 200px;
-  overflow: hidden;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-top: 16px;
+  border-top-right-radius: 15px ;
+  border-bottom-right-radius: 15px ;
+ 
 }
 a{
   position: relative;
@@ -34,25 +48,30 @@ a{
   display: table;
   width: 280px;
   padding: 7px;
+  text-decoration: none;
 }
 nav .fas{
-  position: relative;
-  width: 70px;
-  height: 40px;
+  /* position: relative; */
+  width: 50px;
+  height: 20px;
   top: 14px;
   font-size: 20px;
   text-align: center;
 }
 .nav-item{
-  position: relative;
+  /* position: relative; */
   top: 12px;
   margin-left: 7px;
+  text-decoration: none;
 }
 a:hover{
-  background: #eee;
+  background-color:#0D153A;
+  border-radius: 10px;
+  width: 80%;
+  color: #fff;
+  text-decoration: underline;
+
 }
-
-
  /* body content */
 .main {
   background-color: #eee;
@@ -89,12 +108,13 @@ h1{
     cursor: pointer;
     align-items: center;
     gap: 0.5em;
-    background-color: rgb(54, 129, 85);
+    background-color: #0D153A;
     padding: 10px;
     border-radius: 25px;
     display: flex;
     /*justify-content: flex-end; /* Align items from the start */
     padding-right: 5%;
+    color: #fff;
  
 }
 .newproject-button:hover {

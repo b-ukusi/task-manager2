@@ -12,27 +12,31 @@ span(style="font-family: verdana, geneva, sans-serif;")
     body
     .container
         nav
+          div 
+            h1 
+             img(src="/images/logo2.jpg", alt="Admin")
+             Admin 
+            ul
+              li
+                a(href="/admin/", class="logo")
+                  h2 DashBoard
+              li
+                a(href="/admin/clients")
+                  i.fas.fa-address-card 
+                  span.nav-item clients 
+              li
+                a(href="/admin/developers")
+                  i.fas.fa-address-book
+                  span.nav-item developers 
+              li
+                a(href="/admin/projects")
+                  i.fas.fa-cogs
+                  span.nav-item projects
+              li
+                a(href="/admin/tasks")
+                  i.fas.fa-tasks
+                  span.nav-item tasks
           ul
-            li
-              a(href="/admin/", class="logo")
-                span.nav-item DashBoard
-            li
-              a(href="/admin/clients")
-                i.fas.fa-tasks
-                span.nav-item clients 
-            li
-              a(href="/admin/developers")
-                i.fas.fa-tasks
-                span.nav-item developers 
-            li
-              a(href="/admin/projects")
-                i.fas.fa-tasks
-                span.nav-item projects
-            li
-              a(href="/admin/tasks")
-                i.fas.fa-tasks
-                span.nav-item tasks
-            li
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
