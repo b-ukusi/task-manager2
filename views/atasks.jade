@@ -77,7 +77,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
                             p= `Desription: ${task.description}`
                             p= `Projectid : ${task.projectid}`
                       .info-btn
-                      input(type="button" value="Delete Task") 
+                      input(type="button" value="Delete Tasks" onclick="window.location.href='tasks?action=delete&Userid=#{task.Taskid}'")
+                   
                       //- input(type="button" value="Update Client" onclick="window.location.href='clients?action=update&Userid=readfrom the page atakaa its what was pased as user id $FirstName=ilefiledikonafirtsname'")
                       //- // so make this one for update pop up a window then on its on click, make it do like the delete so can update with the req.query params then reload teh clients page.
 

@@ -10,33 +10,44 @@ span(style="font-family: verdana, geneva, sans-serif;")
     body
       .container
         nav
+          div 
+            h1 
+             img(src="/images/logo2.jpg", alt="Developer")
+            //- ${user.Userfirstname}
+             Admin 
+            ul
+              li
+                a(href=`/dev?user=${user.Userid}`, class="logo")
+                  h2 DashBoard
+              
+              li
+                a(href="/dev/projects")
+                  i.fas.fa-cogs
+                  span.nav-item Projects
+              li
+                a(href="/dev/notes")
+                  i.fas.fa-tasks
+                  span.nav-item Notes
+              //- li
+                a(href=`/dev/account?user=${user.Userid}`)
+                  i.fas.fa-home
+                  span.nav-item Account Details 
+                  
           ul
-            li
-              a(href=`/dev?user=${user.Userid}`, class="logo")
-                span.nav-item DashBoard
-            
-            li
-              a(href="/dev/projects")
-                i.fas.fa-tasks
-                span.nav-item Projects
-            li
-              a(href="/dev/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
-            li
-              a(href=`/dev/account?user=${user.Userid}`)
-                i.fas.fa-home
-                span.nav-item Account Details 
-                
-            li
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
-        section.main 
-             .main-projects
-                  each project in projects 
-                      .card 
-                       .card-body                                         
-                          p= `Project # : ${project.project_id}`
-                          p= `Project Name : ${project.project_name}`
+        section.main
+          h1 Projects
+          .card1
+            
+          .main1
+            each project in projects 
+                .card2
+                  .card-body                                         
+                      p= `Project ID : ${project.project_id}`
+                      p= `Project Name : ${project.project_name}`
+                      p= `Project Description : ${project.project_description}`
+
+
                        

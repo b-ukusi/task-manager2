@@ -12,25 +12,30 @@ span(style="font-family: verdana, geneva, sans-serif;")
     body
       .container
         nav
-          ul
-            li
-              a(href=`/dev?user=${user.Userid}`, class="logo")
-                span.nav-item DashBoard
-            
-            li
-              a(href="/dev/projects")
-                i.fas.fa-tasks
-                span.nav-item Projects
-            li
-              a(href="/dev/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
-            li
-              a(href=`/dev/account?user=${user.Userid}`)
-                i.fas.fa-home
-                span.nav-item Account Details 
-                
-            li
+          div 
+            h1
+             img(src="/images/logo2.jpg", alt="Developer")
+            //- ${user.Userfirstname}
+             Admin 
+            ul
+              li
+                a(href=`/dev?user=${user.Userid}`, class="logo")
+                  h2 DashBoard
+              
+              li
+                a(href="/dev/projects")
+                  i.fas.fa-cogs
+                  span.nav-item Projects
+              li
+                a(href="/dev/notes")
+                  i.fas.fa-tasks
+                  span.nav-item Notes
+              //- li
+                a(href=`/dev/account?user=${user.Userid}`)
+                  i.fas.fa-home
+                  span.nav-item Account Details 
+                  
+          ul 
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
@@ -58,17 +63,15 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .form-submit-btn
                                   input(type="submit", value="Create Note")
                 .main-body2  
+                   each note in notes
                     .card 
                       .card-body 
                           h5.card-title Notes
-                          p.card-text 
-                          p= JSON.stringify(notes)
-                          each note in notes
-                            li(onclick="displayPopup()") 
                             p= `User # : ${note.noteid}`
                             p= `User # : ${note.taskid}`
-                    
                             p= `Description : ${note.description}`
+                      .info-btn
+                          input(type="button"  value="Delete Projects" )
                             
                                         
                 #overlay  

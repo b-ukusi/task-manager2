@@ -43,75 +43,96 @@ span(style="font-family: verdana, geneva, sans-serif;")
             span.nav-item2 Log out
      
       section.main 
-        h1 welcome users 
-        h2 all isingts and repost generation is available 
-             .main-parts
-                .col.column-1
-                    .card
-                    .card-body1
-                      
-                        h5.card-title Projects 
+              .card20 
+                  button.newdeveloper-button(data-modal-target="#modal")  
+                    i.fas.fa-user-alt
+                    h6 Developer 
+                .modal#modal
+                    .modal-header
+                      .title User details
+                      button(data-close-button, class="close-button") &times;
+                    .modal-body
+                      .card-userinfo
                         
-                        p.card-text
-                        each project in projects
-                          li
-                            p= project.projectname
+                          //- p= `User ID: ${User.Userid} `
+                           `  
+                .main-body2 
+                      .card21 
+
+                            h1 Welcome, User! 
+                            h2 All insights and repost generation is available. 
                             
-                .col.column-2
-                    .card
-                    .card-body2
-                        i.fas.fa-tasks
-                        h5.card-title Developer Accounts  
-                        p.card-text 
-                        each developer in developers 
-                          li
-                            p= developer.FirstName
-                .col.column-3
-                    .card3
-                    .card-body3
-                        
-                        h5.card-title Client Accounts 
-                        p.card-text
-                        each client in clients 
-                          li 
-                            p= client.FirstName
-                .dispayprojects 
-                    .display-body 
-                      .card 
-                      .card-body4
-                          h5.card-title Projects 
-                            p.card-text
-                            each project in projects
-                              li
-                                p= project.projectname
-                .side
-                  .report 
-                      .reportcard 
-                      .reportcard-body 
-                        h5.card-title Generate project reports
-                        button.generate-btn(data-modal-target="#modal") Get report 
-                      .modal#modal
-                        .modal-header
-                          .title Get Report
-                          button(data-close-button, class="close-button") &times;
-                        .modal-body 
-                          form(action="/admin/report", method="get")
-                              .user-input-box
-                                        label(for="project Name ") Project Name 
-                                        select#propertyType.select.form-control.input-lg(  name='projects'
-                                        )
+                      .main-parts
+                          .col.column-1
+                              .card
+                              .card-body1
+                                
+                                  h5.card-title Projects 
+                                  
+                                  p.card-text
+                                  
+                                    #{projects.length}
+                                  //- each project in projects
+                                  //-   li
+                                  //-     p= project.projectname
                                       
-                                          each project  in projects 
-                                            li 
-                                              option(value=project.project_id) #{project.projectname}
-                                        
-                              .form-submit-btn 
-                                    input(type="submit", value="Get Report", id="get-report-button")
-                  .services 
-                    .card 
-                      h6 services surently being wokrd on
-                      li 
-                          web web dev 
-                      li
-                          or organisation 
-                #overlay      
+                          .col.column-2
+                              .card
+                              .card-body2
+                                  
+                                  h5.card-title Developer Accounts  
+                                  p.card-text 
+                                      #{developers.length}
+                                  //- each developer in developers 
+                                    li
+                                      p= developer.FirstName
+                          .col.column-3
+                              .card3
+                              .card-body3
+                                  
+                                  h5.card-title Client Accounts 
+                                  p.card-text
+                                    #{clients.length}
+                                  //- each client in clients 
+                                    li 
+                                      p= client.FirstName
+                          .displayprojects 
+                              each project in projects
+                                .card 
+                                  .card-body4
+                                    h5 projects
+                                          p= `Project Name :${project.projectname}`
+                                          p= `Start Date :${project.startdate}`
+                                          p= `End Date :${project.enddate}`
+
+                          .side
+                            .report 
+                                .reportcard 
+                                .reportcard-body 
+                                  h5.card-title Generate project reports
+                                  button.generate-btn(data-modal-target="#modal") Get report 
+                                .modal#modal
+                                  .modal-header
+                                    .title Get Report
+                                    button(data-close-button, class="close-button") &times;
+                                  .modal-body 
+                                    form(action="/admin/report", method="get")
+                                        .user-input-box
+                                                  label(for="project Name ") Project Name 
+                                                  select#propertyType.select.form-control.input-lg(  name='projects'
+                                                  )
+                                                
+                                                    each project  in projects 
+                                                      li 
+                                                        option(value=project.project_id) #{project.projectname}
+                                                  
+                                        .form-submit-btn 
+                                              input(type="submit", value="Get Report", id="get-report-button")
+                            .services 
+                              .card 
+                                h6 services surently being wokrd on
+                                li 
+                                    web web dev 
+                                li
+                                    or organisation 
+                          #overlay      

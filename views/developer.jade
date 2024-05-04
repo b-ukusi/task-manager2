@@ -5,65 +5,91 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Devloper Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/dev.css")
+      script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
 body
       .container
         nav
-          ul
-            li
-              a(href=`/dev?user=${user.Userid}`, class="logo")
-                span.nav-item DashBoard
-            
-            li
-              a(href="/dev/projects")
-                i.fas.fa-tasks
-                span.nav-item Projects
-            
-            li
-              a(href="/dev/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
+          div 
+            h1 
+             img(src="/images/logo2.jpg", alt="Developer")
+            //- ${user.Userfirstname}
+             Admin 
+            ul
+              li
+                a(href=`/dev?user=${user.Userid}`, class="logo")
+                  h2 DashBoard
+              
+              li
+                a(href="/dev/projects")
+                  i.fas.fa-cogs
+                  span.nav-item Projects
+              
+              li
+                a(href="/dev/notes")
+                  i.fas.fa-tasks
+                  span.nav-item Notes
 
-            li
-              a(href=`/dev/account?user=${user.Userid}`)
-                i.fas.fa-home
-                span.nav-item Account Details
-                
-            li
+              //- li
+                a(href=`/dev/account?user=${user.Userid}`)
+                  i.fas.fa-home
+                  span.nav-item Account Details
+                  
+          ul
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
-        
         section.main1
-          each project in projects
-                          li
-                            .ctn-project
-                                .ctn-project-desc
-                                    h1 Project: #{project.project_name} 
+                .card20 
+                  button.newdeveloper-button(data-modal-target="#modal")  
+                    i.fas.fa-user-alt
+                    h6 Developer 
+                .modal#modal
+                    .modal-header
+                      .title User details
+                      button(data-close-button, class="close-button") &times;
+                    .modal-body
+                      .card-userinfo
+                        each developer in developers 
+                            p= `Developer ID : ${developer.Userid} `
+                            p= `Developer Name: ${developer.FirstName} `  
+                .main-body2
+                      .card21 
+                              h1 Welcome, User! 
+                              h2 All insights and repost generation is available.
+                              button  
+                          
+                          each project in projects
+                                          li
+                                            .ctn-project
+                                                .ctn-project-desc
+                                                    h1 Project: #{project.project_name} 
 
-                                    h2 Tasks (#{project.tasks.length})
-                                    
-                                        each task in project.tasks
-                                              .card
-                                        
-                                                        .form-check
-                                                          input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                                                          label.form-check-label(for="flexCheckDefault") #{task.task_name}
-                                                      
-                                .ctn-project-progress
-                                  .card
-                                    h3 Progress
-                                        .row
-                                          .col-md-9.col-sm-6
-                                            
-                                            .progress.blue
-                                              span.progress-left
-                                                span.progress-bar
-                                              span.progress-right
-                                                span.progress-bar
-                                              .progress-value #{((project.tasks.filter(tsk => tsk.is_done == 1).length / project.tasks.length) * 100)}%
-    
-            
-  
+                                                    h2 Tasks (#{project.tasks.length})
+                                                    
+                                                        each task in project.tasks
+                                                              .card
+                                                        
+                                                                        .form-check
+                                                                          input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                                          label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                                      
+                                                .ctn-project-progress
+                                                  .card
+                                                    h3 Progress
+                                                        .row
+                                                          .col-md-9.col-sm-6
+                                                            
+                                                            .progress.blue
+                                                              span.progress-left
+                                                                span.progress-bar
+                                                              span.progress-right
+                                                                span.progress-bar
+                                                              .progress-value #{((project.tasks.filter(tsk => tsk.is_done == 1).length / project.tasks.length) * 100)}%
+
+                      #overlay
+                
+                        
+              
   

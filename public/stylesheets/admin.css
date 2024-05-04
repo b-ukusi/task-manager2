@@ -19,6 +19,16 @@ ul {
   
   
 }
+.main h1{
+  color: #fff;
+  font-weight: 900;
+
+}
+.main h2{
+  color: #fff;
+  font-weight:100;
+
+}
 .container{
   display: flex;
   border-radius: 30px;
@@ -58,6 +68,7 @@ ul {
   top: 14px;
   font-size: 20px;
   text-align: center;
+  transition: width 2s, height 2s, transform 2s;
 }
 nav .material{  
   position: relative;
@@ -79,6 +90,9 @@ a:hover{
   width: 80%;
   color: #fff;
   text-decoration: underline;
+   /* width: 60px;
+  height: 30px; */ 
+  transform: scale(1.3); 
 } 
  
 
@@ -111,7 +125,7 @@ a:hover{
  
  .main-parts .card-body1{
   width: 300px;
-  height: 200px;
+  height: 130px;
   overflow: auto;
   margin: 10px;
   background:rgb(231, 187, 65, 0.7);
@@ -124,7 +138,7 @@ a:hover{
 }
 .main-parts .card-body2{
   width: 300px;
-  height: 200px;
+  height: 130px;
   overflow: auto;
   margin: 10px;
   background: rgb(57, 62, 65);
@@ -136,7 +150,7 @@ a:hover{
 }
 .main-parts .card-body3{
   width: 300px;
-  height: 200px;
+  height: 130px;
   overflow: auto;
   margin: 10px;
   background:rgb(231, 229, 223);
@@ -148,16 +162,15 @@ a:hover{
 }
 
 /* dispay list of projects and date started and ended  */
-.main-parts .display-body{
+.displayprojects{
   width: 600px;
-      height: 200px;
+      height: 250px;
       background:yellow;
       padding-top: -1%;
 }
 .main-parts .card-body4{
- 
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 10%;
   overflow: auto;
   margin: 20px;
   background: red; 
@@ -166,6 +179,7 @@ a:hover{
   padding: 18px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
   scroll-behavior: smooth;
+  /* display: inline; */
 }
  
 /* repost generation  */
@@ -267,6 +281,22 @@ a:hover{
   height: 100%;
 
 }
+
+
+/* po up*/
+.card20 
+{ 
+  width: 100%;
+  height: 100%;
+  display: flex;
+ justify-content: right;
+ margin-top: 
+}
+button{
+  border-radius: 10px;
+  width: 7%;
+}
+
 
     /* page animations  */
     @keyframes fade-down{

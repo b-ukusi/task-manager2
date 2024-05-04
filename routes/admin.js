@@ -132,8 +132,8 @@ router.get('/', async (req, res, next) => {
    */
   }); 
   
- 
-  /*develo[er routs and db query */
+ /*
+  //develo[er routs and db query 
   router.get('/developers', (req, res, next) => {
     res.render('adevelopers.jade', {developers:developers});
     
@@ -150,7 +150,7 @@ router.get('/', async (req, res, next) => {
     res.render('adevelopers.jade', {developers:developers});
      
    }); */
-  });
+ // });
 
 
    /* clients routes and db queries */
@@ -390,7 +390,7 @@ doc.fontSize(18).text(`% Completed : ${(percdone/ptasks.length)*100} %`);
 router.get('/clients', async (req, res, next) => {
 
   console.log("load Clients",req.query);
- 
+  //here? 
  if (req.query.action){
 
    if (req.query.action=="delete" || req.query.action=="update"){
@@ -467,12 +467,12 @@ db.query("call get_usertypes('client')", (err, rows) => {
 
 
 /*delet developer*/
-router.get('/Developers', async (req, res, next) => {
+router.get('/developers', async (req, res, next) => {
 
-  console.log("load Developers",req.query);
+  console.log("Action Developers",req.query);
+ 
  
  if (req.query.action){
-
    if (req.query.action=="delete" || req.query.action=="update"){
      console.log("Change Developers ID ", req.query.Userid);
      console.log("old Developers len", developers.length);
@@ -484,10 +484,12 @@ router.get('/Developers', async (req, res, next) => {
        params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
      }
 
-
+      console.log("queryexec ",queryexec);
+      console.log("params",params);
       db.query(queryexec,params , (err, rows)=> {
        // its ok we dont have to wait for our condition comes after exec.
-           console.log("deleted");
+           console.log("actioned",rows);
+           console.log(err);
            db.query("call get_usertypes('developer')", (err, rows) => {
 
           if (rows[0].length == 0) {
@@ -501,7 +503,9 @@ router.get('/Developers', async (req, res, next) => {
           console.log("New Developers len",developers.length);
 
           console.log("renderdeveloperss page afresh ");
-          res.render('adeveloeprs.jade', { developers: developers });
+          res.render('adevelopers.jade', { developers: developers });
+
+          return;
 
         });
 
@@ -557,7 +561,7 @@ router.get('/tasks', async (req, res, next) => {
 
    if (req.query.action=="delete" || req.query.action=="update"){
      console.log("Change Task ID ", req.query.Userid);
-     console.log("old Client len", clients.length);
+     console.log("old Tasks len", Tasks.length);
 
      var queryexec="delete from users where userid=?";
      var params=[req.query.taskid];
@@ -569,7 +573,7 @@ router.get('/tasks', async (req, res, next) => {
 
       db.query(queryexec,params , (err, rows)=> {
        // its ok we dont have to wait for our condition comes after exec.
-           console.log("deleted");
+           console.log(" deleted");
            db.query("call get_tasks", (err, rows) => {
 
           if (rows[0].length == 0) {
