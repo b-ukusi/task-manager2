@@ -10,21 +10,25 @@ span(style="font-family: verdana, geneva, sans-serif;")
     body
       .container
         nav
+          div 
+            h1 
+              img(src="/images/logo2.jpg", alt="Admin")
+              Admin
+            ul
+              li
+                a(href="/client/", class="logo")
+                  h2 DashBoard
+              
+              li
+                a(href="/client/notes")
+                  i.fas.fa-tasks
+                  span.nav-item Notes
+              li
+                a(href="/client/account")
+                  i.fas.fa-home
+                  span.nav-item Account Details 
+                  
           ul
-            li
-              a(href="/client/", class="logo")
-                span.nav-item DashBoard
-            
-            li
-              a(href="/client/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
-            li
-              a(href="/client/account")
-                i.fas.fa-home
-                span.nav-item Account Details 
-                
-            li
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out

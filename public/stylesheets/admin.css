@@ -13,6 +13,7 @@ html,body{
   /* background: -webkit-linear-gradient(left, black, rgb(54, 129, 85)); */
   background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
 }
+
 ul {
  
     list-style-type: none;
@@ -171,11 +172,11 @@ a:hover{
       /* display: flex; /* This will make the card display in a line  */
       overflow: auto; 
       scroll-behavior: smooth;
-
+      padding: 10px 10px 30px 10px;
 
 }
 .main-parts .card-body4{
-  width: 95%;
+  width: 98%;
   height: 10%;
   margin: 10px; 
   /* margin-bottom: 20px; */
@@ -188,7 +189,7 @@ a:hover{
   scroll-behavior: smooth;
   display: flex;
   flex-direction: row;
-  
+  background-color: #E6E7E7;
   
 }
 p{

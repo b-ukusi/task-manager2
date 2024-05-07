@@ -20,18 +20,21 @@ if (req.query.user !='undefined'){
  userid=req.query.user;
 }
     /* dispalying dev tasks and progress */
+    
     db.query("call getclient_projects (?)",[userid],  (err, rows)=> {
        
        if (rows[0].length==0) {
            console.log("no tasks found");
          }
        else {
-          console.log("got tasks",rows[0]);
-           tasks=rows[0];
+        console.log("got tasks",rows[0]);
+        tasks=rows[0];
 
-           //loop through all taks and group per project . \
-           console.log("db  length within projects",tasks.length); 
-
+        //loop through all taks and group per project . \
+        console.log("db  length within projects",tasks.length);     
+       
+          
+        
                       
             for(const p of tasks) {
                 if (!projects[p.projectid]) {
@@ -64,8 +67,8 @@ if (req.query.user !='undefined'){
                 }
             };
 
-
-         }
+          }
+         
       
 projects = projects.filter(element => element);
 console.log("show  tasks within projects",projects); 
@@ -79,7 +82,7 @@ console.log("show  tasks within projects",projects);
 
 
 
-   /* client notes page just to see the syles   */
+ /* client notes page just to see the syles   */
  router.get('/notes', (req, res, next) => {
     res.render('clientnotes.jade');
     
@@ -116,5 +119,9 @@ console.log("show  tasks within projects",projects);
 
    
 
- 
+ /* projetcs in relation ot clinet */ 
+router.get('/projects', (req, res, next) => {
+  res.render('clientprojects.jade');
+  
+});
 module.exports = router;

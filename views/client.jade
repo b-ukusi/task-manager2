@@ -10,71 +10,92 @@ span(style="font-family: verdana, geneva, sans-serif;")
     body
       .container
         nav
-          ul
-            li
-              a(href=`/client?user=${user.Userid}`, class="logo")
-                span.nav-item Dashboard 
-            li
-              a(href="/client/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
-            li
-              a(href=`/client/account?user=${user.Userid}`)
-                i.fas.fa-home
-                span.nav-item Account Details 
+          div
+           h1 
+             img(src="/images/logo2.jpg", alt="Admin")
+             Client
+            ul
+              li
+                a(href=`/client?user=${user.Userid}`, class="logo")
+                  h2 Dashboard 
+              li
+                a(href="/client/projects")
+                  i.fas.fa-tasks
+                  span.nav-item Projects    
+              li
+                a(href="/client/notes")
+                  i.fas.fa-tasks
+                  span.nav-item Notes
+              li
+                a(href=`/client/account?user=${user.Userid}`)
+                  i.fas.fa-home
+                  span.nav-item Account Details 
                 
-            li
+          ul
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
          section.main1
-          each project in projects
-                          li
-                            .ctn-project
-                                .ctn-project-desc
-                                    h1 Project: #{project.project_name} 
+                .card20 
+                  button.newdeveloper-button(data-modal-target="#modal")  
+                    i.fas.fa-user-alt
+                    h6 Admin 
+                 .modal#modal
+                    .modal-header
+                      .title User details
+                      button(data-close-button, class="close-button") &times;
+                    .modal-body
+                      .card-userinfo
+                        
+                          //- p= `User ID: ${User.Userid} `
+                           `
+                        each project in projects
+                                        li
+                                          .ctn-project
+                                              .ctn-project-desc
+                                                  h1 Project: #{project.project_name} 
 
-                                    h2 Tasks (#{project.tasks.length})
-                                    
-                                        each task in project.tasks
-                                              .card
-                                        
-                                                        .form-check
-                                                          input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                                                          label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                  h2 Tasks (#{project.tasks.length})
+                                                  
+                                                      each task in project.tasks
+                                                            .card
                                                       
-                                .ctn-project-progress
-                                  .card
-                                    h3 Progress
-                                        .row
-                                   
-        
-            .main-skills
-              .card
-                h3 Progress
-                    .row
-                      .col-md-9.col-sm-6
-                        .progress.blue
-                          span.progress-left
-                            span.progress-bar
-                          span.progress-right
-                            span.progress-bar
-                          .progress-value 100%
+                                                                      .form-check
+                                                                        input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                                        label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                                    
+                                              .ctn-project-progress
+                                                .card
+                                                  h3 Progress
+                                                      .row
+                                                
+                      
+                          .main-skills
+                            .card
+                              h3 Progress
+                                  .row
+                                    .col-md-9.col-sm-6
+                                      .progress.blue
+                                        span.progress-left
+                                          span.progress-bar
+                                        span.progress-right
+                                          span.progress-bar
+                                        .progress-value 100%
 
-          
-          
-          
-          section.main-course
-              h1 Recent upadetes 
-              .course-box
-                h3 task bar update
-                .course
-                  .box
-                    h3 HTML
-                    p 80% - progress Lorem Ipsum is simply dummy text of
-                     the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                    including versions of Lorem Ipsum.
-                  
+                        
+                        
+                        
+                        section.main-course
+                            h1 Recent upadetes 
+                            .course-box
+                              h3 task bar update
+                              .course
+                                .box
+                                  h3 HTML
+                                  p 80% - progress Lorem Ipsum is simply dummy text of
+                                  the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                  dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+                                  including versions of Lorem Ipsum.
+                 #overlay                
