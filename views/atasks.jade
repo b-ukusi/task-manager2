@@ -55,13 +55,19 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Project Name
-                                      select#propertyType.select.form-control.input-lg(  name='developer'
+                                      select#propertyType.select.form-control.input-lg(  name='project'
                                       )
                                     
                                         each project in projects 
                                           li 
-                                            option(value=project.Userid) #{project.projectid}
-   
+                                            option(value=project.projectname) #{project.projectname}
+                                  .user-input-box
+                                      label(for="Start date ") Start date 
+                                      input(type="date", id="startdate ", name="startdate", placeholder="Enter start date" required)
+                                  .user-input-box
+                                      label(for="End date ") End date 
+                                      input(type="date", id="enddate ", name="enddate", placeholder="Enter End date" required)    
+                                  
                                   .user-input-box                            
                                       label(for="Description") Task description
                                       input(type="text", id="description", name="description", placeholder="Enter description" required, pattern='[A-Za-z]{10,}',title='Name must be at least 3 letters and contain only letters')
@@ -75,7 +81,10 @@ span(style="font-family: verdana, geneva, sans-serif;")
                       .card-body                
                             p= `User # : ${task.taskid}`
                             p= `Desription: ${task.description}`
-                            p= `Projectid : ${task.projectid}`
+                            p= `Project ID: ${task.projectid}`
+                            p= `Start date : ${task.startdate}`
+                            p= `End Date: ${task.enddate}`
+
                       .info-btn
                       input(type="button" value="Delete Tasks" onclick="window.location.href='tasks?action=delete&Userid=#{task.Taskid}'")
                    

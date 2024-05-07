@@ -58,8 +58,14 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                   .user-input-box2
                                       label(for="Clients Name ") Note Content
                                       input(type="text", id="Note Content", name="notecontent", placeholder=" Content" required)
-                                  
-                                
+                                  //- .user-input-box
+                                      label(for="Clients Name ") Client name 
+                                      select#propertyType.select.form-control.input-lg(  name='client'
+                                      )
+                                    
+                                        each task in tasks
+                                          li 
+                                            option(value=task.taskid) #{task.taskid}
                               .form-submit-btn
                                   input(type="submit", value="Create Note")
                 .main-body2  

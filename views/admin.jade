@@ -46,8 +46,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
               .card20 
                   button.newdeveloper-button(data-modal-target="#modal")  
                     i.fas.fa-user-alt
-                    h6 Developer 
-                .modal#modal
+                    h6 Admin 
+                 .modal#modal
                     .modal-header
                       .title User details
                       button(data-close-button, class="close-button") &times;
@@ -97,13 +97,13 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                     li 
                                       p= client.FirstName
                           .displayprojects 
-                              each project in projects
-                                .card 
-                                  .card-body4
-                                    h5 projects
-                                          p= `Project Name :${project.projectname}`
-                                          p= `Start Date :${project.startdate}`
-                                          p= `End Date :${project.enddate}`
+                            h5 projectd 
+                            each project in projects
+                              .card
+                                .card-body4  
+                                  p= `Project Name: ${project.projectname}` 
+                                  p= `Start Date: ${project.startdate}`
+                                  p= `End Date: ${project.enddate}`
 
                           .side
                             .report 

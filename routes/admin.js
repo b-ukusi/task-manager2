@@ -178,21 +178,23 @@ router.get('/tasks', (req,res,next)=>{
   /* create items projects projects page  */
 
   router.get('/createproject', (req, res, next) => {
-    console.log("Ad project",req.query);
+    console.log("Ad new project",req.query);
 
   const {client,developer,ProjectName,description,startdate,enddate}=req.query;
 db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,description,startdate,enddate],  (err, rows)=> {
   if (err){
     console.log(err);
-    res.render('successpro.jade', { message: 'Failed to create client.' });
+    res.render('fail.jade', { message: 'Failed to create project.' });
   }
   else{
     console.log(rows);
-    res.render('dbupFmessage.jade', { message: 'Client created successfully!' });
+    res.render('dbupFmessage.jade', { message: 'Project created successfully!' });
   }
   });
-
-
+});
+ 
+router.get('/createproject', (req, res, next) => {
+  res.render('dbupFmessage.jade');
 });
 
 
@@ -223,27 +225,34 @@ db.query("call save_user(?,?,?,?,?)",['client',FirstName,LastName,EmailUser,Pass
 router.get('/createclients', (req, res, next) => {
   res.render('dbupFmessage.jade');
 });
+
+
+
   /* create developer developer pages */
   router.get('/createdev', (req, res, next) => {
-    console.log("Ad client",req.query);
+    console.log("Ad new Developer",req.query);
 
   const {FirstName,LastName,EmailUser,Pass}=req.query;
 db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,Pass],  (err, rows)=> {
  
   if (err){
     console.log(err);
-    res.render('successdev.jade', { message: 'Failed to create client.' });
+    res.render('fail.jade', { message: 'Failed to create client.' });
   }
   else{
     console.log(rows);
-    res.render('succes.jade', { message: 'Client created successfully!' });
+    res.render('successdev.jade', { message: 'Client created successfully!' });
   }
   });
 
-
  });
+ router.get('/createdev', (req, res, next) => {
+  res.render('dbupFmessage.jade');
+});
 
-   /*create tasks page*/  
+
+
+/*create tasks page*/  
   router.get('/creattask', (req, res, next) => {
     console.log("Add task",req.query);
 
@@ -252,15 +261,17 @@ db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,end
   
   if (err){
    // console.log(err);
-   res.render('successtask.jade', { message: 'Failed to create client.' });
+   res.render('fail.jade', { message: 'Failed to create client.' });
    }
   else{
    console.log(rows);
-    res.render('successtask.jade', { message: 'Client created successfully!' });
+    res.render('dbupSmessage.jade', { message: 'Client created successfully!' });
   }
   });
 });
-
+router.get('/createtasks', (req, res, next) => {
+  res.render('dbupFmessage.jade');
+});
 
 /** report gen route  */
 
@@ -560,10 +571,10 @@ router.get('/tasks', async (req, res, next) => {
  if (req.query.action){
 
    if (req.query.action=="delete" || req.query.action=="update"){
-     console.log("Change Task ID ", req.query.Userid);
-     console.log("old Tasks len", Tasks.length);
+     console.log("Change Task ID ", req.query.taskid);
+     console.log("old Tasks len", tasks.length);
 
-     var queryexec="delete from users where userid=?";
+     var queryexec="delete from tasks where taskid=?";
      var params=[req.query.taskid];
      if (req.query.action=="update"){
        queryexec="UPDATE `tasks` SET `description` = ?,`startdate` = ?,`enddate` = ?,`projectid` = ? WHERE `Taskid` = ?;";
@@ -586,12 +597,12 @@ router.get('/tasks', async (req, res, next) => {
 
           console.log("New Tasks len", tasks.length);
 
-          console.log("renderclients page afresh ");
+          console.log("rendertasks page afresh ");
           res.render('atasks.jade', { tasks:tasks });
 
         });
 
-     console.log("Reload from db and update clients global var");
+     console.log("Reload from db and update tasks global var");
    
  });
 
