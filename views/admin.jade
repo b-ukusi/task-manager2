@@ -14,8 +14,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           div
            h1 
-             img(src="/images/logo2.jpg", alt="Admin")
-             Admin 
+              img(src="/images/LOGO33.jpg", alt="Admin")
+        
             ul
               li
                 a(href="/admin/", class="logo")
@@ -43,6 +43,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
             span.nav-item2 Log out
      
       section.main 
+             
               .card20 
                   button.newdeveloper-button(data-modal-target="#modal")  
                     i.fas.fa-user-alt
@@ -55,55 +56,84 @@ span(style="font-family: verdana, geneva, sans-serif;")
                       .card-userinfo
                         
                           //- p= `User ID: ${User.Userid} `
-                           `  
-                .main-body2 
-                      .card21 
+              .card21 
 
-                            h1 Welcome, User! 
+                            h1 Welcome, Admin! 
                             h2 All insights and repost generation is available. 
                             
+                .main-body2 
+                      
                       .main-parts
-                          .col.column-1
-                              .card
-                              .card-body1
-                                
-                                  h5.card-title Projects 
-                                  
-                                  p.card-text
-                                  
-                                    #{projects.length}
-                                  //- each project in projects
-                                  //-   li
-                                  //-     p= project.projectname
-                                      
-                          .col.column-2
-                              .card
-                              .card-body2
-                                  
-                                  h5.card-title Developer Accounts  
-                                  p.card-text 
-                                      #{developers.length}
-                                  //- each developer in developers 
-                                    li
-                                      p= developer.FirstName
-                          .col.column-3
-                              .card3
-                              .card-body3
-                                  
-                                  h5.card-title Client Accounts 
-                                  p.card-text
-                                    #{clients.length}
-                                  //- each client in clients 
-                                    li 
-                                      p= client.FirstName
+                          .main-parts22
+                            .col.column-1
+                                .card
+                                .card-body1
+                                    .ct1
+                                      i.fas.fa-cogs
+                                      h5.card-title Projects 
+                                    .ct2  
+                                      p.card-text
+                                        #{projects.length}
+                                    //- each project in projects
+                                    //-   li
+                                    //-     p= project.projectname
+                                        
+                            .col.column-2
+                                .card
+                                .card-body2
+                                    .ct1
+                                      i.fas.fa-address-book
+                                      h5.card-title Developer Accounts 
+                                    .ct2  
+                                      p.card-text 
+                                          #{developers.length}
+                                    //- each developer in developers 
+                                      li
+                                        p= developer.FirstName
+                            .col.column-3
+                                .card3
+                                .card-body3
+                                    .ct1
+                                      i.fas.fa-address-card 
+                                      h5.card-title Client Accounts 
+                                    .ct2
+                                      p.card-text
+                                        #{clients.length}
+                                    //- each client in clients 
+                                      li 
+                                        p= client.FirstName
+                            .col.column-3
+                                .card3
+                                .card-body31
+                                    .ct1
+                                      i.fas.fa-calculator
+                                      h5 Tottal
+                                    .ct2 
+                                      p.card-text
+                                      #{clients.length}
+                                    //- each client in clients 
+                                      li 
+                                        p= client.FirstName     
+                          
                           .displayprojects 
-                            h5 projectd 
+                            h5 Project List  
+                              .cont
+                                h6 
+                                  p No.
+                                  p Project Name 
+                                  p Start Date 
+                                  p End Date 
+                                
                             each project in projects
+                               
                               .card
-                                .card-body4  
-                                  p= `Project Name: ${project.projectname}` 
-                                  p= `Start Date: ${project.startdate}`
-                                  p= `End Date: ${project.enddate}`
+                                ol.a
+                              
+                                    .card-body4 
+                                        li  
+                                        p= ` ${project.projectname}` 
+                                        p= ` ${project.startdate}`
+                                        p= ` ${project.enddate}`
 
                           .side
                             .report 
