@@ -6,6 +6,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/admin.css")
       script(defer, src='/javascripts/popup.js')
+      script(defer, src='/javascripts/popup2.js')
+      
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -45,17 +47,17 @@ span(style="font-family: verdana, geneva, sans-serif;")
       section.main 
              
               .card20 
-                  button.newdeveloper-button(data-modal-target="#modal")  
+                  button.userinfo-button(data-modal-target2="#modal2")  
                     i.fas.fa-user-alt
                     h6 Admin 
-                 .modal#modal
-                    .modal-header
+                 .modal2#modal2
+                    .modal2-header
                       .title User details
-                      button(data-close-button, class="close-button") &times;
-                    .modal-body
+                      button(data-close-button2, class="close-button") &times;
+                    .modal2-body2
                       .card-userinfo
-                        
-                          //- p= `User ID: ${User.Userid} `
+                        p user data heret 
+                        //- p= `User ID: ${User.Userid} `
               .card21 
 
                             h1 Welcome, Admin! 
@@ -119,7 +121,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                             h5 Project List  
                               .cont
                                 h6 
-                                  p No.
+                                  p N.
                                   p Project Name 
                                   p Start Date 
                                   p End Date 
@@ -128,7 +130,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                
                               .card
                                 ol.a
-                              
+                                     
                                     .card-body4 
                                         li  
                                         p= ` ${project.projectname}` 
@@ -160,9 +162,17 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                               input(type="submit", value="Get Report", id="get-report-button")
                             .services 
                               .card 
-                                h6 services surently being wokrd on
+                                h6 Current Services Being Worked On
                                 li 
                                     web web dev 
                                 li
                                     or organisation 
+                                li 
+                                  in system integration 
+                                li 
+                                  in parking system  
+                                 
+              footer.footer
+                p Copyright © 2024 CollabTrack. All rights reserved.
+                                      
                           #overlay      
