@@ -84,16 +84,24 @@ a:hover{
 }
 
 /* section one */
+.card22{
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
 .ctn-project {
   display: flex;
+  background-color: fuchsia;
   width: 100%;
-    margin-right: 20%;
-    background-color: white;
-    justify-content: space-between;
-    padding: 16px;
+  border-radius: 20px;
+
 }
 .ctn-project-desc {
-
+  background-color: #cccc;
+  padding: 20px;
+  border-radius: 20px;
 }
 .ctn-project-progress {}
 .main1{

@@ -188,13 +188,13 @@ db.query("call save_project(?,?,?,?,?,?)",[client,developer,ProjectName,descript
   }
   else{
     console.log(rows);
-    res.render('dbupFmessage.jade', { message: 'Project created successfully!' });
+    res.render('scproject.jade', { message: 'Project created successfully!' });
   }
   });
 });
  
 router.get('/createproject', (req, res, next) => {
-  res.render('dbupFmessage.jade');
+  res.render('scproject.jade');
 });
 
 
@@ -265,12 +265,12 @@ db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,end
    }
   else{
    console.log(rows);
-    res.render('dbupSmessage.jade', { message: 'Client created successfully!' });
+    res.render('sctasks.jade', { message: 'Client created successfully!' });
   }
   });
 });
 router.get('/createtasks', (req, res, next) => {
-  res.render('dbupFmessage.jade');
+  res.render('sctasks.jade');
 });
 
 /** report gen route  */
@@ -465,12 +465,7 @@ db.query("call get_usertypes('client')", (err, rows) => {
 
 });
   
-
-
-
-
  }
-
 });
 
 
@@ -480,7 +475,7 @@ db.query("call get_usertypes('client')", (err, rows) => {
 /*delet developer*/
 router.get('/developers', async (req, res, next) => {
 
-  console.log("Action Developers",req.query);
+  console.log("load Developers",req.query);
  
  
  if (req.query.action){
@@ -495,12 +490,11 @@ router.get('/developers', async (req, res, next) => {
        params=[ req.query.FirstName,req.query.LASTNAME,req.query.Pass,req.query.Email,req.query.Userid];
      }
 
-      console.log("queryexec ",queryexec);
-      console.log("params",params);
+      
       db.query(queryexec,params , (err, rows)=> {
        // its ok we dont have to wait for our condition comes after exec.
-           console.log("actioned",rows);
-           console.log(err);
+           console.log("deleted");
+        
            db.query("call get_usertypes('developer')", (err, rows) => {
 
           if (rows[0].length == 0) {
@@ -515,8 +509,6 @@ router.get('/developers', async (req, res, next) => {
 
           console.log("renderdeveloperss page afresh ");
           res.render('adevelopers.jade', { developers: developers });
-
-          return;
 
         });
 
@@ -540,7 +532,7 @@ else{
   }
   else {
 
-    clients = rows[0];
+    developers = rows[0];
   }
 
   console.log("New Developers len", developers.length);
@@ -550,10 +542,6 @@ else{
 
 });
   
-
-
-
-
  }
 
 });
@@ -577,8 +565,8 @@ router.get('/tasks', async (req, res, next) => {
      var queryexec="delete from tasks where taskid=?";
      var params=[req.query.taskid];
      if (req.query.action=="update"){
-       queryexec="UPDATE `tasks` SET `description` = ?,`startdate` = ?,`enddate` = ?,`projectid` = ? WHERE `Taskid` = ?;";
-       params=[ req.query.description,req.query.startdate,req.query.enddate,req.query.projectid,req.query.Userid];
+       queryexec="UPDATE `tasks` SET `description` = ?,`startdate` = ?,`enddate` = ?,`projectid` = ? WHERE `taskid` = ?;";
+       params=[ req.query.description,req.query.startdate,req.query.enddate,req.query.projectid,req.query.taskid];
      }
 
 
@@ -592,7 +580,7 @@ router.get('/tasks', async (req, res, next) => {
           }
           else {
 
-            clients = rows[0];
+            tasks = rows[0];
           }
 
           console.log("New Tasks len", tasks.length);
@@ -622,7 +610,7 @@ else{
     }
     else {
   
-      clients = rows[0];
+      tasks = rows[0];
     }
   
     console.log("New tasks len", tasks.length);
@@ -632,10 +620,6 @@ else{
   
   });
     
-  
-  
-  
-  
    }
   
   });
@@ -652,14 +636,14 @@ router.get('/projects', async (req, res, next) => {
  if (req.query.action){
 
    if (req.query.action=="delete" || req.query.action=="update"){
-     console.log("Change Project ID ", req.query.Userid);
-     console.log("old Project len", clients.length);
+     console.log("Change Project ID ", req.query.projectid);
+     console.log("old Project len", projects.length);
 
-     var queryexec="delete from users where userid=?";
-     var params=[req.query.Userid];
+     var queryexec="delete from users where projectid=?";
+     var params=[req.query.projectid];
      if (req.query.action=="update"){
-       queryexec="UPDATE `users` SET `projectname` = ?,`description` = ?,`startdate` = ?,`enddate` = ? WHERE `Userid` = ?;";
-       params=[ req.query.projectname,req.query.description,req.query.startdate,req.query.enddate,req.query.Userid];
+       queryexec="UPDATE `users` SET `projectname` = ?,`description` = ?,`startdate` = ?,`enddate` = ? WHERE `projectid` = ?;";
+       params=[ req.query.projectname,req.query.description,req.query.startdate,req.query.enddate,req.query.projectid];
      }
 
 
@@ -673,17 +657,17 @@ router.get('/projects', async (req, res, next) => {
           }
           else {
 
-            clients = rows[0];
+            projects = rows[0];
           }
 
-          console.log("New Project len", clients.length);
+          console.log("New Project len", projects.length);
 
           console.log("renderproject page afresh ");
           res.render('aprojects.jade', { projects: projects });
 
         });
 
-     console.log("Reload from db and update clients global var");
+     console.log("Reload from db and update projects global var");
    
  });
 
@@ -703,23 +687,17 @@ else{
     }
     else {
   
-      clients = rows[0];
+      projects = rows[0];
     }
   
-    console.log("New project len", developers.length);
+    console.log("New Projects len", projects.length);
   
     console.log("renderprojecst page afresh ");
-    res.render('aprojecst.jade', { projects: projects });
+    res.render('aprojects.jade', { projects: projects});
   
   });
-    
-  
-  
-  
-  
-   }
-  
-  });
+  }
+});
   
 
 module.exports = router;

@@ -6,12 +6,16 @@
   font-family: 'Poppins', sans-serif;
 }
 html,body{
- /* display: grid;*/
+ display: grid;
   height: 100%;
   width: 100%;
   place-items: center;
   background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
   background-repeat: no-repeat;
+}
+img{
+  width: 20%;
+  padding-bottom: 8px;
 }
 ul {
  
@@ -75,17 +79,20 @@ a:hover{
  /* body content */
 .main {
   background-color: #eee;
+  animation: t-in 2s;
 }
+
 .main{
   position: relative;
   margin: 20px;
   width: 100%;
-  border-radius: 2%;      
+  border-radius: 30px;      
   }
 .main-top{
   display: flex;
   width: 70%;
   margin-right: 20%;
+  padding: 10px;
   padding-left: 14px;
   padding-top: 10px;
   }
@@ -150,9 +157,10 @@ h1{
   border: 4px solid black;
   border-radius: 10px;
   z-index: 10;
-  background:rgb(54, 129, 85);
+  background:#0D153A;
   width: 500px;
   max-width: 80%;
+  color: #fff;
 }
 
 .modal.active {
@@ -303,6 +311,9 @@ h1{
        padding: 16px;
        border-radius: 8px;
        height: 40vh;
+       transition: transform .3s;
+
+
 }
 
 .card p:first-child {
@@ -311,4 +322,27 @@ h1{
 
 .card-title {
   font-weight: bold;
+}
+.card:hover{
+  transform: scale(1.1) 
+}
+/* delet button styling */
+.main-body2 .btn-delet{
+  background-color: #0D153A;
+  color: #F5F7F9;
+  width: 50%;
+  height: 15%;
+  padding: 2px;
+  border-radius: 20px;
+}
+/* key frame transitions */
+
+@keyframes t-in{
+  from {
+    opacity: 0;
+    transform: translateY(-10px);     
+   }
+to{
+  opacity: 1;
+  transform: translateY(0);   
 }

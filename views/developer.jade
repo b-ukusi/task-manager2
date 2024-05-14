@@ -59,14 +59,14 @@ body
                               h1 Welcome, User! 
                               h2 All insights and repost generation is available.
                               button  
-                          
+                      .card22    
                           each project in projects
                                           li
                                             .ctn-project
                                                 .ctn-project-desc
-                                                    h1 Project: #{project.project_name} 
+                                                    h5 Project: #{project.project_name} 
 
-                                                    h2 Tasks (#{project.tasks.length})
+                                                    h5 Tasks (#{project.tasks.length})
                                                     
                                                         each task in project.tasks
                                                               .card

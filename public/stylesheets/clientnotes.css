@@ -17,10 +17,11 @@ html,body{
   background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
 }
 ul {
- 
   list-style-type: none;
-
-
+}
+img{
+  width: 20%;
+  padding-bottom: 8px;
 }
 .main h1{
 color: #fff;
@@ -33,7 +34,10 @@ font-weight:100;
 
 }
 
-
+.main {
+ 
+  animation: t-in 2s;
+}
 .container{
   display: flex;
   border-radius: 30px;  
@@ -109,3 +113,14 @@ margin-right: 20%;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     
   }
+ /* page animations  */
+ @keyframes t-in{
+  from {
+      opacity: 0;
+      transform: translateY(-10px);     
+     }
+  to{
+    opacity: 1;
+    transform: translateY(0);     
+  } 
+}

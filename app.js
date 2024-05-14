@@ -8,6 +8,7 @@ const pool = require('./db')
 const app = express();
 const port = 3001;
 
+
 const indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 const clientRouter = require('./routes/clients');
@@ -75,5 +76,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
 
 module.exports = app;

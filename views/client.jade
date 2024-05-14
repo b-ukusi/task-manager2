@@ -5,6 +5,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/client.css")
+      script(defer, src='/javascripts/popup.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -12,21 +13,22 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           div
            h1 
-             img(src="/images/logo2.jpg", alt="Admin")
+             img(src="/images/LOGO33.jpg", alt="Admin")
              Client
             ul
               li
                 a(href=`/client?user=${user.Userid}`, class="logo")
                   h2 Dashboard 
               li
-                a(href="/client/projects")
-                  i.fas.fa-tasks
-                  span.nav-item Projects    
-              li
                 a(href="/client/notes")
-                  i.fas.fa-tasks
-                  span.nav-item Notes
+                  i.fas.fa-edit
+                  span.nav-item Notes    
               li
+                a(href="/client/projects")
+                  i.fas.fa-cogs
+                  span.nav-item Projects    
+              
+              //- li
                 a(href=`/client/account?user=${user.Userid}`)
                   i.fas.fa-home
                   span.nav-item Account Details 
@@ -36,56 +38,57 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
          section.main1
-                .card20 
-                  button.newdeveloper-button(data-modal-target="#modal")  
-                    i.fas.fa-user-alt
-                    h6 Admin 
-                 .modal#modal
-                    .modal-header
-                      .title User details
-                      button(data-close-button, class="close-button") &times;
-                    .modal-body
-                      .card-userinfo
-                        
-                          //- p= `User ID: ${User.Userid} `
-                           `
+                  .card20 
+                    button.userdetails-button(data-modal-target2="#modal2")  
+                      i.fas.fa-user-alt
+                      h6 Client 
+                  .modal2#modal2
+                      .modal2-header
+                        .title User details
+                        button(data-close-button2, class="close-button") &times;
+                      .modal-body
+                        .card-userinfo
+                          //- each client in clients 
+                            p= `Developer ID : ${client.Userid} `
+                            p= `Developer Name: ${client.FirstName} `  
+                          
+                  .card21 
+                         h1 Welcome, Clinet! 
+                            h2 All insights and Upades are available. 
+                                   
+                  .card22
                         each project in projects
                                         li
                                           .ctn-project
                                               .ctn-project-desc
-                                                  h1 Project: #{project.project_name} 
+                                                  h5 Project: #{project.project_name} 
 
-                                                  h2 Tasks (#{project.tasks.length})
+                                                  h5 Tasks (#{project.tasks.length})
                                                   
                                                       each task in project.tasks
                                                             .card
                                                       
-                                                                      .form-check
-                                                                        input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                                                                        label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                              .form-check
+                                                                input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                                label.form-check-label(for="flexCheckDefault") #{task.task_name}
                                                                     
                                               .ctn-project-progress
                                                 .card
                                                   h3 Progress
                                                       .row
-                                                
-                      
-                          .main-skills
-                            .card
-                              h3 Progress
-                                  .row
-                                    .col-md-9.col-sm-6
-                                      .progress.blue
-                                        span.progress-left
-                                          span.progress-bar
-                                        span.progress-right
-                                          span.progress-bar
-                                        .progress-value 100%
+                                                       .col-md-9.col-sm-6
+                                                          .progress.blue
+                                                            span.progress-left
+                                                              span.progress-bar
+                                                            span.progress-right
+                                                              span.progress-bar
+                                                            .progress-value 100%
 
+                      
                         
                         
                         
-                        section.main-course
+                  section.main-course
                             h1 Recent upadetes 
                             .course-box
                               h3 task bar update
@@ -98,4 +101,4 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                   It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                                   It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
                                   including versions of Lorem Ipsum.
-                 #overlay                
+#overlay                

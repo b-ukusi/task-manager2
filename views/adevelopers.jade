@@ -5,7 +5,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       meta(charset="UTF-8")
       title Client Dashboard
       link(rel="stylesheet",  type='text/css', href="/stylesheets/adevelopers.css")
-      script(defer, src='/javascripts/popup.js')
+      script(defer, src='/javascripts/popup3.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -13,8 +13,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           div 
             h1 
-             img(src="/images/logo2.jpg", alt="Admin")
-             Admin
+             img(src="/images/LOGO33.jpg", alt="Admin")
+             
             ul
               li
                 a(href="/admin/", class="logo")
@@ -22,19 +22,19 @@ span(style="font-family: verdana, geneva, sans-serif;")
               li
                 a(href="/admin/clients")
                   i.fas.fa-address-card 
-                  span.nav-item clients 
+                  span.nav-item Clients 
               li
                 a(href="/admin/developers")
                   i.fas.fa-address-book
-                  span.nav-item developers 
+                  span.nav-item Developers 
               li
                 a(href="/admin/projects")
                   i.fas.fa-cogs
-                  span.nav-item projects   
+                  span.nav-item Projects   
               li
                 a(href="/admin/tasks")
                   i.fas.fa-tasks
-                  span.nav-item tasks      
+                  span.nav-item Tasks      
           ul 
            a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
@@ -79,14 +79,11 @@ span(style="font-family: verdana, geneva, sans-serif;")
                           p= `Email : ${developer.Email}`  
                           p= `Pass :${developer.Pass}`   
                       .info-btn
-                      input(type="button" value="Delete Client" onclick="window.location.href='developers?action=delete&Userid=#{developer.Userid}'")
+                      input.btn-delet(type="button" value="Delete Client" onclick="window.location.href='developers?action=delete&Userid=#{developer.Userid}'")
                       //- input(type="button" value="Update Client" onclick="window.location.href='developers?action=update&Userid=readfrom the page atakaa its what was pased as user id $FirstName=ilefiledikonafirtsname'")
-                      // so make this one for update pop up a window then on its on click, make it do like the delete so can update with the req.query params then reload teh clients page.
-
-                      //- input(type="button" value="Update Client" onclick="updateClient('#{client.Userid}')")
-
+                      
     script(src=".//routes/admin.js")     
-                #overlay
+#overlay
 
               
                          

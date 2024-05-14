@@ -6,7 +6,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
       title Admin add clients
       link(rel="stylesheet",  type='text/css', href="/stylesheets/aprojects.css")
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      script(defer, src='/javascripts/popup.js')
+      script(defer, src='/javascripts/popup3.js')
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
@@ -14,7 +14,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           div 
             h1 
-             img(src="/images/logo2.jpg", alt="Admin")
+             img(src="/images/LOGO33.jpg", alt="Admin")
              Admin 
             ul
               li
@@ -23,19 +23,19 @@ span(style="font-family: verdana, geneva, sans-serif;")
               li
                 a(href="/admin/clients")
                   i.fas.fa-address-card 
-                  span.nav-item clients 
+                  span.nav-item Clients 
               li
                 a(href="/admin/developers")
                   i.fas.fa-address-book
-                  span.nav-item developers 
+                  span.nav-item Developers 
               li
                 a(href="/admin/projects")
                   i.fas.fa-cogs
-                  span.nav-item projects
+                  span.nav-item Projects
               li
                 a(href="/admin/tasks")
                   i.fas.fa-tasks
-                  span.nav-item tasks
+                  span.nav-item Tasks
           ul
               a(href="/", class="logout")
                 i.fas.fa-sign-out-alt
@@ -55,7 +55,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               .main-user-info
                                   .user-input-box
                                       label(for="Project Name ") Project Name
-                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name" required pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
+                                      input(type="text", id="Prject Name", name="ProjectName", placeholder=" Name" required ,title='Name must be at least 3 letters and contain only letters')
                                   .user-input-box
                                       label(for="Clients Name ") Client name 
                                       select#propertyType.select.form-control.input-lg(  name='client'
@@ -84,7 +84,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                       input(type="date", id="enddate ", name="enddate", placeholder="Enter End date" required)    
                                   .user-input-box2
                                       label(for="Description") Product description
-                                      input(type="text", id="description", name="description", placeholder="Enter description" required, pattern='[A-Za-z]{3,}',title='Name must be at least 3 letters and contain only letters')
+                                      input(type="text", id="description", name="description", placeholder="Enter description" required,)
                                 
                               .form-submit-btn
                               
@@ -93,11 +93,14 @@ span(style="font-family: verdana, geneva, sans-serif;")
                    each project in projects 
                     .card 
                       .card-body                                         
-                            p= `Project # : ${project.projectid}`
+                            p= `Project ID : ${project.projectid}`
                             p= `Project Name : ${project.projectname}`
+                             p= `Project Description : ${project.description}`
+
+
                       .info-btn
-                      input(type="button"  value="Delete Projects" )
-                      input(type="button" value="Update Client" onclick="window.location.href='clients?action=update&Userid=readfrom the page atakaa its what was pased as user id $FirstName=ilefiledikonafirtsname'")
+                      input.btn-delet(type="button"  value="Delete Projects" onclick="window.location.href='projects?action=delete&projectsid=#{project.projectid}'" )
+                     
                       //- // so make this one for update pop up a window then on its on click, make it do like the delete so can update with the req.query params then reload teh clients page.
 
                       //- input(type="button" value="Update Client" onclick="updateClient('#{client.Userid}')")
@@ -107,6 +110,6 @@ span(style="font-family: verdana, geneva, sans-serif;")
                               
                                
                                         
-                #overlay 
+#overlay 
                 
                               

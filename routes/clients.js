@@ -121,6 +121,7 @@ console.log("show  tasks within projects",projects);
 
  /* projetcs in relation ot clinet */ 
 router.get('/projects', (req, res, next) => {
+  
   res.render('clientprojects.jade');
   
 });

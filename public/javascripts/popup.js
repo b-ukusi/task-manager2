@@ -5,6 +5,8 @@ const closeModalButtons2 = document.querySelectorAll('[data-close-button2]')
 const overlay = document.getElementById('overlay')
 //const createClientButton = document.getElementById('create-client-button')
 
+
+
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = document.querySelector(button.dataset.modalTarget)
@@ -43,7 +45,6 @@ function closeModal(modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
-
 
 
 

@@ -11,6 +11,11 @@ html,body{
   width: 100%;
   place-items: center;
   background: linear-gradient(#0D153A 16%, #F5F7F9 0%);
+background-repeat: no-repeat;
+}
+img{
+  width: 20%;
+  padding-bottom: 8px;
 }
 ul {
  
@@ -83,7 +88,8 @@ a:hover{
   margin: 20px;
   width: 100%;
   border-radius: 2%; 
-  background-color: #eee;     
+  background-color: #eee;    
+  animation: t-in 2s;
   }
 .main-top{
   display: flex;
@@ -310,4 +316,27 @@ h1{
 
 .card-title {
   font-weight: bold;
+}
+.card:hover{
+  transform: scale(1.1) 
+}
+/* delet button styling */
+.main-body2 .btn-delet{
+  background-color: #0D153A;
+  color: #F5F7F9;
+  width: 50%;
+  height: 15%;
+  padding: 2px;
+  border-radius: 20px;
+}
+/* key frame transitions */
+
+@keyframes t-in{
+  from {
+    opacity: 0;
+    transform: translateY(-10px);     
+   }
+to{
+  opacity: 1;
+  transform: translateY(0);   
 }

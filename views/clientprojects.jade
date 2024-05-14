@@ -4,31 +4,46 @@ span(style="font-family: verdana, geneva, sans-serif;")
     head
       meta(charset="UTF-8")
       title Client Dashboard
-      link(rel="stylesheet",  type='text/css', href="/stylesheets/client.css")
+      link(rel="stylesheet",  type='text/css', href="/stylesheets/cprojects.css")
       //- Font Awesome Cdn Link -->
       link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
     body
-      .container
-        nav
-          ul
-            li
-               //-a(href=`/client?user=${user.Userid}`, class="logo")  -->
-                 span.nav-item Dashboard 
-            li
-              a(href="/client/notes")
-                i.fas.fa-tasks
-                span.nav-item Projects    
-            li
-              a(href="/client/notes")
-                i.fas.fa-tasks
-                span.nav-item Notes
-            //- li
-              a(href=`/client/account?user=${user.Userid}`)
-                i.fas.fa-home
-                span.nav-item Account Details 
+     .container
+        .navigation
+          nav
+            div 
+             h1 
+                img(src="/images/LOGO33.jpg", alt="Admin")
+            
+              ul
+                li
+                  a(href=/client/, class="logo")  
+                    h2 Dashboard 
+                li
+                  a(href="/client/notes")
+                    i.fas.fa-edit
+                    span.nav-item Notes    
+                li
+                  a(href="/client/projects")
+                    i.fas.fa-cogs
+                    span.nav-item Projects    
                 
-            li
-              a(href="/", class="logout")
-                i.fas.fa-sign-out-alt
-                span.nav-item Log out
-         section.main1
+                //- li
+                  a(href=`/client/account?user=${user.Userid}`)
+                    i.fas.fa-home
+                    span.nav-item Account Details 
+                  
+            ul
+                a(href="/", class="logout")
+                  i.fas.fa-sign-out-alt
+                  span.nav-item Log out
+        section.main
+            h1 Projects 
+            .card1 
+            .main1
+              each project in projects 
+                  .card2
+                    .card-body                                         
+                        p= `Project ID : ${project.project_id}`
+                        p= `Project Name : ${project.project_name}`
+                        p= `Project Description : ${project.project_description}`
