@@ -46,59 +46,59 @@ span(style="font-family: verdana, geneva, sans-serif;")
                       .modal2-header
                         .title User details
                         button(data-close-button2, class="close-button") &times;
-                      .modal-body
+                      .modal2-body2
                         .card-userinfo
-                          //- each client in clients 
-                            p= `Developer ID : ${client.Userid} `
-                            p= `Developer Name: ${client.FirstName} `  
+                            p= `Developer ID : ${Userid} `
+                            p= `Developer Name: ${FirstName} `  
                           
                   .card21 
                          h1 Welcome, Clinet! 
                             h2 All insights and Upades are available. 
-                                   
-                  .card22
-                        each project in projects
-                                        li
-                                          .ctn-project
-                                              .ctn-project-desc
-                                                  h5 Project: #{project.project_name} 
+                  .main-body2                  
+                      .card22
+                            each project in projects
+                                            li
+                                              .ctn-project
+                                                  .ctn-project-desc
+                                                      h5 Project: #{project.project_name} 
 
-                                                  h5 Tasks (#{project.tasks.length})
-                                                  
-                                                      each task in project.tasks
-                                                            .card
+                                                      h5 Tasks (#{project.tasks.length})
                                                       
-                                                              .form-check
-                                                                input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
-                                                                label.form-check-label(for="flexCheckDefault") #{task.task_name}
-                                                                    
-                                              .ctn-project-progress
-                                                .card
-                                                  h3 Progress
-                                                      .row
-                                                       .col-md-9.col-sm-6
-                                                          .progress.blue
-                                                            span.progress-left
-                                                              span.progress-bar
-                                                            span.progress-right
-                                                              span.progress-bar
-                                                            .progress-value 100%
+                                                          each task in project.tasks
+                                                                .card
+                                                          
+                                                                  .form-check
+                                                                    input.form-check-input(type="checkbox", value="", id="flexCheckDefault")
+                                                                    label.form-check-label(for="flexCheckDefault") #{task.task_name}
+                                                                        
+                                                  .ctn-project-progress
+                                                    .card
+                                                      h3 Progress
+                                                          .row
+                                                          .col-md-9.col-sm-6
+                                                              .progress.blue
+                                                                span.progress-left
+                                                                  span.progress-bar
+                                                                span.progress-right
+                                                                  span.progress-bar
+                                                                .progress-value 100%
 
-                      
+                          
+                            
                         
                         
-                        
-                  section.main-course
-                            h1 Recent upadetes 
-                            .course-box
-                              h3 task bar update
-                              .course
-                                .box
-                                  h3 HTML
-                                  p 80% - progress Lorem Ipsum is simply dummy text of
-                                  the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                                  dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                                  including versions of Lorem Ipsum.
+                        section.main-course
+                                  h1 Recent upadetes 
+                                  .course-box
+                                    h3 task bar update
+                                    .course
+                                      .box
+                                        p clements update review
+                                          lats cleint worked with us and they were greate a
+                                          the progress is good the db has been built and they arey trying theis best to 
+                                          be better, 
+                                          chalenges paced during the building and set down   
+
+                                        //- p= `Note ID : ${note.noteid}`
+                                        //- p= `Task ID: ${note.taskid}`
 #overlay                

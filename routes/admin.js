@@ -15,6 +15,7 @@ var projects=[];
 var clients=[];
 var developers=[];
 var user;
+var tasks=[];
 /*controllers*/
 
 /* admin, project manager  */
@@ -63,9 +64,9 @@ router.get('/', async (req, res, next) => {
               }
         
       
-            
-          console.log("Go load admin page");
-          res.render('admin.jade',{developers:developers, clients:clients, projects:projects});
+              console.log("Go load admin page for userid",req.query.Userid);
+              console.log("Firstname",req.query.FirstName);
+              res.render('admin.jade',{developers:developers, clients:clients, projects:projects, Userid:req.query.Userid,FirstName: req.query.FirstName});
     
           
         });
@@ -80,10 +81,10 @@ router.get('/', async (req, res, next) => {
     });
     
 
-    /* admin, project manager  */
+    /* admin, project manager  
   router.get('/projects', async (req, res, next) => {
-
-    res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
+    console.log("delete proj")
+    res.render('aprojects.jade', { projects: projects});
 
 /*
     console.log("Loaded projects page");
@@ -129,9 +130,9 @@ router.get('/', async (req, res, next) => {
 
      
    });
-   */
+   
   }); 
-  
+  */
  /*
   //develo[er routs and db query 
   router.get('/developers', (req, res, next) => {
@@ -156,7 +157,7 @@ router.get('/', async (req, res, next) => {
    /* clients routes and db queries */
  
 
-/* admin tasks page */
+/* admin tasks page 
 router.get('/tasks', (req,res,next)=>{
  var tasks=[];
   db.query("call get_tasks()",  (err, rows)=> {
@@ -165,7 +166,7 @@ router.get('/tasks', (req,res,next)=>{
         console.log("no tasks found");
       }
     else {
-        console.log("got tasks",rows[0]);
+        // console.log("got tasks",rows[0]);
         tasks=rows[0];
       }
        console.log("render tasks",tasks); 
@@ -256,8 +257,8 @@ db.query("call save_user(?,?,?,?,?)",['developer',FirstName,LastName,EmailUser,P
   router.get('/creattask', (req, res, next) => {
     console.log("Add task",req.query);
 
-   const {taskid,projectid,description,startdate,enddate}=req.query;
-db.query("call save_task(?,?,?,?,?)",[taskid,projectid,description,startdate,enddate],  (err, rows)=> {
+   const {taskid,project,description,startdate,enddate}=req.query;
+db.query("call save_task(?,?,?,?,?)",[taskid,project,description,startdate,enddate],  (err, rows)=> {
   
   if (err){
    // console.log(err);
@@ -561,6 +562,7 @@ router.get('/tasks', async (req, res, next) => {
    if (req.query.action=="delete" || req.query.action=="update"){
      console.log("Change Task ID ", req.query.taskid);
      console.log("old Tasks len", tasks.length);
+     
 
      var queryexec="delete from tasks where taskid=?";
      var params=[req.query.taskid];
@@ -586,7 +588,10 @@ router.get('/tasks', async (req, res, next) => {
           console.log("New Tasks len", tasks.length);
 
           console.log("rendertasks page afresh ");
-          res.render('atasks.jade', { tasks:tasks });
+          res.render('atasks.jade',{tasks:tasks,projects:projects});  
+
+
+      
 
         });
 
@@ -616,7 +621,7 @@ else{
     console.log("New tasks len", tasks.length);
   
     console.log("rendertasks page afresh ");
-    res.render('atasks.jade', { tasks: tasks });
+    res.render('atasks.jade',{tasks:tasks,projects:projects});  
   
   });
     
@@ -663,7 +668,7 @@ router.get('/projects', async (req, res, next) => {
           console.log("New Project len", projects.length);
 
           console.log("renderproject page afresh ");
-          res.render('aprojects.jade', { projects: projects });
+          res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
 
         });
 
@@ -693,7 +698,7 @@ else{
     console.log("New Projects len", projects.length);
   
     console.log("renderprojecst page afresh ");
-    res.render('aprojects.jade', { projects: projects});
+    res.render('aprojects.jade',{projects:projects, developers:developers, clients:clients});
   
   });
   }

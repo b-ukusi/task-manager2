@@ -2,6 +2,7 @@
 *{
   margin: 0;
   padding: 0;
+  
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
@@ -154,7 +155,7 @@ font-size: 50px;
   /* flex-wrap: wrap; */
   width: 150%;
   height: 150px;
-  margin-right: 20%;
+  /* margin-left: 10%; */
   background-color: #FFFFFF;
   margin-bottom: 16px;
   justify-content: center;
@@ -169,8 +170,8 @@ margin-top: 5%;
   /* background-color: yellow; */
  }
  .main-parts .card-body1{
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 120px;
   overflow: auto;
   margin: 10px;
   text-align:left;
@@ -184,8 +185,8 @@ margin-top: 5%;
   
 }
 .main-parts .card-body2{
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 120px;
   overflow: auto;
   margin: 10px;
   background: rgb(57, 62, 65);
@@ -200,8 +201,8 @@ margin-top: 5%;
   
 }
 .main-parts .card-body3{
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 120px;
   overflow: auto;
   margin: 10px;
   background:rgb(231, 229, 223);
@@ -256,9 +257,17 @@ margin-top: 5%;
   grid-gap: 10px;
 }
  .ct2 {
+  /* font-size: xx-large; */
+}
+.card-body1 .ct2{
   font-size: xx-large;
 }
-
+.card-body2 .ct2{
+  font-size: xx-large;
+}
+.card-body3 .ct2{
+  font-size: xx-large;
+}
 /* hover transitions syling */
 .main-parts .card-body1:hover{
   transform: scale(1.2)

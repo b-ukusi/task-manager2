@@ -12,9 +12,10 @@ html,body{
   display: grid;
   height: 100%;
   width: 100%;
-  place-items: center;
+  /* place-items: center; */
   /* background: -webkit-linear-gradient(left, black, rgb(54, 129, 85)); */
   background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
+  background-repeat: no-repeat;
 }
 ul {
   list-style-type: none;
@@ -35,7 +36,7 @@ font-weight:100;
 }
 
 .main {
- 
+ /* background-color: red; */
   animation: t-in 2s;
 }
 .container{
@@ -46,7 +47,7 @@ font-weight:100;
 nav{
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
-   position: sticky;
+  position: sticky;
   background: #fff;
   left: -250px;
   width: 200px;
@@ -102,9 +103,22 @@ display: flex;
 width: 70%;
 margin-right: 20%;
 }
-.main-notes .card-body{
-    width: 100%;
-    height: 100%;
+.card22{
+  width: 100%;
+  height: auto;
+  /* background-color: orange; */
+}
+
+.card{
+  width: 100%;
+  height: 30%;
+  margin: 10px;
+  /* background-color: yellow; */
+}
+
+.card-body{
+    width: 50%;
+    height: 50%;
     margin: 10px;
     background: #fff;
     text-align:left;

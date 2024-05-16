@@ -14,12 +14,12 @@ span(style="font-family: verdana, geneva, sans-serif;")
         nav
           div 
             h1
-             img(src="/images/logo2.jpg", alt="Developer")
+             img(src="/images/LOGO33.jpg", alt="Developer")
             //- ${user.Userfirstname}
              Admin 
             ul
               li
-                a(href=`/dev?user=${user.Userid}`, class="logo")
+                a(href=`/dev/?user=${user.Userid}`, class="logo")
                   h2 DashBoard
               
               li
@@ -28,7 +28,7 @@ span(style="font-family: verdana, geneva, sans-serif;")
                   span.nav-item Projects
               li
                 a(href="/dev/notes")
-                  i.fas.fa-tasks
+                  i.fas.fa-edit
                   span.nav-item Notes
               //- li
                 a(href=`/dev/account?user=${user.Userid}`)
@@ -43,21 +43,30 @@ span(style="font-family: verdana, geneva, sans-serif;")
             .main-top
                     h1 Notes
                .main-body
-                    input.search-input(type="text", placeholder="Search Note")  
+                    //- input.search-input(type="text", placeholder="Search Note")  
                     button.newproject-button(data-modal-target="#modal") New Note
                 .modal#modal
                   .modal-header
                     .title New Note
                     button(data-close-button, class="close-button") &times;
                   .modal-body
-                     form(action="#modal")
+                     form( action="/dev/createnotes", method="get")
                               .main-user-info
                                   .user-input-box
-                                      label(for="Project Name ") Note Name 
-                                      input(type="text", id="Note Name", name=" NoteName", placeholder=" Tittle " required)
+                                      label(for="task Name") Taks name 
+                                      select#propertyType.select.form-control.input-lg(  name='task'
+                                      )
+                                    
+                                        each task in tasks 
+                                          li 
+                                            option(value=task.taskid) #{task.description}
+                                     
+                                  .user-input-box
+                                      label(for="Note Name ") Note Name 
+                                      input(type="text", id="notename", name="notename", placeholder=" Tittle " required)
                                   .user-input-box2
-                                      label(for="Clients Name ") Note Content
-                                      input(type="text", id="Note Content", name="notecontent", placeholder=" Content" required)
+                                      label(for="Note Description ") Note Content
+                                      input(type="text", id="description", name="description", placeholder=" Content" required)
                                   //- .user-input-box
                                       label(for="Clients Name ") Client name 
                                       select#propertyType.select.form-control.input-lg(  name='client'
@@ -72,12 +81,12 @@ span(style="font-family: verdana, geneva, sans-serif;")
                    each note in notes
                     .card 
                       .card-body 
-                          h5.card-title Notes
-                            p= `User # : ${note.noteid}`
-                            p= `User # : ${note.taskid}`
+                          
+                            p= `Note ID : ${note.noteid}`
+                            p= `Task ID: ${note.taskid}`
                             p= `Description : ${note.description}`
                       .info-btn
-                          input(type="button"  value="Delete Projects" )
+                          input.delet-btn(type="button"  value="Delete Projects" )
                             
                                         
                 #overlay  

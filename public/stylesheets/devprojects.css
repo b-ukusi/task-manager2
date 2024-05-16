@@ -19,6 +19,11 @@ html,body{
 ul {
   list-style-type: none;
 }
+img{
+  width: 20%;
+  padding-bottom: 8px;
+
+}
 h1{
   margin-right: 5%;
   font-size: 30px;
@@ -35,6 +40,7 @@ font-weight: 900;
   margin: 20px;
   width: 100%;
   border-radius: 2%;  
+  animation: t-in 2s;
 }
 .main h2{
 color: #fff;
@@ -126,9 +132,9 @@ margin-right: 20%;
   width: 95%;
   min-height: 100vh;
   border-radius: 2%;    
-  display: grid; 
+  /* display: grid; 
   grid-template-columns: repeat(2, 1fr); 
-  grid-template-rows: auto;
+  grid-template-rows: auto; */
   /* gap: 19px; */
 
 
@@ -165,26 +171,14 @@ margin-right: 20%;
     font-size: 30px;
 }
  .main1 { 
-  /* background-color: whitesmoke;
-  width: 100%;
-  height: 50%;
-  margin: 10px;
-  /* background: #fff; */
-  /* text-align:left;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); */
-   */
+ 
   background: #ccc;
   padding: 16px;
   margin: 20px;
   width: 95%;
   min-height: 100vh;
   border-radius: 2%;    
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  gap: 16px;
+  /* gap: 16px;  */
 }
 .card-body{
   background-color: whitesmoke;
@@ -192,5 +186,22 @@ margin-right: 20%;
   border-radius: 8px;
   height: 40vh; 
   width: 100%;
-  height: 30%;
+  height: auto;
+  row-gap: 30px;
+}
+.card2{
+  /* background-color: olivedrab; */
+  margin-bottom: 20px;
+}
+
+
+@keyframes t-in{
+  from {
+      opacity: 0;
+      transform: translateY(-10px);     
+     }
+  to{
+    opacity: 1;
+    transform: translateY(0);     
+  } 
 }

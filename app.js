@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mysql = require('mysql');
 const pool = require('./db')
+const nodemailer = require('nodemailer');
+
 const app = express();
 const port = 3001;
 
@@ -78,7 +80,29 @@ app.use(function(err, req, res, next) {
 });
 
 
+// // send email things 
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'techthroughwomen@gmail.com',
+//     pass: 'TTwomen2023'
+//   }
+// });
 
+// var mailOptions = {
+//   from: 'techthroughwomen@gmail.com',
+//   to: 'naomibukusi@gmail.com',
+//   subject: 'Sending Email using Node.js',
+//   text: 'That was easy!'
+// };
+
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
 
 
 module.exports = app;

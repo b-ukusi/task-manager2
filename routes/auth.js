@@ -132,7 +132,7 @@ console.log("show  tasks within projects",projects);
               
                   case "admin":
                 console.log("Redirect to admin",userType.trim());
-                return res.redirect('admin');
+                return res.redirect(`admin/?Userid=${rows[0][0]["Userid"]}&FirstName=${rows[0][0]["FirstName"]}`);
           
               case "client":
                   console.log("laod client ",user)

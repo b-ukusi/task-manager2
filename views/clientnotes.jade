@@ -37,25 +37,12 @@ span(style="font-family: verdana, geneva, sans-serif;")
                 i.fas.fa-sign-out-alt
                 span.nav-item Log out
         section.main 
-             .main-notes
-                .col.column-1
-                    .card
+          h1 Notes  
+            .card22
+              each note in notes
+                  .card
                     .card-body
-                        h5.card-title task bar 
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                .col.column-2
-                    .card
-                    .card-body
-                        h5.card-title footer 
-                        p.card-text This is a short card.
-                .col.column-3
-                    .card
-                    .card-body
-                        h5.card-title database 
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content.
-                .col.column-4
-                    .card
-                    .card-body
-                        h5.card-title database connection
-                        p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                
+                      p= `Note ID : ${note.noteid}`
+                      p= `Task ID: ${note.taskid}`
+                          //- p= `Description : ${note.description}
+                       

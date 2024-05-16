@@ -2,9 +2,7 @@
 *{
   margin: 0;
   padding: 0;
-  outline: none;
-  border: none;
-  text-decoration: none;
+  
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
@@ -12,25 +10,33 @@ html,body{
   display: grid;
   height: 100%;
   width: 100%;
+  
   /* background: -webkit-linear-gradient(left, black, rgb(54, 129, 85)); */
-  background: linear-gradient(#0D153A 20%, #F5F7F9 0%);
+  background: linear-gradient(#0D153A 17%, #F5F7F9 0%);
   background-repeat: no-repeat;
+}
+img{
+  width: 20%;
+  padding-bottom: 8px;
+
 }
 ul {
   list-style-type: none;
 }
-
+.main1{
+  animation: t-in 2s;
+}
 
 .main1 h1{
-color: #fff;
-font-weight: 900;
+  color: #fff;
+  font-weight: large;
+}
+.main1 h2{
+  color: #fff;
+  font-weight:100;
 
 }
-.main h2{
-color: #fff;
-font-weight:100;
 
-}
 .container{
   display: flex;
   border-radius: 30px;
@@ -83,18 +89,117 @@ a:hover{
   text-decoration: underline;
 }
 
-/* section one */
+.section{
+  display: flex;
+  flex-wrap: wrap;
+}
+/* main body  */
+.main-body2{
+  /* background-color: orange; */
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+.card23
+{
+  margin-top: 30px;
+  background-color: #FCFCFC;
+  width: 50%;
+  height: 70%;
+  padding: 20px;
+  border-radius: 5px;
+}
+.body1{
+  display: flex;
+  flex-direction: row;
+}
+ .col.column-1{
+    width: 70%;
+    height: 100px;
+    /* overflow: auto; */
+    margin: 10px;
+    text-align:left;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 8px;
+    /* box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); */
+    background-image: url("/images/dbg.png");
+    /* background:no-repeat; */
+    transition: transform .3s;
+    
+  }
+  .col.column-1:hover{
+    transform: scale(1.1)
+  }
+  .col.column-2{
+    width: 300px;
+    height: 100px;
+    overflow: auto;
+    margin: 10px;
+    text-align:left;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 8px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    background-image: url("/images/dbg.png");
+    /* background:no-repeat; */
+    transition: transform .3s;
+    
+  }
+  .col.column-2:hover{
+    transform: scale(1.1)
+  }
+  .card-body1 .ct1{
+    /* width: 200px; */
+    display:flex;
+    grid-gap: 10px;
+    
+  }
+  .card-body1 .ct2{
+    font-size: xx-large;
+  }
+  
+.card23 .body2{
+  background-color: #DCDEE0;
+  border-radius: 10px;
+   width: 70%;
+   height: 50%;
+   margin-left: 10px;
+  padding: 5px;
+}
+.working-on h6{
+  font-size: 13;
+  }
+  .working-on .card{
+    text-decoration: none;
+  }
+/* section one top  */
+
+/* section two */
 .card22{
   margin-top: 30px;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
-  gap: 20px;
+  gap: 20px; */
+  background-color: #DCDEE0;
+  width: 50%;
+  height: 90%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  padding: 2%;
+  border-radius: 20px;
 }
+
 .ctn-project {
   display: flex;
-  background-color: fuchsia;
   width: 100%;
+  margin-right: 20%;
+  background-color: white;
+  justify-content: space-between;
+  padding: 16px;
   border-radius: 20px;
 
 }
@@ -102,6 +207,9 @@ a:hover{
   background-color: #cccc;
   padding: 20px;
   border-radius: 20px;
+}
+.ctn-project:hover{
+  transform: scale(1.1)
 }
 .ctn-project-progress {}
 .main1{
@@ -300,14 +408,23 @@ transform: rotate(180deg);
 .card21 
 {
   width: 100%;
-  height: 24%;
-  /* background-color: yellow; */
+  height: 10%;
+  /* background-color: maroon; */
+}
+.card21 h1{
+  color: #FFFFFF;
+  font-size: 50px;
+  
+  }
+.card21 h2{
+    color: #FFFFFF;
+    font-size: 17px;
 }
 .card20
 {
   width: 100%;
-  height: 7%;
-   /* background-color: red;  */
+  height: 4%;
+   /* background-color: yellow;  */
   display: flex;
  justify-content: right;
  margin-top: 
@@ -401,4 +518,16 @@ button{
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+
+@keyframes t-in{
+  from {
+      opacity: 0;
+      transform: translateY(-10px);     
+     }
+  to{
+    opacity: 1;
+    transform: translateY(0);     
+  } 
 }

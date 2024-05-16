@@ -8,6 +8,7 @@ var user=[];
 var userid;
 var projects=[];
 var tasks=[];
+var notes=[];
 /// client ROUTES ///
 
 /* client */
@@ -84,9 +85,37 @@ console.log("show  tasks within projects",projects);
 
  /* client notes page just to see the syles   */
  router.get('/notes', (req, res, next) => {
-    res.render('clientnotes.jade');
+
+  db.query("call get_notes()",  (err, rows)=> {
     
- });
+    if (rows[0].length==0) {
+        console.log("no notes found");
+      }
+    else {
+        console.log("got notes",rows[0]);
+        notes=rows[0];
+      }
+       console.log("render notes",notes); 
+
+    db.query("call get_tasks()",  (err, rows)=> {
+  
+        if (rows[0].length==0) {
+            console.log("no tasks found");
+          }
+        else {
+            // console.log("got tasks",rows[0]);
+            tasks=rows[0];
+          }
+           console.log("render tasks",tasks); 
+
+    res.render('clientnotes.jade',{notes:notes, user:user});
+    
+     });
+    });
+  });
+//  res.render('clientnotes.jade',{ projects: projects, user:user,developers:developers});
+     
+
 
    /* display account details of loged in user   */
  router.get('/account', (req, res, next) => {
@@ -121,8 +150,22 @@ console.log("show  tasks within projects",projects);
 
  /* projetcs in relation ot clinet */ 
 router.get('/projects', (req, res, next) => {
-  
+  console.log('load projects', userid);
+     console.log("show  tasks within projects",projects); 
+     db.query("CALL getclient_projects(?)", [userid], (err, rows) => {
+
+      if (rows[0].length == 0) {
+           console.log("No projects found");
+       } else {
+          console.log("Got projects", rows[0]);
+           const projects = rows[0];
+           // Continue with further processing as needed
+       }
+       res.render('clientprojects.jade',{projects:projects,user:user });
+     });  
   res.render('clientprojects.jade');
   
 });
+
+
 module.exports = router;

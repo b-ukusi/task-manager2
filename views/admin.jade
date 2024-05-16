@@ -55,8 +55,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
                       button(data-close-button2, class="close-button") &times;
                     .modal2-body2
                       .card-userinfo
-                        p user data heret 
-                        //- p= `User ID: ${User.Userid} `
+                        p= `User ID: ${Userid} `
+                        p= `User Name: ${FirstName} `
               .card21 
 
                             h1 Welcome, Admin! 
@@ -73,8 +73,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                       i.fas.fa-cogs
                                       h5.card-title Projects 
                                     .ct2  
-                                      p.card-text
-                                        #{projects.length}
+                                      p.card-text  #{projects.length}
+                                       
                                     //- each project in projects
                                     //-   li
                                     //-     p= project.projectname
@@ -86,8 +86,8 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                       i.fas.fa-address-book
                                       h5.card-title Developer Accounts 
                                     .ct2  
-                                      p.card-text 
-                                          #{developers.length}
+                                      p.card-text #{developers.length}
+                                          
                                     //- each developer in developers 
                                       li
                                         p= developer.FirstName
@@ -98,23 +98,21 @@ span(style="font-family: verdana, geneva, sans-serif;")
                                       i.fas.fa-address-card 
                                       h5.card-title Client Accounts 
                                     .ct2
-                                      p.card-text
-                                        #{clients.length}
+                                      p.card-text  #{clients.length}
+                                       
                                     //- each client in clients 
                                       li 
                                         p= client.FirstName
-                            .col.column-3
-                                .card3
-                                .card-body31
-                                    .ct1
-                                      i.fas.fa-calculator
-                                      h5 Tottal
-                                    .ct2 
-                                      p.card-text
-                                      #{clients.length}
-                                    //- each client in clients 
-                                      li 
-                                        p= client.FirstName     
+                            //- .col.column-3
+                            //-     .card3
+                            //-     .card-body31
+                            //-         .ct1
+                            //-           i.fas.fa-calculator
+                            //-           h5 Tottal
+                            //-         .ct2 
+                            //-           p.card-text  89
+                                       
+                                        
                           
                           .displayprojects 
                             h5 Project List  

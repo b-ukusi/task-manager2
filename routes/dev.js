@@ -15,7 +15,7 @@ var notes=[];
 /*dashboad page  */
 router.get('/', (req, res, next) => {
 
-     console.log("developer dash ",req);
+     console.log("developer dash ");
 
      console.log("REquest user id account:",req.query.user);
      console.log("global user id account a :",userid);
@@ -102,15 +102,25 @@ console.log("show  tasks within projects",projects);
   
 
 /* dev project page   */
-
-router.get('/projects', (req, res, next) => {
+ router.get('/projects', (req, res, next) => {
      console.log('load projects', userid);
-    console.log("show  tasks within projects",projects); 
-// it diddnt get here
-    res.render('developerprojects.jade',{ projects: projects, user:user,developers:developers});
+     console.log("show  tasks within projects",projects); 
+     db.query("CALL get_dev_projectsdev(?)", [userid], (err, rows) => {
+
+      if (rows[0].length == 0) {
+           console.log("No projects found");
+       } else {
+          console.log("Got projects", rows[0]);
+           const projects = rows[0];
+           // Continue with further processing as needed
+       }
+       res.render('developerprojects.jade',{projects:projects,user:user, developers:developers });
+     });  
+    
+     res.render('developerprojects.jade',{ projects: projects, user:user,developers:developers});
      
   
-});
+ });
 
 /* dev notes page  */
   router.get('/notes', (req, res, next) => {
@@ -125,8 +135,21 @@ router.get('/projects', (req, res, next) => {
           notes=rows[0];
         }
          console.log("render notes",notes); 
+
+      db.query("call get_tasks()",  (err, rows)=> {
+    
+          if (rows[0].length==0) {
+              console.log("no tasks found");
+            }
+          else {
+              // console.log("got tasks",rows[0]);
+              tasks=rows[0];
+            }
+             console.log("render tasks",tasks); 
+
+
     res.render('developernotes.jade',{notes:notes, user:user,developers:developers});
-     
+          });  
    });
   }); 
  
@@ -158,21 +181,33 @@ router.get('/projects', (req, res, next) => {
 
     res.render('daccountdetails.jade',{user:user,developers:developers});
 });
-   });
+   
+});
   
 /* get devs projects and dipaly*/
  //Example: Assume userId holds the logged-in user's identifier
-// db.query("CALL get_dev_projectsdev(?)", [userid], (err, rows) => {
+ 
 
-//   if (rows[0].length == 0) {
-//       console.log("No projects found");
-//   } else {
-//       console.log("Got projects", rows[0]);
-//       const projects = rows[0];
-//       // Continue with further processing as needed
-//   }
-//   res.render('developerprojects.jade',{developers:developers, projects:projects});
-// });  
+ /* create items pnotes projects page  */
 
+ router.get('/createnotes', (req, res, next) => {
+  console.log("Ad new task",req.query);
+
+const {task,notename,description}=req.query;
+db.query("call save_notes(?,?,?)",[task,notename,description],  (err, rows)=> {
+if (err){
+  console.log(err);
+  res.render('fail.jade', { message: 'Failed to create project.' });
+}
+else{
+  console.log(rows);
+  res.render('succnotes.jade', { message: 'Project created successfully!' });
+}
+});
+});
+
+router.get('/createnotes', (req, res, next) => {
+res.render('succnotes.jade');
+});
 
 module.exports = router;
